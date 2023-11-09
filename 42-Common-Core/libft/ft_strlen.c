@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
@@ -14,7 +14,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		printf("String len is : %d\n", ft_strlen(av[1]));
+		printf("String len is : %zu\n", ft_strlen(av[1]));
 	}
 	return (0);
 }
