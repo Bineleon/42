@@ -10,11 +10,11 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		printf("String len is : %zu\n", ft_strlen(av[1]));
-	}
-	return (0);
-}
+// int	main(int ac, char **av)
+// {
+// 	if (ac == 2)
+// 	{
+// 		printf("String len is : %zu\n", ft_strlen(av[1]));
+// 	}
+// 	return (0);
+// }
