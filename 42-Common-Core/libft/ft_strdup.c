@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:00:44 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/10 16:18:02 by neleon           ###   ########.fr       */
+/*   Updated: 2023/11/10 19:06:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ char *ft_strdup(const char *s1)
     return (str);
 }
 
-int main(int ac, char **av)
-{
-    if (ac == 2)
-    {
-        char *s1 = ft_strdup(av[1]);
+// int main(int ac, char **av)
+// {
+//     if (ac == 2)
+//     {
+//         char *s1 = ft_strdup(av[1]);
 
-        printf("%s : %s\n", av[1], s1);
-        free(s1);
-    }
+//         printf("%s : %s\n", av[1], s1);
+//         free(s1);
+//     }
 
-    return (0);
-}
+//     return (0);
+// }
