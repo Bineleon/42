@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:15:28 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/20 15:23:21 by neleon           ###   ########.fr       */
+/*   Updated: 2023/11/20 15:27:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 static int	ft_isset(char c, char const *set)
 {
-	return (strchr(set, c) != NULL);
+	return (ft_strchr(set, c) != NULL);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -39,8 +39,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	final_len;
 
-    if (!s1 || !set)
-        return (NULL);
+	if (!s1 || !set)
+		return (NULL);
 	start = 0;
 	while (s1[start] && ft_isset(s1[start], set))
 		start++;
@@ -63,52 +63,40 @@ int	main(void)
 	char	*str;
 
 	// Test 1: Classic trim
-
 	s1 = "#****#Hel*lo#*##";
 	set = "#*";
 	str = ft_strtrim(s1, set);
 	printf("Test 1: %s\n", str);
 	free(str);
-
 	// Test 2: s1 empty
-
 	s1 = "";
 	set = "#*";
 	str = ft_strtrim(s1, set);
 	printf("Test 2: %s\n", str);
 	free(str);
-
 	// Test 3: set empty
-
 	s1 = "#****#Hello#*##";
 	set = "";
 	str = ft_strtrim(s1, set);
 	printf("Test 3: %s\n", str);
 	free(str);
-
 	// Test 4: s1 NULL
-
 	s1 = NULL;
 	set = "#*";
 	str = ft_strtrim(s1, set);
 	printf("Test 4: %s\n", str);
 	free(str);
-
-    // Test 5: set NULL
-
-    s1 = "#****#Hello#*##";
+	// Test 5: set NULL
+	s1 = "#****#Hello#*##";
 	set = NULL;
 	str = ft_strtrim(s1, set);
 	printf("Test 6: %s\n", str);
 	free(str);
-
-    // Test 6: s1 && set empty
-
-    s1 = "";
+	// Test 6: s1 && set empty
+	s1 = "";
 	set = "";
 	str = ft_strtrim(s1, set);
 	printf("Test 6: %s\n", str);
 	free(str);
-
 	return (0);
 }
