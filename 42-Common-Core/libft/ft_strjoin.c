@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:36:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/14 17:08:55 by neleon           ###   ########.fr       */
+/*   Updated: 2023/11/20 15:05:25 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 //     s2 = "World!";
 //     result = ft_strjoin(s1, s2);
 //     printf("Test 1: %s\n", result);
-//     free(result); // Libérer la mémoire allouée
+//     free(result);
 
 //     // Test 2: Concaténation avec une chaîne vide
 //     s1 = "";
