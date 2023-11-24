@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 20:01:14 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/24 20:52:47 by neleon           ###   ########.fr       */
+/*   Created: 2023/11/24 20:22:10 by neleon            #+#    #+#             */
+/*   Updated: 2023/11/24 20:54:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void ft_putnbr_fd(int n, int fd)
 {
-	write(fd, &c, 1);
+    long nb;
+
+    nb = n;
+    if (nb < 0)
+    {
+        write(fd, "-", 1);
+        nb = -nb;
+    }
+    if (nb > 9)
+        ft_putnbr_fd(nb / 10, fd);
+    ft_putchar_fd(nb % 10 + '0', fd);
 }
+
+// int main(void)
+// {
+//     ft_putnbr_fd(-145465, 1);
+//     write(1, "\n", 1);
+// }
