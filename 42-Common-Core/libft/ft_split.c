@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:43:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/21 17:57:10 by neleon           ###   ########.fr       */
+/*   Updated: 2023/11/29 17:34:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,13 @@ char **ft_split(char const *s, char c)
     words = (char **)malloc((word_count + 1) * sizeof(char *));
     if (!words)
         return (NULL);
-
     while (j < word_count)
     {
         while (s[i] == c)
             i++;
         words[j] = ft_word(&s[i], c);
+        if (!words[j])
+            free_malloc(words, j);
         i += ft_word_len(&s[i], c);
         j++;
     }
@@ -123,21 +124,21 @@ char **ft_split(char const *s, char c)
     return (words);
 }
 
-int	main(void)
-{
-	char	c;
-    int i;
+// int	main(void)
+// {
+// 	char	c;
+//     int i;
 
-	c = ' ';
-	char const s[] = "Coucou me voila";
-    char **split = ft_split(s, c);
-    i = 0;
-    printf("To split: %s\n", s);
-    printf("Word count: %d\nSplit: \n\n", ft_count_words(s, c));
-    while (i < ft_count_words(s, c))
-    {
-	    printf("        %s\n", split[i]);
-        i++;
-    }
-    return (0);
-}
+// 	c = ' ';
+// 	char const s[] = "Coucou me voila";
+//     char **split = ft_split(s, c);
+//     i = 0;
+//     printf("To split: %s\n", s);
+//     printf("Word count: %d\nSplit: \n", ft_count_words(s, c));
+//     while (i < ft_count_words(s, c))
+//     {
+// 	    printf("        %s\n", split[i]);
+//         i++;
+//     }
+//     return (0);
+// }

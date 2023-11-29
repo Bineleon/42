@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:15:59 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/09 18:55:40 by neleon           ###   ########.fr       */
+/*   Updated: 2023/11/29 18:32:03 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int main(void)
-{
-    const char s1[] = "hello, it's me";
-    const char s2[] = "Couco, it's me";
-    size_t n = ft_strlen(s1);
-    printf("the difference is : %d\n", ft_memcmp(s1, s2, n));
-    return (0);
-}
+// int main(void)
+// {
+//     const char s1[] = "hello, it's me";
+//     const char s2[] = "Couco, it's me";
+//     size_t n = ft_strlen(s1);
+//     printf("the difference is : %d\n", ft_memcmp(s1, s2, n));
+//     return (0);
+// }
