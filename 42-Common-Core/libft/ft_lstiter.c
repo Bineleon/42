@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:39:56 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/30 14:39:58 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/01 16:52:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst && (*f))
+	if (lst && f)
 	{
 		while (lst)
 		{

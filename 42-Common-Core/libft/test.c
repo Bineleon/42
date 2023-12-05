@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 14:31:51 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/01 16:39:54 by neleon           ###   ########.fr       */
+/*   Created: 2023/12/01 14:43:17 by neleon            #+#    #+#             */
+/*   Updated: 2023/12/01 18:02:36 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (lst)
-	{
-		while (lst->next)
-			lst = lst->next;
-	}
-	else
-		return (NULL);
-	return (lst);
+    t_list *new;
+    t_list *first;
+
+    first = NULL;
+    if (!lst || !f || !del)
+        return (NULL);
+    while (lst)
+    {
+        new = ft_lstnew((*f)(lst->content));
+        if (!new)
+            ft_lstclear(&new, (*del));
+        if (!first)
+            first =
+    }
+    return (new);
 }

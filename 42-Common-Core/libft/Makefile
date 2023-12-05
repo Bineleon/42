@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 19:19:26 by neleon            #+#    #+#              #
-#    Updated: 2023/11/30 15:46:21 by neleon           ###   ########.fr        #
+#    Updated: 2023/12/01 17:02:24 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,17 +57,16 @@ OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 OBJSB = $(SRCSB:.c=.o)
 OBJECTS_BONUS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJSB))
 
-CC = clang
+CC = cc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
 $(OBJS_DIR)%.o : %.c libft.h
 	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@clang $(CC_FLAGS) -c $< -o $@
+	@cc $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
-	@ar r $(NAME) $(OBJECTS_PREFIXED)
+	@ar rcs $(NAME) $(OBJECTS_PREFIXED)
 	@echo "Libft Done !"
 
 all: $(NAME)
@@ -81,7 +80,7 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJECTS_BONUS_PREFIXED)
-	@ar r $(NAME) $(OBJECTS_BONUS_PREFIXED)
+	@ar rcs $(NAME) $(OBJECTS_BONUS_PREFIXED)
 	@echo "Libft Bonus Done !"
 
 .PHONY: all clean fclean re bonus

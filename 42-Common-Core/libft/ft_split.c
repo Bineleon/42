@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:43:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/29 17:34:40 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/05 12:56:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ static void free_malloc(char **split, int size)
             i++;
         }
         free(split);
+        split = NULL;
     }
 }
 
