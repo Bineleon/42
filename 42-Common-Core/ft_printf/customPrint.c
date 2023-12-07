@@ -6,13 +6,15 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:54:52 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/07 14:55:09 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/07 19:33:22 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 Exercice : Fonction customPrint
-Objectif : Écrire une fonction nommée customPrint qui imite une version simplifiée de printf. Votre fonction doit être capable de gérer les formats de chaîne de caractères %s, les caractères %c, et les entiers %d.
+Objectif : Écrire une fonction nommée customPrint qui imite une version simplifiée de printf.
+Votre fonction doit être capable de gérer les formats de chaîne de caractères %s, 
+les caractères %c, et les entiers %d.
 
 Spécifications :
 
@@ -44,3 +46,70 @@ int main() {
 }
 Cet exercice vous aidera à comprendre comment printf analyse et traite les spécificateurs de format. Il constitue une excellente base pour aborder les fonctionnalités plus complexes de printf.
 */
+
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdio.h>
+
+void ft_format(const char *format, va_list ap, int *count);
+void ft_putchar(va_list ap, int *count);
+void ft_putstr(va_list ap, int *count);
+
+void customPrint(const char *format, ...)
+{
+    va_list ap;
+    int count;
+
+    count = 0;
+    va_start(ap, format);
+    while(*format)
+    {
+        if (*format != '%')
+        {
+            write(1, format, 1);
+            count++;
+        }
+        else
+        {
+            ft_format(format, ap, &count);
+            format++;
+        }
+        format++;        
+    }
+    va_end(ap);
+}
+
+void ft_format(const char *format, va_list ap, int *count)
+{
+    if (*format == '%' && *(format + 1) == 'c')
+        ft_putchar(ap, count);
+    else if (*format == '%' && *(format + 1) == 's')
+        ft_putstr(ap, count);
+}
+
+void ft_putchar(va_list ap, int *count)
+{
+    int c;
+
+    c = va_arg(ap, int);
+    write(1, &c, sizeof(char));
+    *count += 1;
+}
+
+void ft_putstr(va_list ap, int *count)
+{
+    char *format;
+
+    format = (char *)va_arg(ap, int *);
+    while (*format)
+    {
+        ft_putchar(ap, count);
+        format++;
+    }
+}
+
+int main() {
+    customPrint("Hello %s! You have %c new messages.\n", 'Alice', '5');
+    // Ceci devrait afficher "Hello Alice! You have 5 new messages."
+    return 0;
+}
