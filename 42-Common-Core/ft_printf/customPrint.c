@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:54:52 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/08 12:07:27 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/08 12:32:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void ft_putchar(va_list ap, int *count);
 void ft_putstr(va_list ap, int *count);
 void ft_putnbr(long nb, int *count);
 void ft_int_to_char(va_list ap, int *count);
+void ft_uint_to_char(va_list ap, int *count);
 
-void customPrint(const char *format, ...)
+
+int customPrint(const char *format, ...)
 {
     va_list ap;
     int count;
@@ -88,8 +90,10 @@ void ft_format(const char *format, va_list ap, int *count)
         ft_putchar(ap, count);
     else if (*format == '%' && *(format + 1) == 's')
         ft_putstr(ap, count);
-    else if (*format == '%' && *(format + 1) == 'd')
+    else if (*format == '%' && (*(format + 1) == 'd' || *(format + 1) == 'i'))
         ft_int_to_char(ap, count);
+    else if (*format == '%' && *(format + 1) == 'u')
+        ft_uint_to_char(ap, count);
 }
 
 void ft_putchar(va_list ap, int *count)
@@ -118,6 +122,13 @@ void ft_putstr(va_list ap, int *count)
         format++;
     }
 }
+void ft_uint_to_char(va_list ap, int *count)
+{
+    long nb;
+
+    nb = va_arg(ap, int);
+    ft_putnbr(nb, count);
+}
 
 void ft_int_to_char(va_list ap, int *count)
 {
@@ -131,7 +142,6 @@ void ft_int_to_char(va_list ap, int *count)
         *count += 1;
     }
     ft_putnbr(nb, count);
-
 }
 
 void ft_putnbr(long nb , int *count)
@@ -143,7 +153,7 @@ void ft_putnbr(long nb , int *count)
 }
 
 int main() {
-    customPrint("Hello %s! You have %d new messages.\n", "Alice", -756435);
+    customPrint("Hello %s! You have %u new messages.\n", "Alice", 348585635);
     // Ceci devrait afficher "Hello Alice! You have 5 new messages."
     return 0;
 }
