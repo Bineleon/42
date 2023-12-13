@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:54:52 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/08 16:50:44 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/08 16:56:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int	main(void) {
 	// Ceci devrait afficher "Hello Alice! You have 5 new messages."
 	return (0);
 }
-Cet exercice vous aidera à comprendre comment printf analyse et traite les spécificateurs de format. Il constitue une excellente base pour aborder les fonctionnalités plus complexes de printf.
+Cet exercice vous aidera à comprendre comment printf analyse et traite les 
+spécificateurs de format. Il constitue une excellente base pour aborder
+les fonctionnalités plus complexes de printf.
 */
 
 #include <stdarg.h>
