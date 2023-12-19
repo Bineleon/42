@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:56:38 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/14 11:42:49 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/19 14:08:44 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,19 @@ int main(void) {
     org = printf("%p\n", (void *)ptr);
     printf("Longueur Ft_printf = %d, Longueur Libc_printf = %d\n\n", ft, org);
 
-    printf("Test avec une valeur hexadécimale de 42 :\n");
+    printf("Test avec une valeur hexa de 42 (minuscule) :\n");
     printf("ft : ");
     ft = ft_printf("%x", 42);
     printf(" libc : ");
     org = printf("%x\n", 42);
     printf("Longueur Ft_printf = %d, Longueur Libc_printf = %d\n\n", ft, org);
 
-    printf("Test avec une valeur hexadécimale en majuscule de 42 :\n");
+    printf("Test avec une valeur hexa de 42 (majuscule) :\n");
     printf("ft : ");
     ft = ft_printf("%X", 42);
     printf(" libc : ");
     org = printf("%X\n", 42);
     printf("Longueur Ft_printf = %d, Longueur Libc_printf = %d\n\n", ft, org);
 
-    return 0;
+    return (0);
 }
