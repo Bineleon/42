@@ -6,24 +6,13 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:43:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/05 12:56:40 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/05 18:50:46 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-// char **ft_split(char const *s, char c);
-// Turn in files -
-// Parameters s: The string to be split.
-// c: The delimiter character.
-// Return value The array of new strings resulting from the split.
-// NULL if the allocation fails.
-// External functs. malloc, free
-// Description Allocates (with malloc(3)) and returns an array
-// of strings obtained by splitting ’s’ using the
-// character ’c’ as a delimiter. The array must end
-// with a NULL pointer.
+// #define malloc(...) 0
 
 static int	ft_word_len(char const *s, char c)
 {
@@ -35,23 +24,41 @@ static int	ft_word_len(char const *s, char c)
 	return (len);
 }
 
-static  char *ft_word(char const *s, char c)
+static void	free_malloc(char **split, int size)
 {
-    char *word;
-    int i;
+	int	i;
 
-    i = 0;
-    word = (char *)malloc((ft_word_len(s, c) + 1) * sizeof(char));
-    if (!word)
-        return (NULL);
-    while (s[i] && s[i] != c)
-    {
-        word[i] = s[i];
-        i++;
-    }
-    word[i] = '\0';
-    return (word);
+	i = 0;
+	if (split != NULL)
+	{
+		while (i < size)
+		{
+			free(split[i]);
+			i++;
+		}
+		free(split);
+		split = NULL;
+	}
 }
+
+static char	*ft_word(char const *s, char c)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = (char *)malloc((ft_word_len(s, c) + 1) * sizeof(char));
+	if (!word)
+		return (free(word), NULL);
+	while (s[i] && s[i] != c)
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
 static int	ft_count_words(char const *s, char c)
 {
 	int	count;
@@ -61,85 +68,60 @@ static int	ft_count_words(char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
-        if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
-            count++;
+		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+			count++;
 		i++;
 	}
 	return (count);
 }
-// static void	freesplit(char **split, int words)
-// {
-// 	int	i;
 
-// 	i = -1;
-// 	while (++i <= words)
-// 	{
-// 		free(split[i]);
-// 		split[i] = NULL;
-// 	}
-// 	free(split);
-// 	split = NULL;
-// }
-
-static void free_malloc(char **split, int size)
+char	**ft_split(char const *s, char c)
 {
-    int i;
+	char	**words;
+	int		word_count;
+	int		i;
+	int		j;
 
-    i = 0;
-    if (split != NULL)
-    {
-        while (i < size)
-        {
-            free(split[i]);
-            i++;
-        }
-        free(split);
-        split = NULL;
-    }
-}
-
-char **ft_split(char const *s, char c)
-{
-    char **words;
-    int word_count;
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-    word_count = ft_count_words(s, c);
-    words = (char **)malloc((word_count + 1) * sizeof(char *));
-    if (!words)
-        return (NULL);
-    while (j < word_count)
-    {
-        while (s[i] == c)
-            i++;
-        words[j] = ft_word(&s[i], c);
-        if (!words[j])
-            free_malloc(words, j);
-        i += ft_word_len(&s[i], c);
-        j++;
-    }
-    words[word_count] = NULL;
-    return (words);
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	word_count = ft_count_words(s, c);
+	words = (char **)malloc((word_count + 1) * sizeof(char *));
+	if (!words)
+		return (free_malloc(words, i), NULL);
+	while (j < word_count)
+	{
+		while (s[i] == c)
+			i++;
+		words[j] = ft_word(&s[i], c);
+		if (!words[j])
+			free_malloc(words, j);
+		i += ft_word_len(&s[i], c);
+		j++;
+	}
+	words[word_count] = NULL;
+	return (words);
 }
 
 // int	main(void)
 // {
-// 	char	c;
-//     int i;
+// 	// char	c;
+//  	// int i;
 
-// 	c = ' ';
-// 	char const s[] = "Coucou me voila";
-//     char **split = ft_split(s, c);
-//     i = 0;
-//     printf("To split: %s\n", s);
-//     printf("Word count: %d\nSplit: \n", ft_count_words(s, c));
-//     while (i < ft_count_words(s, c))
-//     {
-// 	    printf("        %s\n", split[i]);
-//         i++;
-//     }
+// 	// c = ' ';
+// 	// char const s[] = "Coucou me voila";
+//     char **split = ft_split(0, 'b');
+//    (void) split; // Decomment to check leaks with malloc NULL
+// //     i = 0;
+// //     printf("To split: %s\n", s);
+// //     printf("Word count: %d\nSplit: \n", ft_count_words(s, c));
+// //    while (i < ft_count_words(s, c))
+// //    {
+// // 		printf("        %s\n", split[i]);
+// //        free(split[i]);
+// //         i++;
+// //    }
+//     free(split);
 //     return (0);
 // }

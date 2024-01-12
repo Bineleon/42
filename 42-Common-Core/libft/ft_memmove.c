@@ -1,39 +1,41 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 13:55:07 by neleon            #+#    #+#             */
+/*   Updated: 2023/12/05 19:38:01 by neleon           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void *ft_memmove(void *dst, const void *src, size_t len)
+#include "libft.h"
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    size_t i;
-    unsigned char *d;
-    const unsigned char *s;
+	char		*d;
+	const char	*s;
 
-    d = (unsigned char *) dst;
-    s = (const unsigned char *) src;
-    if (d < s)
-    {
-        i = 0;
-        while (i < len)
-        {
-            d[i] = s[i];
-            i++;
-        }
-    }
-    else if (s < d)
-    {
-        i = len;
-        while (i != 0)
-        {
-            d[i - 1] = s[i - 1];
-            i--;
-        }
-    }
-    return (dst);
+	if (!dest && !src)
+		return (NULL);
+	d = dest;
+	s = src;
+	if (d < s)
+		while (n-- > 0)
+			*d++ = *s++;
+	else
+		while (n-- > 0)
+			*(d + n) = *(s + n);
+	return (dest);
 }
 
-int	main(void)
-{
-    char dst[20];
-	char src[100] = "Hello it's me";
-	ft_memmove(dst, src, 7);
-	printf("%s\n", dst);
-	return (0);
-}
+// int	main(void)
+// {
+// 	char	dst[20];
+// 	char	src[100] = "Hello it's me";
+
+// 	ft_memmove(dst, src, 7);
+// 	printf("%s\n", dst);
+// 	return (0);
+// }

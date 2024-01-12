@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 14:28:32 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/30 14:28:34 by neleon           ###   ########.fr       */
+/*   Created: 2023/11/30 17:21:51 by neleon            #+#    #+#             */
+/*   Updated: 2023/11/30 19:49:56 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,12 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
+
+// {
+// 	t_list	*test;
+
+// 	test = NULL;
+// 	test = ft_lstnew((void*) 1);
+// 	printf("%p\n", test);
+// 	return (0);
+// }

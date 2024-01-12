@@ -6,33 +6,28 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:36:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/20 15:05:25 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:19:16 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
-    size_t  len_s1;
-    size_t  len_s2;
+	size_t	len_s1;
+	size_t	len_s2;
 
-    if (!s1 || !s2)
-        return (NULL);
-    len_s1 = ft_strlen(s1);
-    len_s2 = ft_strlen(s2);
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
 	join = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
-    if (!join)
-        return (NULL);
+	if (!join)
+		return (NULL);
 	ft_strlcpy(join, s1, (len_s1 + 1));
-    ft_strlcat(join, s2, len_s1 + len_s2 + 1);
-    return (join);
+	ft_strlcat(join, s2, len_s1 + len_s2 + 1);
+	return (join);
 }
 // int main() {
 //     char const *s1;
@@ -72,5 +67,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 //     result = ft_strjoin(s1, s2);
 //     printf("Test 5: %s\n", result ? result : "NULL");
 
-//     return 0;
+//     return (0);
 // }

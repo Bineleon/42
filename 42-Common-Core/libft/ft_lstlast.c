@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 14:31:51 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/01 16:39:54 by neleon           ###   ########.fr       */
+/*   Created: 2023/11/30 17:21:45 by neleon            #+#    #+#             */
+/*   Updated: 2023/12/05 16:13:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ t_list	*ft_lstlast(t_list *lst)
 	if (lst)
 	{
 		while (lst->next)
+		{
 			lst = lst->next;
+		}
 	}
 	else
 		return (NULL);

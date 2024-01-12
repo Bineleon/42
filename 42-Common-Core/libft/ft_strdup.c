@@ -6,33 +6,30 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:00:44 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/10 19:06:51 by neleon           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:19:08 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *str);
-
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-    size_t  len;
-    char    *str;
-    int i;
+	size_t	len;
+	char	*str;
+	int		i;
 
-    i = 0;
-    len = ft_strlen(s1);
-    str = (char *)malloc((len + 1) * sizeof(char));
-    if (!str)
-        return (NULL);
-    while(s1[i])
-    {
-        str[i] = s1[i];
-        i++;
-    }
-    str[i] = '\0';
-    return (str);
+	i = 0;
+	len = ft_strlen(s1);
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 // int main(int ac, char **av)
