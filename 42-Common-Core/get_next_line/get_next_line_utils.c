@@ -6,17 +6,21 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:43 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/12 17:27:55 by neleon           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:10:38 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *calloc_gnl()
+int	buf_len(char *s)
 {
-    
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-void	found_newline(int fd, char *buf)
-{
-}
