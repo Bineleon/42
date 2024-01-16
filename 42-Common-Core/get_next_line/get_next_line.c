@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/12 17:43:05 by neleon           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:51:17 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,25 @@ fin fonction
 
 char	*get_next_line(int fd)
 {
-	static char	*lines_rd;
-	char		*line;
+	static char	*chars_rd;
 	char		*buf;
+	char		*line;
 	int			rd;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-    rd = read(fd, buf, BUFFER_SIZE)
-	buf = (char *)malloc(BUFFER_SIZE + 1);
+    chars_rd = NULL;
+    buf = (char *)malloc(BUFFER_SIZE + 1);
+    if (!buf)
+    {
+        free(buf);
+        return (NULL);
+    }
+    while (rd = read(fd, buf, BUFFER_SIZE) > 0)
+    {
+        chars_rd[rd] = '/0';
+    }
+
 }
 
 void	found_newline(int fd, char *buf)
