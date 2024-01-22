@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:43 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/17 15:57:40 by neleon           ###   ########.fr       */
+/*   Updated: 2024/01/22 20:03:55 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*gnl_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
+
 char	*gnl_strchr(const char *s, int c)
 {
 	char	to_find;
@@ -70,27 +71,27 @@ char	*gnl_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
-    char *join;
-    size_t len_s1;
-    size_t len_s2;
-    size_t i;
-    size_t j;
+	char	*join;
+	size_t	len_s1;
+	size_t	len_s2;
+	size_t	i;
+	size_t	j;
 
-    if (!s1 || !s2)
-        return (NULL);
-    len_s1 = gnl_strlen(s1);
-    len_s2 = gnl_strlen(s2);
-    join = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
-    if (!join)
-        return (NULL);
-    i = 0;
-    while (i < len_s1)
-        join[i] = s1[i++];
-    j = 0;
-    while (j < len_s2)
-        join[i + j] = s2[j++];
-    join[i + j] = '\0';
-    return (join);
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = gnl_strlen(s1);
+	len_s2 = gnl_strlen(s2);
+	join = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (!join)
+		return (NULL);
+	i = 0;
+	while (i < len_s1)
+		join[i] = s1[i++];
+	j = 0;
+	while (j < len_s2)
+		join[i + j] = s2[j++];
+	join[i + j] = '\0';
+	return (join);
 }

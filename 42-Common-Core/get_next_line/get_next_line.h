@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:59:03 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/10 19:21:02 by neleon           ###   ########.fr       */
+/*   Updated: 2024/01/22 20:04:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_list
 }					t_list;
 
 char				*get_next_line(int fd);
-void				ft_bzero(void *s, size_t n);
+int					gnl_strlen(char *s);
+char				*gnl_substr(char const *s, unsigned int start, size_t len);
+char				*gnl_strchr(const char *s, int c);
+char				*gnl_strjoin(char const *s1, char const *s2);
 
 #endif

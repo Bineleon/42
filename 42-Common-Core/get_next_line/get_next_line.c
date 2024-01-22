@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/15 17:51:17 by neleon           ###   ########.fr       */
+/*   Updated: 2024/01/22 20:30:25 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,23 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
     chars_rd = NULL;
+	rd = 1;
     buf = (char *)malloc(BUFFER_SIZE + 1);
     if (!buf)
     {
-        free(buf);
-        return (NULL);
+        free_gnl(buf);
     }
     while (rd = read(fd, buf, BUFFER_SIZE) > 0)
     {
         chars_rd[rd] = '/0';
+		chars_rd = gnl_strjoin(chars_rd, buf);
+		if (gnl_strchr(chars_rd, '\n'))
+			break;
     }
 
 }
-
-void	found_newline(int fd, char *buf)
+void free_gnl(char *buf)
 {
+	free (buf);
+	return (NULL);
 }
