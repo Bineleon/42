@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:59:03 by neleon            #+#    #+#             */
-/*   Updated: 2024/01/22 20:04:05 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/05 18:45:44 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,23 @@
 #  define BUFFER_SIZE 5
 # endif
 
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*next;
-	{
-		/* data */
-	};
+// typedef struct s_list
+// {
+// 	char			*content;
+// 	struct s_list	*next;
+// 	{
+// 		/* data */
+// 	};
 
-}					t_list;
+// }					t_list;
 
-char				*get_next_line(int fd);
-int					gnl_strlen(char *s);
-char				*gnl_substr(char const *s, unsigned int start, size_t len);
-char				*gnl_strchr(const char *s, int c);
-char				*gnl_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
+char	*gnl_read_and_store(int fd, char *buf);
+// void				free_gnl(char *buf);
+
+int		gnl_strlen(char *s);
+char	*gnl_substr(char *s, unsigned int start, size_t len);
+char	*gnl_strchr(char *s, int c);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif
