@@ -7,7 +7,7 @@
 int main(void)
 {
     int fd;
-    char *buffer = NULL; // Initialisation du buffer à NULL si la fonction s'occupe de l'allocation
+    char *buffer = NULL;
 
     // if (argc != 2) {
     //     printf("Usage: %s <filename>\n", argv[0]);
@@ -21,9 +21,9 @@ int main(void)
         return 1;
     }
 
-    // Appel de read_and_store. Notez que buffer pourrait être alloué/modifié par read_and_store
-    buffer = gnl_read_and_store(fd, buffer);
-    
+    // Appel de read_and_store.
+    // buffer = gnl_read_and_store(fd, buffer);
+    buffer = get_next_line(fd);
 
     // ssize_t bytes_read = read(fd, buffer, BUFFER_SIZE);
     // if (bytes_read == -1)

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/22 00:22:48 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/22 00:38:03 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ fin fonction
 // 		if (gnl_strchr(chars_rd, '\n'))
 // 			break ;
 // 	}
+// 	return (line);
 // }
 
 char	*gnl_read_and_store(int fd, char *buf)
