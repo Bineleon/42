@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:43 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/05 18:46:33 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/22 00:21:54 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
 	len_s1 = gnl_strlen(s1);
 	len_s2 = gnl_strlen(s2);
@@ -87,11 +87,12 @@ char	*gnl_strjoin(char *s1, char *s2)
 	if (!join)
 		return (NULL);
 	i = -1;
-	while (i++ < len_s1)
+	while (++i < len_s1)
 		join[i] = s1[i];
 	j = -1;
-	while (j++ < len_s2)
+	while (++j < len_s2)
 		join[i + j] = s2[j];
 	join[i + j] = '\0';
+	printf("Strjoin : |%s|\n", join);
 	return (join);
 }

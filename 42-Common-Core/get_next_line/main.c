@@ -4,17 +4,18 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
     int fd;
     char *buffer = NULL; // Initialisation du buffer à NULL si la fonction s'occupe de l'allocation
 
-    if (argc != 2) {
-        printf("Usage: %s <filename>\n", argv[0]);
-        return 1;
-    }
+    // if (argc != 2) {
+    //     printf("Usage: %s <filename>\n", argv[0]);
+    //     return 1;
+    // }
 
-    fd = open(argv[1], O_RDONLY);
+    fd = open("test.txt", O_RDONLY);
+    printf("FD = %d\n", fd);
     if (fd == -1) {
         perror("Error opening file");
         return 1;
@@ -22,15 +23,16 @@ int main(int argc, char **argv)
 
     // Appel de read_and_store. Notez que buffer pourrait être alloué/modifié par read_and_store
     buffer = gnl_read_and_store(fd, buffer);
+    
 
-    ssize_t bytes_read = read(fd, buffer, BUFFER_SIZE);
-    if (bytes_read == -1)
-        perror("Error reading file");
-    // Gestion d'erreur ici
+    // ssize_t bytes_read = read(fd, buffer, BUFFER_SIZE);
+    // if (bytes_read == -1)
+    //     perror("Error reading file");
+    // // Gestion d'erreur ici
 
     if (buffer) {
-        printf("Data read from file:\n%s\n", buffer);
-        free(buffer); // Assurez-vous de libérer le buffer si read_and_store ou vous-même l'avez alloué
+        printf("Data read from file:\n|%s|\n", buffer);
+        free(buffer); 
     } else {
         printf("No data read or allocation failed.\n");
     }
