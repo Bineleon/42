@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/23 00:14:05 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/23 21:36:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	chars_rd = gnl_read_and_store(fd, chars_rd);
     if (!chars_rd)
-    {
-        free(chars_rd);
         return (NULL);
-    }
     line = gnl_extract_line(&chars_rd);
     if (!line)
     {
@@ -82,6 +79,11 @@ char	*gnl_read_and_store(int fd, char *chars_rd)
         bytes_read = read(fd, tmp, BUFFER_SIZE);
 	}
     free(tmp);
+    if (bytes_read <= 0 && gnl_strlen(chars_rd) == 0)
+    {
+        free(chars_rd);
+        return (NULL);
+    }
     return (chars_rd);
 }
 

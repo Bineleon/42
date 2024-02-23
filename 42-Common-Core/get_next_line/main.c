@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:49:04 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/23 00:40:53 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/23 21:17:10 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,30 @@ int main(void)
 {
     int fd;
     char *line = NULL;
-    int i = 1;
-
+    // int i = 1;
     fd = open("test.txt", O_RDONLY);
     if (fd == -1)
     {
         perror("Error opening file");
         return (1);
     }
-    line = get_next_line(fd);
-    while (line != NULL)
+    // line = get_next_line(fd);
+    // while (line != NULL)
+    // {
+    //     printf("%d : ", i);
+    //     printf("|%s|", line);
+    //     free(line);
+    //     line = get_next_line(fd);
+    //     i++;
+    // }
+
+    while (1)
     {
-        printf("Line %d : ", i);
-        printf("%s", line);
-        free(line);
         line = get_next_line(fd);
-        i++;
+        if (line == NULL)
+            break;
+        printf("|%s|", line);
+        free(line);
     }
 
     if (close(fd) == -1)
