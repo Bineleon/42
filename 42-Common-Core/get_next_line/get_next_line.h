@@ -6,20 +6,20 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:59:03 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/23 21:36:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/23 22:22:52 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 9223372036854775808
+#  define BUFFER_SIZE 5
 # endif
 
 // typedef struct s_list
