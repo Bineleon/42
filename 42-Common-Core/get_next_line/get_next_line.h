@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:59:03 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/21 23:51:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/23 00:20:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@
 
 char	*get_next_line(int fd);
 char	*gnl_read_and_store(int fd, char *buf);
-// void				free_gnl(char *buf);
+char	*gnl_extract_line(char **chars_rd);
 
 int		gnl_strlen(char *s);
 char	*gnl_substr(char *s, unsigned int start, size_t len);
 char	*gnl_strchr(char *s, int c);
 char	*gnl_strjoin(char *s1, char *s2);
+char	*gnl_strdup(char *s1);
 
 #endif
