@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/23 22:22:36 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/26 23:31:45 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,28 @@ char	*get_next_line(int fd)
 char	*gnl_read_and_store(int fd, char *chars_rd)
 {
 	char	*tmp;
-	char	*new_buf;
-	ssize_t	bytes_read;
-
-	tmp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!tmp)
-	{
-		free(tmp);
+	char	*buf;
+	int		bytes_rd;
+	
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if(!buf)
 		return (NULL);
-	}
-	bytes_read = read(fd, tmp, BUFFER_SIZE);
-	while (bytes_read > 0)
+	bytes_rd = 1;
+	while (bytes_rd > 0 && !gnl_strchr(buf, '\n'))
 	{
-		tmp[bytes_read] = '\0';
-		new_buf = gnl_strjoin(chars_rd, tmp);
+		bytes_rd = read(fd, buf, BUFFER_SIZE);
+		if (bytes_rd <= 0 && gnl_strlen(chars_rd) == 0)
+		{
+			free(chars_rd);
+			free(buf);
+			return (NULL);
+		}
+		buf[bytes_rd] = '\0';
+		tmp = gnl_strjoin(chars_rd, buf);
 		free(chars_rd);
-		chars_rd = new_buf;
-		if (gnl_strchr(tmp, '\n'))
-			break ;
-		bytes_read = read(fd, tmp, BUFFER_SIZE);
+		chars_rd = tmp;
 	}
-	free(tmp);
-	if (bytes_read <= 0 && gnl_strlen(chars_rd) == 0)
-	{
-		free(chars_rd);
-		return (NULL);
-	}
+	free(buf);
 	return (chars_rd);
 }
 
@@ -69,6 +65,7 @@ char	*gnl_extract_line(char **chars_rd)
 	char	*new_buf;
 	char	*newline_ptr;
 
+	line = NULL;
 	newline_ptr = gnl_strchr(*chars_rd, '\n');
 	if (!newline_ptr)
 	{
@@ -85,3 +82,51 @@ char	*gnl_extract_line(char **chars_rd)
 	}
 	return (line);
 }
+
+// char	*gnl_read_and_store(int fd, char *chars_rd)
+// {
+// 	char	*tmp;
+// 	char	*new_buf;
+// 	ssize_t	bytes_read;
+
+// 	tmp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+// 	if (!tmp)
+// 	{
+// 		free(tmp);
+// 		return (NULL);
+// 	}
+// 	bytes_read = read(fd, tmp, BUFFER_SIZE);
+// 	while (bytes_read > 0)
+// 	{
+// 		tmp[bytes_read] = '\0';
+// 		new_buf = gnl_strjoin(chars_rd, tmp);
+// 		free(chars_rd);
+// 		chars_rd = new_buf;
+// 		if (gnl_strchr(tmp, '\n'))
+// 			break ;
+// 		bytes_read = read(fd, tmp, BUFFER_SIZE);
+// 	}
+// 	free(tmp);
+// 	if (bytes_read <= 0 && gnl_strlen(chars_rd) == 0)
+// 	{
+// 		free(chars_rd);
+// 		return (NULL);
+// 	}
+// 	return (chars_rd);
+// }
+
+// char	*gnl_extract_line(char **chars_rd)
+// {
+// 	char *line;
+// 	char *ptr_nl;
+// 	size_t	len_line;
+
+// 	ptr_nl = gnl_strchr(*chars_rd, '\n');
+// 	if(!ptr_nl)
+// 		len_line = gnl_strlen(*chars_rd);
+// 	else
+// 		len_line = ptr_nl - *chars_rd + 1;
+// 	line = gnl_substr(*chars_rd, 0, len_line);
+// 	return (line);
+// }
+
