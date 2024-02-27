@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:32:49 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/26 23:44:33 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:27:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 char	*get_next_line(int fd);
 char	*gnl_read_and_store(int fd, char *buf);
 char	*gnl_extract_line(char **chars_rd);
-void	*ft_memset(void *b, int c, size_t len);
+char    *gnl_intit_buf();
 
 // get_next_line_utils
 int		gnl_strlen(char *s);
