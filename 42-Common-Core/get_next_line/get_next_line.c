@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/27 16:40:36 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/28 19:31:06 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*get_next_line(int fd)
 	static char	*chars_rd;
 	char		*line;
 
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	chars_rd = gnl_read_and_store(fd, chars_rd);
@@ -57,35 +58,6 @@ char	*gnl_read_and_store(int fd, char *chars_rd)
 	return (chars_rd);
 }
 
-
-// char	*gnl_read_and_store(int fd, char *chars_rd)
-// {
-// 	char	*tmp;
-// 	char	*buf;
-// 	int		bytes_rd;
-
-// 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-// 	if (!buf)
-// 		return (NULL);
-// 	bytes_rd = 1;
-// 	while (bytes_rd > 0 && !gnl_strchr(buf, '\n'))
-// 	{
-// 		bytes_rd = read(fd, buf, BUFFER_SIZE);
-// 		if (bytes_rd <= 0 && gnl_strlen(chars_rd) == 0)
-// 		{
-// 			free(chars_rd);
-// 			free(buf);
-// 			return (NULL);
-// 		}
-// 		buf[bytes_rd] = '\0';
-// 		tmp = gnl_strjoin(chars_rd, buf);
-// 		free(chars_rd);
-// 		chars_rd = tmp;
-// 	}
-// 	free(buf);
-// 	return (chars_rd);
-// }
-
 char	*gnl_extract_line(char **chars_rd)
 {
 	char	*line;
@@ -121,6 +93,33 @@ char    *gnl_intit_buf()
     return (buf);
 }
 
+// char	*gnl_read_and_store(int fd, char *chars_rd)
+// {
+// 	char	*tmp;
+// 	char	*buf;
+// 	int		bytes_rd;
+
+// 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+// 	if (!buf)
+// 		return (NULL);
+// 	bytes_rd = 1;
+// 	while (bytes_rd > 0 && !gnl_strchr(buf, '\n'))
+// 	{
+// 		bytes_rd = read(fd, buf, BUFFER_SIZE);
+// 		if (bytes_rd <= 0 && gnl_strlen(chars_rd) == 0)
+// 		{
+// 			free(chars_rd);
+// 			free(buf);
+// 			return (NULL);
+// 		}
+// 		buf[bytes_rd] = '\0';
+// 		tmp = gnl_strjoin(chars_rd, buf);
+// 		free(chars_rd);
+// 		chars_rd = tmp;
+// 	}
+// 	free(buf);
+// 	return (chars_rd);
+// }
 
 // // char	*gnl_read_and_store(int fd, char *chars_rd)
 // // {

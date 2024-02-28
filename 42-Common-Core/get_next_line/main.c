@@ -6,51 +6,49 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:49:04 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/27 01:32:16 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/27 21:25:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <fcntl.h>
 #include "get_next_line.h"
+#include <fcntl.h>
 
-int main(void)
+int	main(void)
 {
-    int fd;
-    char *line = NULL;
-    // int i = 1;
-    fd = open("test.txt", O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error opening file");
-        return (1);
-    }
-    // line = get_next_line(fd);
-    // while (line != NULL)
-    // {
-    //     printf("%d : ", i);
-    //     printf("|%s|", line);
-    //     free(line);
-    //     line = get_next_line(fd);
-    //     i++;
-    // }
+	int		fd;
+	char	*line;
 
-    while (1)
-    {
-        line = get_next_line(fd);
-        if (line == NULL)
-            break;
-        printf("|%s|", line);
-        free(line);
-    }
-
-    if (close(fd) == -1)
-    {
-        perror("Error closing file");
-        return (1);
-    }
-
-    return (0);
+	line = NULL;
+	// int i = 1;
+	fd = open("test.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening file");
+		return (1);
+	}
+	// line = get_next_line(fd);
+	// while (line != NULL)
+	// {
+	//     printf("%d : ", i);
+	//     printf("|%s|", line);
+	//     free(line);
+	//     line = get_next_line(fd);
+	//     i++;
+	// }
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		printf("|%s|", line);
+		free(line);
+	}
+	if (close(fd) == -1)
+	{
+		perror("Error closing file");
+		return (1);
+	}
+	return (0);
 }
 
 // int main(void)
@@ -60,14 +58,14 @@ int main(void)
 
 //     // if (argc != 2) {
 //     //     printf("Usage: %s <filename>\n", argv[0]);
-//     //     return 1;
+//     //     return (1);
 //     // }
 
 //     fd = open("test.txt", O_RDONLY);
 //     printf("FD = %d\n", fd);
 //     if (fd == -1) {
 //         perror("Error opening file");
-//         return 1;
+//         return (1);
 //     }
 
 //     // Appel de read_and_store.
@@ -87,5 +85,5 @@ int main(void)
 //     }
 
 //     close(fd);
-//     return 0;
+//     return (0);
 // }
