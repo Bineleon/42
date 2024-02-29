@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:06:57 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/28 19:31:06 by neleon           ###   ########.fr       */
+/*   Updated: 2024/02/28 23:20:58 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,15 @@ char    *gnl_intit_buf()
 	}
     return (buf);
 }
+// int main(void)
+// {
+// 	char *line = NULL;
+	
+// 	line = get_next_line(0);
+// 	printf("|%s|", line);
+// 	return (0);
+// }
+
 
 // char	*gnl_read_and_store(int fd, char *chars_rd)
 // {
