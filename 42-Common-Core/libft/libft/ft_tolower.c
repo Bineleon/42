@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 14:43:17 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/01 18:02:36 by neleon           ###   ########.fr       */
+/*   Created: 2023/11/07 15:23:36 by neleon            #+#    #+#             */
+/*   Updated: 2023/12/05 16:19:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_tolower(int c)
 {
-    t_list *new;
-    t_list *first;
-
-    first = NULL;
-    if (!lst || !f || !del)
-        return (NULL);
-    while (lst)
-    {
-        new = ft_lstnew((*f)(lst->content));
-        if (!new)
-            ft_lstclear(&new, (*del));
-        if (!first)
-            first =
-    }
-    return (new);
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

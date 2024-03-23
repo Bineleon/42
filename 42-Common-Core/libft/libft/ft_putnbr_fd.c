@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 19:49:04 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/29 18:54:09 by neleon           ###   ########.fr       */
+/*   Created: 2023/11/24 20:22:10 by neleon            #+#    #+#             */
+/*   Updated: 2023/12/05 16:18:50 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
+#include "libft.h"
 
-
-int	main(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		fd;
-	char	*line;
+	long	nb;
 
-	line = malloc(1);
-	// int i = 1;
-	
-	fd = open("tests/test1.txt", O_RDONLY);
-
-	while (line)
+	nb = n;
+	if (nb < 0)
 	{
-		free(line);
-		line = get_next_line(fd);
-		printf("|%s|", line);
-		i++;
+		write(fd, "-", 1);
+		nb = -nb;
 	}
-	// line = get_next_line(0);
-	// printf("|%s|", line);
-	
-	close(fd);
-	return (0);
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd(nb % 10 + '0', fd);
 }
 
+// int main(void)
+// {
+//     ft_putnbr_fd(-145465, 1);
+//     write(1, "\n", 1);
+// }

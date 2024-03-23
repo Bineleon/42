@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   practice.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 16:42:23 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/06 17:01:55 by neleon           ###   ########.fr       */
+/*   Created: 2024/02/22 19:49:04 by neleon            #+#    #+#             */
+/*   Updated: 2024/02/29 22:29:10 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+#include <fcntl.h>
 
-#include <stdarg.h>
-#include <stdio.h>
 
-int sumNumbers(int count, ...)
+int	main(void)
 {
-    va_list ap;
-    int i;
-    int sum;
+	int		fd;
+	char	*line;
 
-    i = 0;
-    sum = 0;
-    va_start(ap, count);
-    while (i < count)
-    {
-        sum += va_arg(ap, int);
-        i++;
-    }
-    va_end(ap);
-    return (sum);
+	line = malloc(1);
+	int i = 1;
+	
+	fd = open("tests/test1.txt", O_RDONLY);
+
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		printf("|%s|", line);
+		i++;
+	}
+	// line = get_next_line(0);
+	// printf("|%s|", line);
+	
+	close(fd);
+	return (0);
 }
-int main(void)
-{
-    int total = sumNumbers(5, 1, 2, 3, 4, 5);
-    printf("Sum is: %d\n", total);
-    return (0);
-}
+
