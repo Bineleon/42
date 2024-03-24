@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 15:17:35 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/24 18:28:06 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,25 @@
 int main(int ac, char **av)
 {
 	int i;
-
+	t_stack *a = NULL;
 	i = 2;
 	
 	if (ac > 1)
 	{
-		// if ac == 2 split
-		
-		// else if ac > 2 
-			// while i >= ac
-				// add element in lst (in right order) 
+
+		if (ac == 2)
+		{
+			// split
+		}	
+		else if (ac > 2)
+		{
+			init_stack(&a, av);
+			// while (i <= ac)
+			// {
+				
+			// 	i++;
+			// }
+		}
 	}
 	return (0);
 }

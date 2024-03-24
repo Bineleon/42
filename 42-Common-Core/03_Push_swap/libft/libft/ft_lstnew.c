@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:21:51 by neleon            #+#    #+#             */
-/*   Updated: 2023/11/30 19:49:56 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/24 21:29:47 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
+
 
 // {
 // 	t_list	*test;
