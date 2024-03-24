@@ -6,13 +6,13 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 18:22:16 by neleon            #+#    #+#              #
-#    Updated: 2024/03/24 22:53:22 by neleon           ###   ########.fr        #
+#    Updated: 2024/03/24 23:53:05 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC_1 = push_swap.c init_stack.c lst_utils.c\
+SRC_1 = push_swap.c init_stack.c lst_utils.c check_errors.c\
 
 CC = cc
 RM = rm -f
