@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 21:57:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/24 22:53:49 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 void	init_stack(t_stack **stack_a, char **av);
 
 // lst_utils
-static t_stack	*ft_stacknew(int nb);
+t_stack	*ft_stacknew(int nb);
 void	ft_stackadd_back(t_stack **lst, t_stack *new);
 
 #endif

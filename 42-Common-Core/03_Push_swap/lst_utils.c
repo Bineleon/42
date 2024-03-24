@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 21:33:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 21:35:18 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/24 22:52:38 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
 t_stack	*ft_stacknew(int nb)
 {

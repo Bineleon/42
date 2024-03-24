@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 22:56:39 by neleon           ###   ########.fr       */
+/*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
+/*   Updated: 2024/03/24 22:52:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	init_stack(t_stack **stack_a, char **av)
+int main(int ac, char **av)
 {
-	int	i;
-	int	j;
-	
-	j = 0;
+	int i;
+	t_stack *a = NULL;
 	i = 2;
-	*stack_a = ft_stacknew(ft_atoi(av[1]));
-	while (av[i])
+	
+	if (ac > 1)
 	{
-		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(av[i])));
-		i++;
+
+		if (ac == 2)
+		{
+			// split
+		}	
+		else if (ac > 2)
+		{
+			init_stack(&a, av);
+			// while (i <= ac)
+			// {
+				
+			// 	i++;
+			// }
+		}
 	}
-	// t_stack *temp = *stack_a;
-	// while (temp)
-	// {
-	// 	int nbr = temp->nb;
-	// 	ft_printf("%d ", nbr);
-	// 	temp = temp->next;
-	// }
+	return (0);
 }
