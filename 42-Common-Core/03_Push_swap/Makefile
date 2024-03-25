@@ -6,20 +6,21 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 18:22:16 by neleon            #+#    #+#              #
-#    Updated: 2024/03/24 23:53:05 by neleon           ###   ########.fr        #
+#    Updated: 2024/03/25 18:18:44 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME			= push_swap
 
-SRC_1 = push_swap.c init_stack.c lst_utils.c check_errors.c\
+SRC_1			= push_swap.c init_stack.c lst_utils.c check_errors.c\
+				push_moves.c\
 
-CC = cc
-RM = rm -f
-FLAGS = -Wall -Wextra -Werror
-LIBFTDIR = libft/
-OBJ_DIR = obj/
-SRC_DIR = ./
+CC				= cc
+RM				= rm -f
+FLAGS			= -Wall -Wextra -Werror -g3
+LIBFTDIR		= libft/
+OBJ_DIR			= obj/
+SRC_DIR			= ./
 
 OBJ_1 = ${addprefix ${OBJ_DIR},${SRC_1:.c=.o}}
 

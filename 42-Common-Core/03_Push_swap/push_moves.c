@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   push_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/25 18:14:59 by neleon           ###   ########.fr       */
+/*   Created: 2024/03/25 15:33:58 by neleon            #+#    #+#             */
+/*   Updated: 2024/03/25 18:54:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	init_stack(t_stack **stack_a, char **av)
+void	push_top_to_stack(t_stack **src, t_stack **dst)
 {
-	int	i;
-	int	j;
+	t_stack *tmp;
 
-	j = 0;
-	i = 2;
-	*stack_a = ft_stacknew(ft_atoi(av[1]));
-	while (av[i])
+	if (!src)
+		return ;
+	tmp = *src;
+	*src = (*src)->next;
+	if (!dst)
 	{
-		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(av[i])));
-		i++;
+		*dst = tmp;
+		(*dst)->next = NULL;
+	}
+	else
+	{
+		tmp->next = *dst;
+		*dst = tmp;
 	}
 }
