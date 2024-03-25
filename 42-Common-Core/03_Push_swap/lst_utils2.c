@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lst_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 19:49:04 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/29 22:29:10 by neleon           ###   ########.fr       */
+/*   Created: 2024/03/25 23:50:00 by neleon            #+#    #+#             */
+/*   Updated: 2024/03/26 00:19:08 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
+#include "./push_swap.h"
 
-
-int	main(void)
+int	ft_stack_size(t_stack *lst)
 {
-	int		fd;
-	char	*line;
+	int	node;
 
-	line = malloc(1);
-	int i = 1;
-	
-	fd = open("tests/test1.txt", O_RDONLY);
-
-	while (line)
+	node = 0;
+	while (lst)
 	{
-		free(line);
-		line = get_next_line(fd);
-		printf("|%s|", line);
-		i++;
+		lst = lst->next;
+		node++;
 	}
-	// line = get_next_line(0);
-	// printf("|%s|", line);
-	
-	close(fd);
-	return (0);
+	return (node);
 }
-

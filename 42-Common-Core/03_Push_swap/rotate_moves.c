@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_moves.c                                       :+:      :+:    :+:   */
+/*   rotate_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 15:33:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/25 23:23:54 by neleon           ###   ########.fr       */
+/*   Created: 2024/03/25 21:50:56 by neleon            #+#    #+#             */
+/*   Updated: 2024/03/25 23:29:26 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	push_top_to_stack(t_stack **src, t_stack **dst)
+void	rotate(t_stack **top)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*last;
 
-	if (!src)
+	if (!(*top) || !(*top)->next)
 		return ;
-	tmp = *src;
-	*src = (*src)->next;
-	if (!dst)
-	{
-		*dst = tmp;
-		(*dst)->next = NULL;
-	}
-	else
-	{
-		tmp->next = *dst;
-		*dst = tmp;
-	}
+	first = *top;
+	last = ft_stacklast(*top);
+	*top = first->next;
+	last->next = first;
+	first->next = NULL;
+}
+
+void	rotate_a(t_stack **a)
+{
+	rotate(a);
+	ft_printf("ra\n");
+}
+
+void	rotate_b(t_stack **b)
+{
+	rotate(b);
+	ft_printf("rb\n");
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
 }
