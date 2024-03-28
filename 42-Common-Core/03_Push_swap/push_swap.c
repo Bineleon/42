@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/25 23:36:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/28 20:31:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,29 @@ int	main(int ac, char **av)
 			// 	i++;
 			// }
 			init_stack(&a, av);
-			ft_printf("Stack a : \n");
+			// ft_printf("Stack a : \n");
+			// print_stack(a);
+			// push_top_to_stack(&a, &b);
+			// ft_printf("\nStack b : \n");
+			// print_stack(b);
+			// push_top_to_stack(&a, &b);
+			// ft_printf("\n");
+			// print_stack(b);
+			// ft_printf("\nStack a : \n");
+			// print_stack(a);
+			// ft_printf("\nSwap a : \n");
+			// rrr(&a, &b);
+			// ft_printf("\nSwap a : \n");
+			// print_stack(a);
+			// ft_printf("\nSwap b : \n");
+			// print_stack(b);
+			// ft_printf("\nMin a = %d\n", find_min(a));
+			// ft_printf("Max a = %d\n", find_max(a));
 			print_stack(a);
-			push_top_to_stack(&a, &b);
-			ft_printf("\nStack b : \n");
-			print_stack(b);
-			push_top_to_stack(&a, &b);
 			ft_printf("\n");
-			print_stack(b);
-			ft_printf("\nStack a : \n");
+			sort_three_a(&a);
 			print_stack(a);
-			ft_printf("\nSwap a : \n");
-			rrr(&a, &b);
-			ft_printf("\nSwap a : \n");
-			print_stack(a);
-			ft_printf("\nSwap b : \n");
-			print_stack(b);
+
 		}
 	}
 	return (0);

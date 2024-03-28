@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/26 00:18:28 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/28 20:29:54 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ void				rev_rotate_a(t_stack **a);
 void				rev_rotate_b(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
-// push_swap
-void sort_three(t_stack *lst);
+// sort
+void				sort_three_a(t_stack **lst);
+int					is_rev_sort_three(t_stack *lst);
+int					is_sorted_three(t_stack *lst);
+
+int					find_max(t_stack *lst);
+int					find_min(t_stack *lst);
 
 #endif
