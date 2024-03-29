@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/28 20:29:54 by neleon           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:42:19 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_stack				*before_last(t_stack *top);
 // errors
 int					is_duplicate(t_stack *stack_a, int nb);
 int					not_digit(char *str);
+int					is_not_int(long nbr);
 void				print_error(void);
 
 // prints
