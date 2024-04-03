@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/29 15:42:19 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/02 13:55:58 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_stack
 
 // parsing
 void				init_stack(t_stack **stack_a, char **av);
+void				init_split(t_stack **stack_a, char **av);
 
 // lst_utils
 t_stack				*ft_stacknew(int nb);
@@ -53,7 +54,7 @@ void				ss(t_stack **a, t_stack **b);
 // rotate_moves
 void				rotate(t_stack **top);
 void				rotate_a(t_stack **a);
-void				rotate_a(t_stack **b);
+void				rotate_b(t_stack **b);
 void				rr(t_stack **a, t_stack **b);
 void				rev_rotate(t_stack **top);
 void				rev_rotate_a(t_stack **a);
@@ -62,10 +63,13 @@ void				rrr(t_stack **a, t_stack **b);
 
 // sort
 void				sort_three_a(t_stack **lst);
+void				sort_three_b(t_stack **lst);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted_three(t_stack *lst);
 
-int					find_max(t_stack *lst);
-int					find_min(t_stack *lst);
+t_stack				*find_max(t_stack *lst);
+t_stack				*find_min(t_stack *lst);
+
+int					ft_count_words(char const *s, char c);
 
 #endif

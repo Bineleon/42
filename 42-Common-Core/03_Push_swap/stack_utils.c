@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/29 15:24:11 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/02 15:39:41 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 void	init_stack(t_stack **stack_a, char **av)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = 2;
 	*stack_a = ft_stacknew(ft_atoi(av[1]));
+	while (av[i])
+	{
+		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(av[i])));
+		i++;
+	}
+}
+
+void	init_split(t_stack **stack_a, char **av)
+{
+	int	i;
+
+	i = 1;
+	*stack_a = ft_stacknew(ft_atoi(av[0]));
 	while (av[i])
 	{
 		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(av[i])));
@@ -47,4 +58,5 @@ void	print_stack(t_stack *stack)
 			ft_printf(" %d", nbr);
 		tmp = tmp->next;
 	}
+	ft_printf("\n");
 }

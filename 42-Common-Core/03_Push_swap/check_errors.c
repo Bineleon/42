@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 22:47:33 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/29 15:42:54 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/01 19:25:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@ int	not_digit(char *str)
 	int	i;
 
 	i = 0;
-	if (!(ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+'))
-		return (ft_printf("Not digit\n"), 1);
+	ft_printf("%s\n", str);
+	if (!(ft_isdigit(str[i]) || str[i] != '-' || str[i] != '+'))
+		return (ft_printf("1 Not digit\n"), 1);
 	if ((str[i] == '-' || str[i] == '+') && !ft_isdigit(str[1]))
-		return (ft_printf("Not digit\n"), 1);
+		return (ft_printf("2 Not digit\n"), 1);
+	if (str[i] && (str[0] == '+' || str[0] == '-'))
+		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (1);
+			return (ft_printf("Not digit\n"), 1);
 		i++;
 	}
 	return (0);
