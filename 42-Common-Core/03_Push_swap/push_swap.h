@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/02 13:55:58 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/08 09:50:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 typedef struct s_stack
 {
 	int				nb;
+	int				index;
+	int				is_in_top;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -34,6 +36,8 @@ void				ft_stackadd_back(t_stack **lst, t_stack *new);
 void				ft_stackadd_front(t_stack **lst, t_stack *new);
 int					ft_stack_size(t_stack *lst);
 t_stack				*before_last(t_stack *top);
+int					mid_stack(t_stack *lst);
+void				index_in_stack(t_stack **lst);
 
 // errors
 int					is_duplicate(t_stack *stack_a, int nb);
@@ -63,9 +67,8 @@ void				rrr(t_stack **a, t_stack **b);
 
 // sort
 void				sort_three_a(t_stack **lst);
-void				sort_three_b(t_stack **lst);
 int					is_rev_sort_three(t_stack *lst);
-int					is_sorted_three(t_stack *lst);
+int					is_sorted(t_stack *lst);
 
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);

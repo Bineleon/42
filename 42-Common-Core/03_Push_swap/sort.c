@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils2.c                                       :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 23:50:00 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/08 08:50:46 by neleon           ###   ########.fr       */
+/*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
+/*   Updated: 2024/04/08 09:49:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_stack_size(t_stack *lst)
+void	index_in_stack(t_stack **lst)
 {
-	int	node;
+	int	i;
+	int	mid;
 
-	node = 0;
-	while (lst)
+	i = 0;
+	mid = mid_stack(*lst);
+	if (!*lst)
+		return;
+	while (*lst)
 	{
-		lst = lst->next;
-		node++;
+		(*lst)->index = i;
+		if (i <= mid)
+			(*lst)->is_in_top = 1;
+		else
+			(*lst)->is_in_top = 0;
+        printf("Index : %d\n", (*lst)->index);
+		*lst = (*lst)->next;
+		i++;
 	}
-	return (node);
-}
-
-int mid_stack(t_stack *lst)
-{
-    int mid;
-
-    mid = ft_stack_size(lst) / 2;
-    return (mid);
 }

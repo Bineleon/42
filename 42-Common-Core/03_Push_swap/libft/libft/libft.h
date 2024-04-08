@@ -6,14 +6,14 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:05:23 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 19:38:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/04 13:33:34 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <error.h>
+// # include <error.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
