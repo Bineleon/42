@@ -6,13 +6,13 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 18:22:16 by neleon            #+#    #+#              #
-#    Updated: 2024/04/08 09:36:33 by neleon           ###   ########.fr        #
+#    Updated: 2024/04/08 13:05:19 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
 
-SRC_1			= push_swap.c stack_utils.c lst_utils.c check_errors.c\
+SRC_1			= main.c push_swap.c stack_utils.c lst_utils.c check_errors.c\
 				push_moves.c swap_moves.c rotate_moves.c rev_rotate_moves.c\
 				lst_utils2.c sort_utils.c sort_utils2.c utils.c sort.c\
 
