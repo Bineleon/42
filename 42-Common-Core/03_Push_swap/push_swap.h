@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/08 13:01:03 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/10 15:31:22 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 	int				nb;
 	int				index;
 	int				is_in_top;
+	int				moves_to_top;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -35,9 +36,10 @@ t_stack				*ft_stacklast(t_stack *lst);
 void				ft_stackadd_back(t_stack **lst, t_stack *new);
 void				ft_stackadd_front(t_stack **lst, t_stack *new);
 int					ft_stack_size(t_stack *lst);
-t_stack				*before_last(t_stack *top);
+int					is_first(t_stack *lst, int nb);
 int					mid_stack(t_stack *lst);
 void				index_in_stack(t_stack *lst);
+t_stack				*before_last(t_stack *lst);
 
 // errors
 int					is_duplicate(t_stack *stack_a, int nb);
@@ -69,7 +71,8 @@ void				rrr(t_stack **a, t_stack **b);
 void				sort_three_a(t_stack **lst);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
-
+void				moves_calcul(t_stack *lst);
+t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 

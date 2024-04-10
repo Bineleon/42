@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/08 13:03:58 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/10 15:32:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@ int	main(int ac, char **av)
 		if (ac > 2)
 		{
 			init_stack(&a, av);
-            index_in_stack(a);
-            t_stack *lst = a;
-            while (lst)
-            {
-                int index = lst->index;
-                printf("Index : %d\n", index);
-                lst = lst->next;
-            }
 			while (i < ac)
 			{
 				if(not_digit(av[i]) || is_duplicate(a, ft_atoi(av[i]))
@@ -58,6 +50,17 @@ int	main(int ac, char **av)
 					print_error();
 				i++;
 			}
+		}
+		index_in_stack(a);
+		t_stack *lst = a;
+		
+		moves_calcul(lst);
+		while (lst)
+		{
+			printf("for nb = %d\n", lst->nb);
+			printf("Index : %d\n", lst->index);
+			printf("Move count : %d\n", lst->moves_to_top);
+			lst = lst->next;
 		}
 		// ft_printf("Stack a : \n");
 		// print_stack(a);

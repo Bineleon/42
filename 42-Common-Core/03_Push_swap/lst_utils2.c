@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:50:00 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/08 08:50:46 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/08 17:34:02 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,15 @@ int mid_stack(t_stack *lst)
 
     mid = ft_stack_size(lst) / 2;
     return (mid);
+}
+
+
+int is_first(t_stack *lst, int nb)
+{
+	t_stack *stack;
+
+	stack = lst;
+	if (lst->nb == nb)
+		return (1);
+	return (0);
 }
