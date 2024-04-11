@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/10 15:32:59 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/11 14:21:33 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	main(int ac, char **av)
 {
 	int		i;
 	t_stack	*a;
-	// t_stack	*b;
+	t_stack	*b;
 	char **split_args;
 
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 	split_args = NULL;
 	i = 1;
 	// int j = 0;
@@ -62,11 +62,25 @@ int	main(int ac, char **av)
 			printf("Move count : %d\n", lst->moves_to_top);
 			lst = lst->next;
 		}
-		// ft_printf("Stack a : \n");
-		// print_stack(a);
-		// push_top_to_stack(&a, &b);
-		// ft_printf("\nStack b : \n");
-		// print_stack(b);
+		lst = a;
+		int c = 0;
+		ft_printf("Stack a : \n");
+		print_stack(lst);
+		while (c < 5)
+		{
+			push_top_to_stack(&lst, &b);
+			c++;		
+		}
+		ft_printf("\nStack b : \n");
+		print_stack(b);
+		ft_printf("\nStack a : \n");
+		print_stack(lst);
+		target_a_in_b(lst, b);
+		while(lst)
+		{
+			printf("Target for %d in B : %d\n", lst->nb, lst->target_node->nb);
+			lst = lst->next;
+		}
 		// push_top_to_stack(&a, &b);
 		// ft_printf("\n");
 		// print_stack(b);
@@ -79,14 +93,14 @@ int	main(int ac, char **av)
 		// ft_printf("\nSwap b : \n");
 		// swap_b(&b);
 		// print_stack(b);
-		t_stack *min = find_min(a);
-		t_stack *max = find_max(a);
-		ft_printf("\nMin a = %d\n", min->nb);
-		ft_printf("Max a = %d\n", max->nb);
-		ft_printf("stack a : ");
-		print_stack(a);
-		sort_three_a(&a);
-		print_stack(a);
+		// t_stack *min = find_min(a);
+		// t_stack *max = find_max(a);
+		// ft_printf("\nMin a = %d\n", min->nb);
+		// ft_printf("Max a = %d\n", max->nb);
+		// ft_printf("stack a : ");
+		// print_stack(a);
+		// sort_three_a(&a);
+		// print_stack(a);
 	}
 	return (0);
 }
