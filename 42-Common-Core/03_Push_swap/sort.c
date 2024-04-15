@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/11 17:58:22 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/15 19:06:08 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,58 @@ void	index_in_stack(t_stack *lst)
 			lst->is_in_top = 0;
 		lst = lst->next;
 		i++;
+	}
+}
+
+void	a_and_target_to_top(t_stack *a, t_stack *b)
+{
+	t_stack	*stack_a;
+	t_stack	*target_b;
+	int i;
+
+	i = 0;
+	stack_a = a;
+	target_b = stack_a->target_node;
+	moves_calcul(stack_a);
+	moves_calcul(target_b);
+	printf("target to top\n");
+	if (stack_a->is_in_top && target_b->is_in_top)
+	{
+		printf("Rotate\n");
+		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
+		{
+			rr(&a, &b);
+			i++;
+		}
+		while (i < stack_a->moves_to_top)
+		{
+			rotate_a(&a);
+			i++;
+		}
+		while (i < target_b->moves_to_top)
+		{
+			rotate_b(&b);
+			i++;
+		}
+	}
+	else
+	{
+		printf("rev_Rotate\n");
+		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
+		{
+			rrr(&a, &b);
+			i++;
+		}
+		while (i < stack_a->moves_to_top)
+		{
+			rev_rotate_a(&a);
+			i++;
+		}
+		while (i < target_b->moves_to_top)
+		{
+			rev_rotate_b(&b);
+			i++;
+		}
 	}
 }
 
@@ -75,22 +127,32 @@ void	target_a_in_b(t_stack *a, t_stack *b)
 		if ((stack_a->nb < min_node->nb) || (stack_a->nb > max_node->nb))
 			stack_a->target_node = max_node;
 		else
-			stack_a->target_node = min_node;
+			find_target(a, b);
 		stack_a = stack_a->next;
 	}
 }
 
-t_stack	*find_target(t_stack *a, t_stack *b)
+void	find_target(t_stack *a, t_stack *b)
 {
+	t_stack	*stack_b;
 	t_stack	*target;
 	int		nb;
 
-	target = b;
-	nb = INT_MIN;
-	while(target)
+	while (a)
 	{
-		
-		target = target->next;
+		nb = INT_MIN;
+		stack_b = b;
+		while (stack_b)
+		{
+			if (a->nb > stack_b->nb && stack_b->nb > nb)
+			{
+				target = stack_b;
+				nb = stack_b->nb;
+			}
+			stack_b = stack_b->next;
+		}
+		a->target_node = target;
+		a = a->next;
 	}
 }
 

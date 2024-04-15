@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/11 14:21:33 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/15 19:05:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ int	main(int ac, char **av)
 		}
 		index_in_stack(a);
 		t_stack *lst = a;
-		
+		t_stack *lst2 = a;
 		moves_calcul(lst);
-		while (lst)
-		{
-			printf("for nb = %d\n", lst->nb);
-			printf("Index : %d\n", lst->index);
-			printf("Move count : %d\n", lst->moves_to_top);
-			lst = lst->next;
-		}
-		lst = a;
+		// while (lst)
+		// {
+		// 	printf("for nb = %d\n", lst->nb);
+		// 	printf("Index : %d\n", lst->index);
+		// 	printf("Move count : %d\n", lst->moves_to_top);
+		// 	lst = lst->next;
+		// }
+		// lst = a;
 		int c = 0;
 		ft_printf("Stack a : \n");
 		print_stack(lst);
@@ -76,11 +76,23 @@ int	main(int ac, char **av)
 		ft_printf("\nStack a : \n");
 		print_stack(lst);
 		target_a_in_b(lst, b);
-		while(lst)
+		// while(lst)
+		// {
+		// 	printf("Target for %d in B : %d\n", lst->nb, lst->target_node->nb);
+		// 	lst = lst->next;
+		// }
+		c = 0;
+		while (c < 1)
 		{
-			printf("Target for %d in B : %d\n", lst->nb, lst->target_node->nb);
 			lst = lst->next;
+			c++;
 		}
+		a_and_target_to_top(lst, b);
+		ft_printf("\nStack b : \n");
+		print_stack(b);
+		ft_printf("\nStack a : \n");
+		print_stack(lst2);
+		
 		// push_top_to_stack(&a, &b);
 		// ft_printf("\n");
 		// print_stack(b);
