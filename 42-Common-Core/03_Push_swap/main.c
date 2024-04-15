@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/15 19:05:20 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/15 19:35:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	main(int ac, char **av)
 		}
 		index_in_stack(a);
 		t_stack *lst = a;
-		t_stack *lst2 = a;
 		moves_calcul(lst);
 		// while (lst)
 		// {
@@ -66,7 +65,7 @@ int	main(int ac, char **av)
 		int c = 0;
 		ft_printf("Stack a : \n");
 		print_stack(lst);
-		while (c < 5)
+		while (c < 6)
 		{
 			push_top_to_stack(&lst, &b);
 			c++;		
@@ -82,7 +81,7 @@ int	main(int ac, char **av)
 		// 	lst = lst->next;
 		// }
 		c = 0;
-		while (c < 1)
+		while (c < 8)
 		{
 			lst = lst->next;
 			c++;
@@ -91,7 +90,7 @@ int	main(int ac, char **av)
 		ft_printf("\nStack b : \n");
 		print_stack(b);
 		ft_printf("\nStack a : \n");
-		print_stack(lst2);
+		print_stack(lst);
 		
 		// push_top_to_stack(&a, &b);
 		// ft_printf("\n");
