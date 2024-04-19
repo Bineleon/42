@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/15 19:06:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/19 18:45:00 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,57 +33,91 @@ void	index_in_stack(t_stack *lst)
 	}
 }
 
-void	a_and_target_to_top(t_stack *a, t_stack *b)
+void	get_cheapest(t_stack *a, t_stack *b)
 {
-	t_stack	*stack_a;
-	t_stack	*target_b;
-	int i;
+	int		cost_a;
+	int		cost_b;
+	int		cost;
+	t_stack	*curr_a;
+	t_stack	*curr_b;
 
-	i = 0;
-	stack_a = a;
-	target_b = stack_a->target_node;
-	moves_calcul(stack_a);
-	moves_calcul(target_b);
-	printf("target to top\n");
-	if (stack_a->is_in_top && target_b->is_in_top)
+	curr_a = a;
+	curr_b = b;
+	cost = 0;
+	cost_a = curr_a->moves_to_top;
+	cost_b = curr_b->moves_to_top;
+	while (curr_a)
 	{
-		printf("Rotate\n");
-		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
+		if ((curr_a->is_in_top && curr_b->is_in_top)
+			|| !(curr_a->is_in_top && curr_b->is_in_top))
 		{
-			rr(&a, &b);
-			i++;
+			
 		}
-		while (i < stack_a->moves_to_top)
-		{
-			rotate_a(&a);
-			i++;
-		}
-		while (i < target_b->moves_to_top)
-		{
-			rotate_b(&b);
-			i++;
-		}
-	}
-	else
-	{
-		printf("rev_Rotate\n");
-		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
-		{
-			rrr(&a, &b);
-			i++;
-		}
-		while (i < stack_a->moves_to_top)
-		{
-			rev_rotate_a(&a);
-			i++;
-		}
-		while (i < target_b->moves_to_top)
-		{
-			rev_rotate_b(&b);
-			i++;
-		}
+		curr_a = curr_a->next;
 	}
 }
+
+void	a_and_target_to_top(t_stack *a, t_stack *b)
+{
+	t_stack	*current_a;
+	t_stack	*current_b;
+
+	current_a = a;
+	current_b = b;
+	while (current_a)
+}
+
+// void	a_and_target_to_top(t_stack *a, t_stack *b)
+// {
+// 	t_stack	*stack_a;
+// 	t_stack	*target_b;
+// 	int i;
+
+// 	i = 0;
+// 	stack_a = a;
+// 	target_b = stack_a->target_node;
+// 	moves_calcul(stack_a);
+// 	moves_calcul(target_b);
+// 	printf("target to top\n");
+// 	if (stack_a->is_in_top && target_b->is_in_top)
+// 	{
+// 		printf("Rotate\n");
+// 		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
+// 		{
+// 			rr(&a, &b);
+// 			i++;
+// 		}
+// 		while (i < stack_a->moves_to_top)
+// 		{
+// 			rotate_a(&a);
+// 			i++;
+// 		}
+// 		while (i < target_b->moves_to_top)
+// 		{
+// 			rotate_b(&b);
+// 			i++;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		printf("rev_Rotate\n");
+// 		while(i < stack_a->moves_to_top && i < target_b->moves_to_top)
+// 		{
+// 			rrr(&a, &b);
+// 			i++;
+// 		}
+// 		while (i < stack_a->moves_to_top)
+// 		{
+// 			rev_rotate_a(&a);
+// 			i++;
+// 		}
+// 		while (i < target_b->moves_to_top)
+// 		{
+// 			rev_rotate_b(&b);
+// 			i++;
+// 		}
+// 	}
+// }
 
 void	moves_calcul(t_stack *lst)
 {

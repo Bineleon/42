@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/15 18:03:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/19 18:22:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 	int				index;
 	int				is_in_top;
 	int				moves_to_top;
+	int				is_cheapest;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
 }					t_stack;
@@ -75,6 +76,7 @@ void				target_a_in_b(t_stack *a, t_stack *b);
 void				target_b_in_a(t_stack *a, t_stack *b);
 void				find_target(t_stack *a, t_stack *b);
 void				a_and_target_to_top(t_stack *a, t_stack *b);
+void				get_cheapest(t_stack *a, t_stack *b);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
 t_stack				*find_node(t_stack *lst, int nb);
