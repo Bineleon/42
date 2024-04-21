@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/19 18:45:00 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/21 20:48:34 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,35 @@ void	index_in_stack(t_stack *lst)
 	}
 }
 
-void	get_cheapest(t_stack *a, t_stack *b)
+void	get_cheapest(t_stack *a)
 {
-	int		cost_a;
-	int		cost_b;
 	int		cost;
-	t_stack	*curr_a;
-	t_stack	*curr_b;
+	t_stack	*cheapest;
 
-	curr_a = a;
-	curr_b = b;
-	cost = 0;
-	cost_a = curr_a->moves_to_top;
-	cost_b = curr_b->moves_to_top;
-	while (curr_a)
+	cost = INT_MAX;
+	cheapest = NULL;
+	while (a)
 	{
-		if ((curr_a->is_in_top && curr_b->is_in_top)
-			|| !(curr_a->is_in_top && curr_b->is_in_top))
+		if (a->moves_to_top < cost)
 		{
-			
+			cheapest = a;
+			cost = a->moves_to_top;	
 		}
-		curr_a = curr_a->next;
+		a = a->next;
 	}
+	cheapest->is_cheapest = 1;
 }
 
-void	a_and_target_to_top(t_stack *a, t_stack *b)
-{
-	t_stack	*current_a;
-	t_stack	*current_b;
 
-	current_a = a;
-	current_b = b;
-	while (current_a)
-}
+// void	a_and_target_to_top(t_stack *a, t_stack *b)
+// {
+// 	t_stack	*current_a;
+// 	t_stack	*current_b;
+
+// 	current_a = a;
+// 	current_b = b;
+// 	while (current_a)
+// }
 
 // void	a_and_target_to_top(t_stack *a, t_stack *b)
 // {
@@ -119,23 +115,75 @@ void	a_and_target_to_top(t_stack *a, t_stack *b)
 // 	}
 // }
 
-void	moves_calcul(t_stack *lst)
+void	moves_calcul(t_stack *a, t_stack *b)
 {
-	t_stack	*stack;
-	int		stack_len;
+	t_stack	*stack_a;
+	int		stack_len_a;
+	int		stack_len_b;
 
-	stack = lst;
-	index_in_stack(stack);
-	stack_len = ft_stack_size(stack);
-	while (stack)
+	stack_a = a;
+	stack_len_a = ft_stack_size(a);	
+	stack_len_b = ft_stack_size(b);
+	index_in_stack(a);
+	index_in_stack(b);
+	while (stack_a)
 	{
-		if (stack->is_in_top)
-			stack->moves_to_top = stack->index;
+		if (stack_a->is_in_top)
+			stack_a->moves_to_top = stack_a->index;
 		else
-			stack->moves_to_top = stack_len - stack->index;
-		stack = stack->next;
+			stack_a->moves_to_top = stack_len_a - stack_a->index;
+		if (stack_a->target_node->is_in_top)
+            stack_a->moves_to_top += stack_a->target_node->index;
+        else
+            stack_a->moves_to_top += stack_len_b - stack_a->target_node->index;
+		stack_a = stack_a->next;
 	}
 }
+
+// void	moves_calcul(t_stack *a, t_stack *b)
+// {
+// 	t_stack	*stack_a;
+// 	int		stack_len_a;
+// 	int		stack_len_b;
+
+// 	stack_a = a;
+// 	index_in_stack(stack_a);
+// 	index_in_stack(b);
+// 	stack_len_a = ft_stack_size(stack_a);
+// 	stack_len_b = ft_stack_size(b);
+// 	while (stack_a)
+// 	{
+// 		if (stack_a->is_in_top)
+// 			stack_a->moves_to_top = stack_a->index;
+// 		else
+// 			stack_a->moves_to_top = stack_len_a - stack_a->index;
+// 		if (stack_a->is_in_top && stack_a->target_node->is_in_top)
+// 			stack_a->moves_to_top += stack_a->target_node->index;
+// 		else if (stack_a->is_in_top && !(stack_a->target_node->is_in_top))
+// 			stack_a->moves_to_top += stack_len_b - stack_a->target_node->index;
+// 		else
+// 			stack_a->moves_to_top += stack_len_b - stack_a->target_node->index;
+// 		stack_a = stack_a->next;
+// 	}
+// }
+
+// void	moves_calcul(t_stack *lst)
+// {
+// 	t_stack	*stack;
+// 	int		stack_len;
+
+// 	stack = lst;
+// 	index_in_stack(stack);
+// 	stack_len = ft_stack_size(stack);
+// 	while (stack)
+// 	{
+// 		if (stack->is_in_top)
+// 			stack->moves_to_top = stack->index;
+// 		else
+// 			stack->moves_to_top = stack_len - stack->index;
+// 		stack = stack->next;
+// 	}
+// }
 
 t_stack	*find_node(t_stack *lst, int nb)
 {

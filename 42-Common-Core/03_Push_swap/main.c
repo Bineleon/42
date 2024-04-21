@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/15 19:35:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/21 20:48:54 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,44 +53,62 @@ int	main(int ac, char **av)
 		}
 		index_in_stack(a);
 		t_stack *lst = a;
-		moves_calcul(lst);
-		// while (lst)
-		// {
-		// 	printf("for nb = %d\n", lst->nb);
-		// 	printf("Index : %d\n", lst->index);
-		// 	printf("Move count : %d\n", lst->moves_to_top);
-		// 	lst = lst->next;
-		// }
-		// lst = a;
-		int c = 0;
+		t_stack *lst2 = lst;
 		ft_printf("Stack a : \n");
 		print_stack(lst);
-		while (c < 6)
+		int c = 0;
+		while (c < 8)
 		{
 			push_top_to_stack(&lst, &b);
 			c++;		
 		}
+		ft_printf("Stack a : \n");
+		print_stack(lst);
 		ft_printf("\nStack b : \n");
 		print_stack(b);
-		ft_printf("\nStack a : \n");
-		print_stack(lst);
 		target_a_in_b(lst, b);
+		moves_calcul(lst, b);
+		get_cheapest(lst);
+		while (lst)
+		{
+			ft_printf("\n");
+			printf("for nb = %d\n", lst->nb);
+			printf("	target = %d\n", lst->target_node->nb);
+			printf("	index : %d\n", lst->index);
+			printf("	cost : %d\n", lst->moves_to_top);
+			printf("	cheapest : %d\n", lst->is_cheapest);
+
+			lst = lst->next;
+		}
+		// lst = a;
+		ft_printf("Stack a post print: \n");
+		print_stack(lst2);
+		// while (c < 6)
+		// {
+		// 	push_top_to_stack(&lst, &b);
+		// 	c++;		
+		// }
+		ft_printf("\nStack b : \n");
+		print_stack(b);
+		ft_printf("\nStack a fin: \n");
+		print_stack(lst2);
+		// target_a_in_b(lst, b);
 		// while(lst)
 		// {
 		// 	printf("Target for %d in B : %d\n", lst->nb, lst->target_node->nb);
 		// 	lst = lst->next;
 		// }
-		c = 0;
-		while (c < 8)
-		{
-			lst = lst->next;
-			c++;
-		}
-		a_and_target_to_top(lst, b);
-		ft_printf("\nStack b : \n");
-		print_stack(b);
-		ft_printf("\nStack a : \n");
-		print_stack(lst);
+		// c = 0;
+		// while (c < 8)
+		// {
+		// 	lst = lst->next;
+		// 	c++;
+		// }
+		// a_and_target_to_top(lst, b);
+		// ft_printf("\nStack b : \n");
+		// print_stack(b);
+		// ft_printf("\nStack a : \n");
+		// print_stack(lst);
 		
 		// push_top_to_stack(&a, &b);
 		// ft_printf("\n");
