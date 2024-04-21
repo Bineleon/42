@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/21 20:14:30 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/21 21:23:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int					is_sorted(t_stack *lst);
 t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
+t_stack				*find_cheapest(t_stack *a);
 
 int					ft_count_words(char const *s, char c);
 
