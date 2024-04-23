@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:30:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:56:12 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ int	main(int ac, char **av)
 		target_a_in_b(lst, b);
 		ft_printf("Stack a post target : \n");
 			print_stack(lst);
-		moves_calcul(lst, b);
+		total_cost(lst, b);
 		ft_printf("Stack a post moves : \n");
 			print_stack(lst);
 		get_cheapest(lst);
 		ft_printf("Stack a post cheapest : \n");
 			print_stack(lst);
+		target_cost(lst, b);
 		while (lst)
 		{
 			ft_printf("\n");
@@ -85,7 +86,9 @@ int	main(int ac, char **av)
 			printf("for nb = %d\n", lst->nb);
 			printf("	target = %d\n", lst->target_node->nb);
 			printf("	index : %d\n", lst->index);
-			printf("	cost : %d\n", lst->cost);
+			printf("	cost : %d\n", lst->total_cost);
+			printf("	target cost : %d\n", lst->target_cost);
+
 			printf("	cheapest : %d\n", lst->is_cheapest);
 
 			lst = lst->next;

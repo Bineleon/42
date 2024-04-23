@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:30:15 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:54:36 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_cheapest(t_stack *a)
 	// stack_a = a;
 	while (a)
 	{
-		if (a->cost < cheapest->cost)
+		if (a->total_cost < cheapest->total_cost)
 			cheapest = a;
 		a = a->next;
 	}
@@ -37,7 +37,25 @@ t_stack	*find_cheapest(t_stack *a)
 	return (a);
 }
 
-void	moves_calcul(t_stack *a, t_stack *b)
+void	target_cost(t_stack *a, t_stack *b)
+{
+	t_stack	*stack_a;
+	int		stack_len;
+
+	stack_a = a;
+	// index_in_stack(stack_a);
+	stack_len = ft_stack_size(b);
+	while (stack_a)
+	{
+		if (stack_a->target_node->is_in_top)
+			stack_a->target_cost = stack_a->target_node->index;
+		else
+			stack_a->target_cost = stack_len - stack_a->target_node->index;
+		stack_a = stack_a->next;
+	}
+}
+
+void	total_cost(t_stack *a, t_stack *b)
 {
 	// t_stack	*stack_a;
 	int		stack_len_a;
@@ -51,13 +69,13 @@ void	moves_calcul(t_stack *a, t_stack *b)
 	while (a)
 	{
 		if (a->is_in_top)
-			a->cost = a->index;
+			a->total_cost = a->index;
 		else
-			a->cost = stack_len_a - a->index;
+			a->total_cost = stack_len_a - a->index;
 		if (a->target_node->is_in_top)
-            a->cost += a->target_node->index;
+            a->total_cost += a->target_node->index;
         else
-            a->cost += stack_len_b - a->target_node->index;
+            a->total_cost += stack_len_b - a->target_node->index;
 		a = a->next;
 	}
 }
