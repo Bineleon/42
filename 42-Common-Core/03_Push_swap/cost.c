@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 19:21:25 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 23:25:56 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	get_cheapest(t_stack *a)
 
 t_stack	*find_cheapest(t_stack *a)
 {
+	get_cheapest(a);
 	if (!a)
 		return (NULL);
 	while(!(a->is_cheapest))

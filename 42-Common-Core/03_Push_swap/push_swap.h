@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 22:03:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 23:41:37 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,12 @@ void				print_error(void);
 // prints
 void				print_stack(t_stack *stack);
 
-// swap_moves
+// push_moves
 void				push_top_to_stack(t_stack **src, t_stack **dst);
+void				push_a(t_stack **a, t_stack **b);
+void				push_b(t_stack **b, t_stack **a);
+
+// swap_moves
 void				swap(t_stack **top);
 void				swap_a(t_stack **a);
 void				swap_b(t_stack **b);
@@ -73,6 +77,9 @@ void				rrr(t_stack **a, t_stack **b);
 
 // sort
 void				sort_three_a(t_stack **lst);
+void				sort_b(t_stack **a, t_stack **b);
+void				prep_sort(t_stack **a, t_stack **b);
+void				prep_stack_a(t_stack **a, t_stack **b);
 void				total_cost(t_stack *a, t_stack *b);
 void				target_cost(t_stack *a, t_stack *b);
 void				cheapest_cost(t_stack *a);
@@ -84,6 +91,7 @@ void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 void				get_cheapest(t_stack *a);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
+int					is_sorted_b(t_stack *lst);
 t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);

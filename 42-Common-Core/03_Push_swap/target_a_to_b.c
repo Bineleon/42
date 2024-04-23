@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:46:44 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/24 00:18:26 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,92 @@ void	find_target(t_stack *a, t_stack *b)
 		}
 		a->target_node = target;
 		a = a->next;
+	}
+}
+
+void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
+{
+	int cost_a;
+	int i;
+
+	i = 0;
+	cost_a = cheapest->total_cost - cheapest->target_cost;
+	if (cheapest->is_in_top && cheapest->target_node->is_in_top)
+	{
+		if (cost_a < cheapest->target_cost)
+		{
+			while(i < cost_a)
+			{
+				rr(a, b);
+				i++;
+			}
+			i = 0;
+			while(i < cheapest->target_cost)
+			{
+				rotate_b(b);
+				i++;
+			}
+		}
+		else if (cost_a == cheapest->target_cost)
+		{
+			while(i < cost_a)
+			{
+				rr(a, b);
+				i++;
+			}
+		}
+		else
+		{
+			while(i < cheapest->target_cost)
+			{
+				rr(a, b);
+				i++;
+			}
+			i = 0;
+			while(i < cost_a)
+			{
+				rotate_a(a);
+				i++;
+			}
+		}
+	}
+	else if (!cheapest->is_in_top && !cheapest->target_node->is_in_top)
+	{
+		if (cost_a < cheapest->target_cost)
+		{
+			while(i < cost_a)
+			{
+				rrr(a, b);
+				i++;
+			}
+			i = 0;
+			while(i < cheapest->target_cost)
+			{
+				rev_rotate_b(b);
+				i++;
+			}
+		}
+		else if (cost_a == cheapest->target_cost)
+		{
+			while(i < cost_a)
+			{
+				rrr(a, b);
+				i++;
+			}
+		}
+		else
+		{
+			while(i < cheapest->target_cost)
+			{
+				rrr(a, b);
+				i++;
+			}
+			i = 0;
+			while(i < cost_a)
+			{
+				rev_rotate_a(a);
+				i++;
+			}
+		}
 	}
 }
