@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:56:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 22:10:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int	main(int ac, char **av)
 		ft_printf("\nStack b : \n");
 		print_stack(b);
 
-		a_and_target_to_top(lst2, b);
+		t_stack *cheapest = find_node(lst2, 22);
+		a_and_target_to_top(&lst2, cheapest, &b);
 		ft_printf("Stack a post move to top:\n");
 		print_stack(lst2);
 		ft_printf("Stack b post move to top:\n");
