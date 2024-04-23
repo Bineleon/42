@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/21 21:59:28 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:27:06 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,7 @@ void	index_in_stack(t_stack *lst)
 	}
 }
 
-void	get_cheapest(t_stack *a)
-{
-	// t_stack *stack_a;
-	t_stack	*cheapest;
 
-	cheapest = a;
-	// stack_a = a;
-	while (a)
-	{
-		if (a->moves_to_top < cheapest->moves_to_top)
-			cheapest = a;
-		a = a->next;
-	}
-	cheapest->is_cheapest = 1;
-}
 
 void	a_and_target_to_top(t_stack *a, t_stack *b)
 {
@@ -79,30 +65,6 @@ void	a_and_target_to_top(t_stack *a, t_stack *b)
 }
 
 
-void	moves_calcul(t_stack *a, t_stack *b)
-{
-	// t_stack	*stack_a;
-	int		stack_len_a;
-	int		stack_len_b;
-
-	// stack_a = a;
-	stack_len_a = ft_stack_size(a);	
-	stack_len_b = ft_stack_size(b);
-	index_in_stack(a);
-	index_in_stack(b);
-	while (a)
-	{
-		if (a->is_in_top)
-			a->moves_to_top = a->index;
-		else
-			a->moves_to_top = stack_len_a - a->index;
-		if (a->target_node->is_in_top)
-            a->moves_to_top += a->target_node->index;
-        else
-            a->moves_to_top += stack_len_b - a->target_node->index;
-		a = a->next;
-	}
-}
 
 t_stack	*find_node(t_stack *lst, int nb)
 {
@@ -133,14 +95,7 @@ void	target_a_in_b(t_stack *a, t_stack *b)
 	}
 }
 
-t_stack	*find_cheapest(t_stack *a)
-{
-	if (!a)
-		return (NULL);
-	while(!(a->is_cheapest))
-		a = a->next;
-	return (a);
-}
+
 
 void	find_target(t_stack *a, t_stack *b)
 {
