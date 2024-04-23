@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:27:10 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:30:15 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_cheapest(t_stack *a)
 	// stack_a = a;
 	while (a)
 	{
-		if (a->moves_to_top < cheapest->moves_to_top)
+		if (a->cost < cheapest->cost)
 			cheapest = a;
 		a = a->next;
 	}
@@ -51,13 +51,13 @@ void	moves_calcul(t_stack *a, t_stack *b)
 	while (a)
 	{
 		if (a->is_in_top)
-			a->moves_to_top = a->index;
+			a->cost = a->index;
 		else
-			a->moves_to_top = stack_len_a - a->index;
+			a->cost = stack_len_a - a->index;
 		if (a->target_node->is_in_top)
-            a->moves_to_top += a->target_node->index;
+            a->cost += a->target_node->index;
         else
-            a->moves_to_top += stack_len_b - a->target_node->index;
+            a->cost += stack_len_b - a->target_node->index;
 		a = a->next;
 	}
 }

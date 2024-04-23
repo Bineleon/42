@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:04:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/21 21:55:25 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:30:50 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int ac, char **av)
 			printf("for nb = %d\n", lst->nb);
 			printf("	target = %d\n", lst->target_node->nb);
 			printf("	index : %d\n", lst->index);
-			printf("	cost : %d\n", lst->moves_to_top);
+			printf("	cost : %d\n", lst->cost);
 			printf("	cheapest : %d\n", lst->is_cheapest);
 
 			lst = lst->next;

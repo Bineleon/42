@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 18:24:37 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:30:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_stack
 	int				nb;
 	int				index;
 	int				is_in_top;
-	int				moves_to_top;
+	int				cost;
 	int				is_cheapest;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
