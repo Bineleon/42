@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/24 00:22:34 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/24 20:19:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int	main(int ac, char **av)
 				i++;
 			}
 		}
+
+		// prep sort b
+		
 		t_stack *lst = a;
 		ft_printf("Stack a : \n");
 		print_stack(lst);
@@ -81,6 +84,35 @@ int	main(int ac, char **av)
 		print_stack(lst);
 		ft_printf("\nStack b : \n");
 		print_stack(b);
+		
+		// sort three a 
+		
+		sort_three_a(&lst);
+		ft_printf("\nStack a sort_three: \n");
+		print_stack(lst);
+		prep_stack_b(&b, &lst);
+		// prep sort b
+		
+		t_stack *stack_b = b;
+		while (stack_b)
+		{
+			ft_printf("\n");
+			ft_printf("Stack b : \n");
+			print_stack(b);
+			ft_printf("\nStack a : \n");
+			print_stack(lst);
+			printf("for nb = %d\n", stack_b->nb);
+			printf("	target = %d\n", stack_b->target_node->nb);
+			printf("	index : %d\n", stack_b->index);
+			printf("	cost : %d\n", stack_b->total_cost);
+			printf("	target cost : %d\n", stack_b->target_cost);
+
+			printf("	cheapest : %d\n", stack_b->is_cheapest);
+
+			stack_b = stack_b->next;
+		}
+		
+		
 		
 	}
 }

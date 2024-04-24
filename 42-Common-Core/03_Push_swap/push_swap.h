@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/23 23:41:37 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/24 20:06:49 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,19 @@ void				rev_rotate_a(t_stack **a);
 void				rev_rotate_b(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
+//  prep_sort
+
+void				prep_sort(t_stack **a, t_stack **b);
+void				prep_stack_a(t_stack **a, t_stack **b);
+void				prep_stack_b(t_stack **b, t_stack **a);
+
 // sort
 void				sort_three_a(t_stack **lst);
 void				sort_b(t_stack **a, t_stack **b);
-void				prep_sort(t_stack **a, t_stack **b);
-void				prep_stack_a(t_stack **a, t_stack **b);
 void				total_cost(t_stack *a, t_stack *b);
 void				target_cost(t_stack *a, t_stack *b);
 void				cheapest_cost(t_stack *a);
 void				target_a_in_b(t_stack *a, t_stack *b);
-void				target_b_in_a(t_stack *a, t_stack *b);
 void				find_target(t_stack *a, t_stack *b);
 void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 						t_stack **b);
@@ -96,6 +99,9 @@ t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 t_stack				*find_cheapest(t_stack *a);
+
+void				target_b_in_a(t_stack **b, t_stack **a);
+void				find_target_b_in_a(t_stack *b, t_stack *a);
 
 int					ft_count_words(char const *s, char c);
 
