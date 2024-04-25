@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/24 20:06:49 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/25 17:55:29 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void				init_split(t_stack **stack_a, char **av);
 t_stack				*ft_stacknew(int nb);
 t_stack				*ft_stacklast(t_stack *lst);
 t_stack				*before_last(t_stack *lst);
-void				index_in_stack(t_stack *lst);
+void				index_in_stack(t_stack **lst);
 void				ft_stackadd_back(t_stack **lst, t_stack *new);
 void				ft_stackadd_front(t_stack **lst, t_stack *new);
 int					ft_stack_size(t_stack *lst);
@@ -85,10 +85,10 @@ void				prep_stack_b(t_stack **b, t_stack **a);
 void				sort_three_a(t_stack **lst);
 void				sort_b(t_stack **a, t_stack **b);
 void				total_cost(t_stack *a, t_stack *b);
-void				target_cost(t_stack *a, t_stack *b);
+void				target_cost(t_stack **a, t_stack **b);
 void				cheapest_cost(t_stack *a);
-void				target_a_in_b(t_stack *a, t_stack *b);
-void				find_target(t_stack *a, t_stack *b);
+void				target_a_in_b(t_stack **a, t_stack **b);
+void				find_target(t_stack **a, t_stack **b);
 void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 						t_stack **b);
 void				get_cheapest(t_stack *a);

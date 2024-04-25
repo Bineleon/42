@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   prep_sort.c                                        :+:      :+:    :+:   */
@@ -12,14 +12,14 @@
 
 #include "./push_swap.h"
 
-void	index_in_stack(t_stack *lst)
+void	index_in_stack(t_stack **lst)
 {
 	int		i;
 	int		mid;
 	t_stack	*stack;
 
 	i = 0;
-	stack = lst;
+	stack = *lst;
 	mid = mid_stack(stack);
 	if (!stack)
 		return ;
@@ -62,9 +62,9 @@ void	prep_sort(t_stack **a, t_stack **b)
 
 void	prep_stack_a(t_stack **a, t_stack **b)
 {
-	index_in_stack(*a);
-	index_in_stack(*b);
-	target_a_in_b(*a, *b);
+	index_in_stack(a);
+	index_in_stack(b);
+	target_a_in_b(a, b);
 	total_cost(*a, *b);
 	target_cost(*a, *b);
 	get_cheapest(*a);
@@ -72,10 +72,10 @@ void	prep_stack_a(t_stack **a, t_stack **b)
 
 void	prep_stack_b(t_stack **b, t_stack **a)
 {
-	index_in_stack(*a);
+	index_in_stack(a);
 	ft_printf("Index a DONE\n");
 
-	index_in_stack(*b);
+	index_in_stack(b);
 	ft_printf("Index b DONE\n");
 
 	find_target_b_in_a(*b, *a);

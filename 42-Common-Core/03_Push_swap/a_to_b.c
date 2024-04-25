@@ -1,59 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   target_a_to_b.c                                    :+:      :+:    :+:   */
+/*   a_to_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/24 00:18:26 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/25 18:06:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	target_a_in_b(t_stack *a, t_stack *b)
-{
-	// t_stack	*stack_a;
-	t_stack	*min_node;
-	t_stack	*max_node;
+// void	target_a_in_b(t_stack **a, t_stack **b)
+// {
+// 	t_stack	*stack_a;
+// 	t_stack	*min_node;
+// 	t_stack	*max_node;
+	
+// 	stack_a = *a;
+// 	min_node = find_min(*b);
+// 	max_node = find_max(*b);
+// 	while (stack_a)
+// 	{
+// 		if ((stack_a->nb < min_node->nb) || (stack_a->nb > max_node->nb))
+// 			stack_a->target_node = max_node;
+// 		else
+// 			find_target(a, b);
+// 		stack_a = stack_a->next;
+// 	}
+// }
 
-	// stack_a = a;
-	min_node = find_min(b);
-	max_node = find_max(b);
-	while (a)
-	{
-		if ((a->nb < min_node->nb) || (a->nb > max_node->nb))
-			a->target_node = max_node;
-		else
-			find_target(a, b);
-		a = a->next;
-	}
-}
-
-void	find_target(t_stack *a, t_stack *b)
+void	target_a_in_b(t_stack **a, t_stack **b)
 {
-	// t_stack *stack_a;
+	t_stack *stack_a;
 	t_stack	*stack_b;
 	t_stack	*target;
 	int		nb;
 
-	// stack_a = a;
-	while (a)
+	t_stack	*min_node;
+	t_stack	*max_node;
+	
+	printf("%d %d\n", (*a)->nb, (*b)->nb);
+	min_node = find_min(*b);
+	max_node = find_max(*b);
+	stack_a = *a;
+	index_in_stack(a);
+	index_in_stack(b);
+	// target = NULL;
+	while (stack_a)
 	{
 		nb = INT_MIN;
-		stack_b = b;
-		while (stack_b)
+		stack_b = *b;
+		if ((stack_a->nb < min_node->nb) || (stack_a->nb > max_node->nb))
+			stack_a->target_node = max_node;
+		else
 		{
-			if (a->nb > stack_b->nb && stack_b->nb > nb)
+			while (stack_b)
 			{
-				target = stack_b;
-				nb = stack_b->nb;
+				if (stack_a->nb > stack_b->nb && stack_b->nb > nb)
+				{
+					target = stack_b;
+					nb = stack_b->nb;
+				}
+				stack_b = stack_b->next;
 			}
-			stack_b = stack_b->next;
+			stack_a->target_node = target;
 		}
-		a->target_node = target;
-		a = a->next;
+		stack_a = stack_a->next;
 	}
 }
 
