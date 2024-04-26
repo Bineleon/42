@@ -20,7 +20,7 @@ void	index_in_stack(t_stack **lst)
 
 	i = 0;
 	stack = *lst;
-	mid = mid_stack(stack);
+	mid = mid_stack(stack) - 1;
 	if (!stack)
 		return ;
 	while (stack)
@@ -66,7 +66,7 @@ void	prep_stack_a(t_stack **a, t_stack **b)
 	index_in_stack(b);
 	target_a_in_b(a, b);
 	total_cost(*a, *b);
-	target_cost(*a, *b);
+	target_cost(a, b);
 	get_cheapest(*a);
 }
 
@@ -84,7 +84,7 @@ void	prep_stack_b(t_stack **b, t_stack **a)
 	total_cost(*b, *a);
 	ft_printf("total cost DONE\n");
 
-	target_cost(*b, *a);
+	target_cost(b, a);
 	ft_printf("target cost DONE\n");
 
 	get_cheapest(*b);
