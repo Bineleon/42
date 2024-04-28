@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/25 17:55:29 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/28 18:17:11 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 t_stack				*find_cheapest(t_stack *a);
 
+int					calculate_initial_cost(t_stack *element, int stack_length);
+int					ft_min(int cost_a, int cost_b);
+void				calculate_total_cost(t_stack *a, t_stack *b);
 void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 

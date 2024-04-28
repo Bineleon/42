@@ -20,7 +20,7 @@ void	index_in_stack(t_stack **lst)
 
 	i = 0;
 	stack = *lst;
-	mid = mid_stack(stack) - 1;
+	mid = mid_stack(stack);
 	if (!stack)
 		return ;
 	while (stack)
@@ -38,11 +38,11 @@ void	index_in_stack(t_stack **lst)
 void	prep_sort(t_stack **a, t_stack **b)
 {
 	t_stack	*min_b;
-	int		stack_len_a;
+	// int		stack_len_a = ft_stack_size(*a);
 	int		i;
 
 	i = 0;
-	stack_len_a = ft_stack_size(*a);
+	// stack_len_a = ft_stack_size(*a);
 	while (i++ < 2)
 		push_a(a, b);
 	min_b = find_min(*b);
