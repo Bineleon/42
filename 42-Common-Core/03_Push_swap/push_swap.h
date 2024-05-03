@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 13:33:05 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 18:21:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void				target_a_in_b(t_stack **a, t_stack **b);
 void				find_target(t_stack **a, t_stack **b);
 void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 						t_stack **b);
-void				get_cheapest(t_stack *a);
+void				get_cheapest(t_stack **a);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
 int					is_sorted_b(t_stack *lst);
@@ -100,10 +100,11 @@ t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 t_stack				*find_cheapest(t_stack *a);
 
+void				last_sort(t_stack **a);
 void				b_and_target_to_top(t_stack **b, t_stack *cheapest,
 						t_stack **a);
 void				sort_a(t_stack **a, t_stack **b);
-int					calculate_initial_cost(t_stack *node, int stack_length);
+int					calculate_node_cost(t_stack *node, int stack_length);
 int					ft_min(int cost_a, int cost_b);
 void				calculate_total_cost(t_stack *a, t_stack *b);
 void				target_b_in_a(t_stack **b, t_stack **a);

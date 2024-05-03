@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 13:37:32 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 18:15:03 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,31 @@ void	sort_a(t_stack **a, t_stack **b)
     int		stack_len_b;
     int     i;
     t_stack	*cheapest;
+	t_stack	*tmp;
 
     printf("SORT_A START\n");
-    prep_stack_b(b, a);
 	stack_len_b = ft_stack_size(*b);
     i = 0;
-	while (b && i < (stack_len_b - 1))
+	while (*b)
 	{
+		printf("NEW START\n");
+    	prep_stack_b(b, a);
         cheapest = find_cheapest(*b);
-        printf("find_cheapest DONE\n");
+		tmp = *b;
+		while (tmp)
+		{
+			printf("current : %d total cost : %d\n", tmp->nb, tmp->total_cost);
+			tmp = tmp->next;
+		}
         ft_printf("\nStack a FIRST : \n");
 		print_stack(*a);
 		ft_printf("\nStack b FIRST: \n");
 		print_stack(*b);
+        printf("cheapest : %d\n", cheapest->nb);
+		printf("cheapest total cost : %d\n", cheapest->total_cost);
 		printf("\n\nfor nb = %d\n", (cheapest)->nb);
+		printf("cheapest is_in_top? : %d\n", cheapest->is_in_top);
+		printf("target is_in_top? : %d\n", cheapest->target_node->is_in_top);
         printf("nb->target = %d\n", (cheapest)->target_node->nb);
 		printf("is_cheapest? = %d\n", (cheapest)->is_cheapest);
 		// ft_printf("Stack a : \n");
@@ -56,16 +67,19 @@ void	sort_a(t_stack **a, t_stack **b)
 		ft_printf("\nStack b post top: \n");
 		print_stack(*b);
 		push_b(b, a);
-        prep_stack_b(b, a);
+		if ((*a) == find_max(*a))
+			rotate_a(a);
+		// if (*b)
+        // 	prep_stack_b(b, a);
 		// if ((*b)->nb == find_min(*b)->nb)
 		// 	rotate_b(b);
 		// index_in_stack(a);
 		// index_in_stack(b);
 		// total_cost(*a, *b);
 		// RE-CALCUL target_cost
-        i++;
+        // i++;
 	}
-
+	
 }
 
 
@@ -104,6 +118,24 @@ void	sort_b(t_stack **a, t_stack **b)
 		// total_cost(*a, *b);
 		// RE-CALCUL target_cost
 	}
+}
+
+void	last_sort(t_stack **a)
+{
+	// t_stack	*min;
+	// int stack_len;
+	// stack_len = ft_stack_size(a);
+
+	// min = find_min(*a);
+	while((*a)->nb != find_min(*a)->nb)
+	{
+		index_in_stack(a);
+		if ((*a)->is_in_top)
+			rotate_a(a);
+		else
+			rev_rotate_a(a);
+	}
+	
 }
 
 t_stack	*find_node(t_stack *lst, int nb)

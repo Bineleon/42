@@ -6,13 +6,13 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 13:34:17 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 18:42:38 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	get_cheapest(t_stack *a)
+void	get_cheapest(t_stack **a)
 {
 	t_stack	*stack_a;
 	t_stack	*cheapest;
@@ -20,13 +20,14 @@ void	get_cheapest(t_stack *a)
 
 	cheapest = NULL;
 	cheapest_cost = INT_MAX;
-	stack_a = a;
+	stack_a = *a;
 	while (stack_a)
 	{
 		if (stack_a->total_cost < cheapest_cost)
 		{
 			cheapest_cost = stack_a->total_cost;
 			cheapest = stack_a;
+			printf("cheapest ==> %d\n", cheapest->nb);
 		}
 		stack_a = stack_a->next;
 	}
@@ -35,12 +36,15 @@ void	get_cheapest(t_stack *a)
 
 t_stack	*find_cheapest(t_stack *a)
 {
-	// get_cheapest(a);
-	if (!a)
+	// get_cheapest(&a);
+	t_stack	*stack_a;
+
+	stack_a = a;
+	if (!stack_a)
 		return (NULL);
-	while (!(a->is_cheapest))
-		a = a->next;
-	return (a);
+	while (!(stack_a->is_cheapest))
+		stack_a = stack_a->next;
+	return (stack_a);
 }
 
 void	target_cost(t_stack **a, t_stack **b)
@@ -60,7 +64,7 @@ void	target_cost(t_stack **a, t_stack **b)
 	}
 }
 
-int	calculate_initial_cost(t_stack *node, int stack_length)
+int	calculate_node_cost(t_stack *node, int stack_length)
 {
 	if (node->is_in_top)
 		return (node->index);
@@ -88,8 +92,8 @@ void	calculate_total_cost(t_stack *a, t_stack *b)
 	stack_a = a;
 	while (stack_a)
 	{
-		cost_a = calculate_initial_cost(stack_a, stack_len_a);
-		cost_b = calculate_initial_cost(stack_a->target_node, stack_len_b);
+		cost_a = calculate_node_cost(stack_a, stack_len_a);
+		cost_b = calculate_node_cost(stack_a->target_node, stack_len_b);
 		if (stack_a->is_in_top == stack_a->target_node->is_in_top)
 			stack_a->total_cost = cost_a + cost_b - ft_min(cost_a, cost_b);
 		else

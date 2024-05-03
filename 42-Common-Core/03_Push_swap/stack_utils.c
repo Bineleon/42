@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/04 14:21:57 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:08:08 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	print_stack(t_stack *stack)
 	int		nbr;
 	int first_seen;
 
+	if(!stack)
+		return;
 	first_seen = 1;
 	tmp = stack;
     

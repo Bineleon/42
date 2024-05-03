@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/29 10:54:59 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 17:39:12 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
 				rr(a, b);
 				i++;
 			}
-			i = 0;
-			while(i < cheapest->target_cost)
+			// i = 0;
+			while(i < cheapest->total_cost)
 			{
 				rotate_b(b);
 				i++;
@@ -108,8 +108,8 @@ void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
 				rr(a, b);
 				i++;
 			}
-			i = 0;
-			while(i < cost_a)
+			// i = 0;
+			while(i < cheapest->total_cost)
 			{
 				rotate_a(a);
 				i++;
@@ -125,8 +125,8 @@ void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
 				rrr(a, b);
 				i++;
 			}
-			i = 0;
-			while(i < cheapest->target_cost)
+			// i = 0;
+			while(i < cheapest->total_cost)
 			{
 				rev_rotate_b(b);
 				i++;
@@ -147,12 +147,41 @@ void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
 				rrr(a, b);
 				i++;
 			}
-			i = 0;
-			while(i < cost_a)
+			// i = 0;
+			while(i < cheapest->total_cost)
 			{
 				rev_rotate_a(a);
 				i++;
 			}
 		}
 	}
+	else if (!cheapest->is_in_top && cheapest->target_node->is_in_top)
+	{
+		while(i < cheapest->target_cost)
+		{
+			rotate_b(b);
+			i++;
+		}
+		i = 0;
+		while (i < cost_a)
+		{
+			rev_rotate_a(a);
+			i++;
+		}
+	}
+	else if (cheapest->is_in_top && !cheapest->target_node->is_in_top)
+	{
+		while(i < cheapest->target_cost)
+		{
+			rev_rotate_b(b);
+			i++;
+		}
+		i = 0;
+		while (i < cost_a)
+		{
+			rotate_a(a);
+			i++;
+		}
+	}
+
 }

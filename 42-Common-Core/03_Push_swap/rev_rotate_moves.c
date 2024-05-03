@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 22:50:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/28 20:45:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:22:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	rev_rotate(t_stack **top)
 void	rev_rotate_a(t_stack **a)
 {
 	rev_rotate(a);
-	ft_printf("ra\n");
+	ft_printf("rra\n");
 }
 
 void	rev_rotate_b(t_stack **b)
 {
 	rev_rotate(b);
-	ft_printf("rb\n");
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack **a, t_stack **b)

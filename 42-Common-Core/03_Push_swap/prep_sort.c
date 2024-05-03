@@ -65,29 +65,28 @@ void	prep_stack_a(t_stack **a, t_stack **b)
 	index_in_stack(a);
 	index_in_stack(b);
 	target_a_in_b(a, b);
-	total_cost(*a, *b);
 	target_cost(a, b);
-	get_cheapest(*a);
+	total_cost(*a, *b);
+	get_cheapest(a);
 }
 
 void	prep_stack_b(t_stack **b, t_stack **a)
 {
 	index_in_stack(a);
-	ft_printf("Index a DONE\n");
+	// ft_printf("Index a DONE\n");
 
 	index_in_stack(b);
-	ft_printf("Index b DONE\n");
+	// ft_printf("Index b DONE\n");
 
 	find_target_b_in_a(*b, *a);
-	ft_printf("target b in a DONE\n");
-
-	total_cost(*b, *a);
-	ft_printf("total cost DONE\n");
+	// ft_printf("target b in a DONE\n");
 
 	target_cost(b, a);
-	ft_printf("target cost DONE\n");
+	// ft_printf("target cost DONE\n");
 
-	get_cheapest(*b);
-	ft_printf("get cheapest DONE\n");
+	total_cost(*b, *a);
+	// ft_printf("total cost DONE\n");
 
+	get_cheapest(b);
+	// ft_printf("get cheapest DONE\n");
 }

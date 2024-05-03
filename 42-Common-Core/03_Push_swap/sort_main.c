@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/29 07:35:56 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 17:59:48 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,23 @@ int	main(int ac, char **av)
         print_stack(lst);
 
         sort_a(&lst, &b);
-        print_stack(lst);
+        ft_printf("\nStack a : \n");
+		print_stack(lst);
+		ft_printf("\nStack b : \n");
+		print_stack(b);
+		// b_and_target_to_top(&b, b, &lst);
+		// ft_printf("Stack a post top: \n");
+		// print_stack(lst);
+		// ft_printf("\nStack b post top: \n");
+		// print_stack(b);
+		// push_b(&b, &lst);
+		ft_printf("\nStack a : \n");
+		print_stack(lst);
+		// ft_printf("\nStack b : \n");
+		// print_stack(b);
+		last_sort(&lst);
+		ft_printf("\nStack a : \n");
+		print_stack(lst);
 		// while (stack_b)
 		// {
 		// 	ft_printf("\n");
