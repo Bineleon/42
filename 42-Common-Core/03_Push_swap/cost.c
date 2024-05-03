@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/28 18:36:29 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 13:34:17 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	get_cheapest(t_stack *a)
 
 t_stack	*find_cheapest(t_stack *a)
 {
-	get_cheapest(a);
+	// get_cheapest(a);
 	if (!a)
 		return (NULL);
 	while (!(a->is_cheapest))
@@ -60,12 +60,12 @@ void	target_cost(t_stack **a, t_stack **b)
 	}
 }
 
-int	calculate_initial_cost(t_stack *element, int stack_length)
+int	calculate_initial_cost(t_stack *node, int stack_length)
 {
-	if (element->is_in_top)
-		return (element->index);
+	if (node->is_in_top)
+		return (node->index);
 	else
-		return (stack_length - element->index);
+		return (stack_length - node->index);
 }
 
 int ft_min(int cost_a, int cost_b)

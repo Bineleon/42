@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/29 10:53:05 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 13:37:32 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	sort_a(t_stack **a, t_stack **b)
 		print_stack(*b);
 		printf("\n\nfor nb = %d\n", (cheapest)->nb);
         printf("nb->target = %d\n", (cheapest)->target_node->nb);
+		printf("is_cheapest? = %d\n", (cheapest)->is_cheapest);
 		// ft_printf("Stack a : \n");
 		// print_stack(*a);
 		// ft_printf("\nStack b : \n");

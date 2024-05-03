@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:09:38 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/29 10:48:34 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/03 13:41:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ void	find_target_b_in_a(t_stack *b, t_stack *a)
 		b = b->next;
 	}
 }
+
+// int	calculate_initial_cost(t_stack *node, int stack_length)
+// {
+// 	if (node->is_in_top)
+// 		return (node->index);
+// 	else
+// 		return (stack_length - node->index);
+// }
 
 void	b_and_target_to_top(t_stack **b, t_stack *cheapest, t_stack **a)
 {
