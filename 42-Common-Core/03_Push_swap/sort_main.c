@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/28 19:24:20 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/29 07:35:56 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,29 +90,33 @@ int	main(int ac, char **av)
 		sort_three_a(&lst);
 		ft_printf("\nStack a sort_three: \n");
 		print_stack(lst);
-		prep_stack_b(&b, &lst);
+		// prep_stack_b(&b, &lst);
 		// prep sort b
 
-		t_stack *stack_b = b;
-		while (stack_b)
-		{
-			ft_printf("\n");
-			ft_printf("Stack b : \n");
-			print_stack(b);
-			ft_printf("\nStack a : \n");
-			print_stack(lst);
-			printf("for nb = %d\n", stack_b->nb);
-			printf("	target = %d\n", stack_b->target_node->nb);
-			printf("	index : %d\n", stack_b->index);
-			printf("	cost : %d\n", stack_b->total_cost);
-			printf("	is_in_top : %d\n", stack_b->is_in_top);
-			printf("	target cost : %d\n", stack_b->target_cost);
-			printf("	target is_in_top : %d\n", stack_b->target_node->is_in_top);
+		// t_stack *stack_b = b;
+        print_stack(lst);
 
-			printf("	cheapest : %d\n", stack_b->is_cheapest);
+        sort_a(&lst, &b);
+        print_stack(lst);
+		// while (stack_b)
+		// {
+		// 	ft_printf("\n");
+		// 	ft_printf("Stack b : \n");
+		// 	print_stack(b);
+		// 	ft_printf("\nStack a : \n");
+		// 	print_stack(lst);
+		// 	printf("for nb = %d\n", stack_b->nb);
+		// 	printf("	target = %d\n", stack_b->target_node->nb);
+		// 	printf("	index : %d\n", stack_b->index);
+		// 	printf("	cost : %d\n", stack_b->total_cost);
+		// 	printf("	is_in_top : %d\n", stack_b->is_in_top);
+		// 	printf("	target cost : %d\n", stack_b->target_cost);
+		// 	printf("	target is_in_top : %d\n", stack_b->target_node->is_in_top);
 
-			stack_b = stack_b->next;
-		}
-        
+		// 	printf("	cheapest : %d\n", stack_b->is_cheapest);
+
+		// 	stack_b = stack_b->next;
+		// }
+
 	}
 }

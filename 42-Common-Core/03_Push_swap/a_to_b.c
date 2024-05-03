@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/25 18:06:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/29 10:54:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // 	t_stack	*stack_a;
 // 	t_stack	*min_node;
 // 	t_stack	*max_node;
-	
+
 // 	stack_a = *a;
 // 	min_node = find_min(*b);
 // 	max_node = find_max(*b);
@@ -40,8 +40,7 @@ void	target_a_in_b(t_stack **a, t_stack **b)
 
 	t_stack	*min_node;
 	t_stack	*max_node;
-	
-	printf("%d %d\n", (*a)->nb, (*b)->nb);
+
 	min_node = find_min(*b);
 	max_node = find_max(*b);
 	stack_a = *a;

@@ -6,52 +6,41 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:09:38 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/24 20:24:26 by neleon           ###   ########.fr       */
+/*   Updated: 2024/04/29 10:48:34 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
 
-void	target_b_in_a(t_stack **b, t_stack **a)
-{
-	// t_stack	*stack_a;
-	// t_stack	*min_node;
-	t_stack	*max_node;
+// void	target_b_in_a(t_stack **b, t_stack **a)
+// {
+// 	t_stack	*stack_b;
+// 	// t_stack	*min_node;
+// 	t_stack	*max_node;
 
-	max_node = find_max(*a);
-	// stack_a = a;
-	// min_node = find_min(b);
-	while (*b)
-	{	
+// 	max_node = find_max(*a);
+// 	stack_b = *b;
+// 	// min_node = find_min(b);
+// 	while (stack_b)
+// 	{
 
-		if ((*b)->nb > max_node->nb)
-		{
-			(*b)->target_node = max_node;
-		}
-		else
-		{
-
-			find_target_b_in_a(*b, *a);
-		}
-		(*b) = (*b)->next;
-	}
-}
+// 		if ((stack_b)->nb > max_node->nb)
+// 		    (stack_b)->target_node = max_node;
+// 		else
+// 			find_target_b_in_a(stack_b, *a);
+// 		(stack_b) = (stack_b)->next;
+// 	}
+// }
 
 void	find_target_b_in_a(t_stack *b, t_stack *a)
 {
 	t_stack	*stack_a;
 	t_stack	*target;
 	int		target_nb;
-	t_stack	*min_node;
-	
-	ft_printf("find target START\n");
-	min_node = find_min(a);
+
 	while (b)
 	{
-		ft_printf("while b START\n");
-		ft_printf("b->nb : %d\n", b->nb);
-
 		target = NULL;
 		target_nb = INT_MAX;
 		stack_a = a;
@@ -61,18 +50,104 @@ void	find_target_b_in_a(t_stack *b, t_stack *a)
 			{
 				target_nb = stack_a->nb;
 				target = stack_a;
-				
 			}
 			stack_a = stack_a->next;
 		}
 		if (target_nb == INT_MAX)
-			b->target_node = min_node;
+			b->target_node = find_min(a);
 		else
 			b->target_node = target;
 		b = b->next;
-
 	}
 }
+
+void	b_and_target_to_top(t_stack **b, t_stack *cheapest, t_stack **a)
+{
+	int cost_b;
+	int i;
+
+	i = 0;
+	cost_b = cheapest->total_cost - cheapest->target_cost;
+	if (cheapest->is_in_top && cheapest->target_node->is_in_top)
+	{
+		if (cost_b < cheapest->target_cost)
+		{
+			while(i < cost_b)
+			{
+				rr(a, b);
+				i++;
+			}
+			// i = 0;
+			while(i < cheapest->target_cost)
+			{
+				rotate_a(a);
+				i++;
+			}
+		}
+		else if (cost_b == cheapest->target_cost)
+		{
+			while(i < cost_b)
+			{
+				rr(a, b);
+				i++;
+			}
+		}
+		else
+		{
+			while(i < cheapest->target_cost)
+			{
+				rr(a, b);
+				i++;
+			}
+			// i = 0;
+			while(i < cost_b)
+			{
+				rotate_b(b);
+				i++;
+			}
+		}
+	}
+	else if (!cheapest->is_in_top && !cheapest->target_node->is_in_top)
+	{
+		if (cost_b < cheapest->target_cost)
+		{
+			while(i < cost_b)
+			{
+				rrr(a, b);
+				i++;
+			}
+			// i = 0;
+			while(i < cheapest->target_cost)
+			{
+				rev_rotate_a(a);
+				i++;
+			}
+		}
+		else if (cost_b == cheapest->target_cost)
+		{
+			while(i < cost_b)
+			{
+				rrr(a, b);
+				i++;
+			}
+		}
+		else
+		{
+			while(i < cheapest->target_cost)
+			{
+				rrr(a, b);
+				i++;
+			}
+			// i = 0;
+			while(i < cost_b)
+			{
+				rev_rotate_b(b);
+				i++;
+			}
+		}
+	}
+}
+
 
 			// ft_printf("stack_a nb : %d\n", stack_a->nb);
 			// if (b->nb > target_nb)
