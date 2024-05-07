@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/06 14:59:23 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/07 14:48:49 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_cheapest(t_stack **a)
 		{
 			cheapest_cost = stack_a->total_cost;
 			cheapest = stack_a;
-			printf("cheapest ==> %d\n", cheapest->nb);
+			// printf("cheapest ==> %d\n", cheapest->nb);
 		}
 		stack_a = stack_a->next;
 	}

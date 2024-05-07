@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:09:38 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/06 14:04:40 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/07 15:38:30 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,13 @@ void	find_target_b_in_a(t_stack *b, t_stack *a)
 // 		return (stack_length - node->index);
 // }
 
-void b_and_target_to_top(t_stack **b, t_stack *cheapest, t_stack **a) {
-    int cost_b = cheapest->total_cost - cheapest->target_cost;
+void b_and_target_to_top(t_stack **b, t_stack *cheapest, t_stack **a)
+{
+    int cost_b;
     int target_cost = cheapest->target_cost;  // Clarification de l'utilisation de target_cost
+	
+
+	cost_b = calculate_node_cost(cheapest, ft_stack_size(*b));
 
     if ((cheapest->is_in_top && cheapest->target_node->is_in_top) ||
         (!cheapest->is_in_top && !cheapest->target_node->is_in_top)) {

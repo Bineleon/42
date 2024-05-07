@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 17:59:48 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/07 15:37:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	main(int ac, char **av)
 		// prep sort b
 
 		t_stack *lst = a;
-		ft_printf("Stack a : \n");
-		print_stack(lst);
+		// ft_printf("Stack a : \n");
+		// print_stack(lst);
 		// t_stack *min = find_min(a);
 		// t_stack *max = find_max(a);
 		// printf("min a = %d\n", min->nb);
@@ -80,40 +80,40 @@ int	main(int ac, char **av)
 		// 	lst2 = lst2->next;
 		// }
 		sort_b(&lst, &b);
-		ft_printf("\nStack a : \n");
-		print_stack(lst);
-		ft_printf("\nStack b : \n");
-		print_stack(b);
+		// ft_printf("\nStack a : \n");
+		// print_stack(lst);
+		// ft_printf("\nStack b : \n");
+		// print_stack(b);
 
 		// sort three a
 
 		sort_three_a(&lst);
-		ft_printf("\nStack a sort_three: \n");
-		print_stack(lst);
+		// ft_printf("\nStack a sort_three: \n");
+		// print_stack(lst);
 		// prep_stack_b(&b, &lst);
 		// prep sort b
 
 		// t_stack *stack_b = b;
-        print_stack(lst);
+        // print_stack(lst);
 
         sort_a(&lst, &b);
-        ft_printf("\nStack a : \n");
-		print_stack(lst);
-		ft_printf("\nStack b : \n");
-		print_stack(b);
+        // ft_printf("\nStack a : \n");
+		// print_stack(lst);
+		// ft_printf("\nStack b : \n");
+		// print_stack(b);
 		// b_and_target_to_top(&b, b, &lst);
 		// ft_printf("Stack a post top: \n");
 		// print_stack(lst);
 		// ft_printf("\nStack b post top: \n");
 		// print_stack(b);
 		// push_b(&b, &lst);
-		ft_printf("\nStack a : \n");
-		print_stack(lst);
+		// ft_printf("\nStack a : \n");
+		// print_stack(lst);
 		// ft_printf("\nStack b : \n");
 		// print_stack(b);
 		last_sort(&lst);
-		ft_printf("\nStack a : \n");
-		print_stack(lst);
+		// ft_printf("\nStack a : \n");
+		// print_stack(lst);
 		// while (stack_b)
 		// {
 		// 	ft_printf("\n");
