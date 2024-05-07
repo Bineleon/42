@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 18:42:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/06 14:59:23 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@ void	get_cheapest(t_stack **a)
 {
 	t_stack	*stack_a;
 	t_stack	*cheapest;
+    // t_stack *tmp;
 	int		cheapest_cost;
 
 	cheapest = NULL;
 	cheapest_cost = INT_MAX;
 	stack_a = *a;
+    // tmp = stack_a;
+    // while (tmp) {
+    //     tmp->is_cheapest = 0;
+    //     tmp = tmp->next;
+    // }
 	while (stack_a)
 	{
 		if (stack_a->total_cost < cheapest_cost)
@@ -31,7 +37,8 @@ void	get_cheapest(t_stack **a)
 		}
 		stack_a = stack_a->next;
 	}
-	cheapest->is_cheapest = 1;
+	if (cheapest)
+        cheapest->is_cheapest = 1;
 }
 
 t_stack	*find_cheapest(t_stack *a)
@@ -42,9 +49,13 @@ t_stack	*find_cheapest(t_stack *a)
 	stack_a = a;
 	if (!stack_a)
 		return (NULL);
-	while (!(stack_a->is_cheapest))
+	while (stack_a)
+    {
+        if (stack_a->is_cheapest)
+            return (stack_a);
 		stack_a = stack_a->next;
-	return (stack_a);
+    }
+	return (NULL);
 }
 
 void	target_cost(t_stack **a, t_stack **b)

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 18:15:03 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/06 17:29:23 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	is_sorted_b(t_stack *lst)
 
 void	sort_a(t_stack **a, t_stack **b)
 {
-    int		stack_len_b;
-    int     i;
+    // int		stack_len_b;
+    // int     i;
     t_stack	*cheapest;
 	t_stack	*tmp;
 
     printf("SORT_A START\n");
-	stack_len_b = ft_stack_size(*b);
-    i = 0;
+	// stack_len_b = ft_stack_size(*b);
+    // i = 0;
 	while (*b)
 	{
 		printf("NEW START\n");
@@ -67,8 +67,8 @@ void	sort_a(t_stack **a, t_stack **b)
 		ft_printf("\nStack b post top: \n");
 		print_stack(*b);
 		push_b(b, a);
-		if ((*a) == find_max(*a))
-			rotate_a(a);
+		// if ((*a) == find_max(*a))
+		// 	rotate_a(a);
 		// if (*b)
         // 	prep_stack_b(b, a);
 		// if ((*b)->nb == find_min(*b)->nb)
@@ -79,7 +79,7 @@ void	sort_a(t_stack **a, t_stack **b)
 		// RE-CALCUL target_cost
         // i++;
 	}
-	
+
 }
 
 
@@ -92,18 +92,21 @@ void	sort_b(t_stack **a, t_stack **b)
 	// is_sorted = 0;
     printf("SORT B\n");
 	prep_sort(a, b);
-	prep_stack_a(a, b);
-	cheapest = find_cheapest(*a);
+	// prep_stack_a(a, b);
 	stack_len_a = ft_stack_size(*a);
 	while (stack_len_a-- > 3)
 	{
+        prep_stack_a(a, b);
+	    cheapest = find_cheapest(*a);
 		ft_printf("Stack a : \n");
 		print_stack(*a);
 		ft_printf("\nStack b : \n");
 		print_stack(*b);
-		printf("for nb = %d\n", (*a)->nb);
-		printf("	target = %d\n", (*a)->target_node->nb);
-		// printf("	target cost : %d\n", (*a)->target_cost);
+		printf("for nb = %d\n", cheapest->nb);
+		printf("	target = %d\n", cheapest->target_node->nb);
+        printf("	current cost = %d\n", cheapest->total_cost - cheapest->target_cost);
+		printf("	target cost : %d\n", cheapest->target_cost);
+        printf("	total cost : %d\n", cheapest->total_cost);
 		a_and_target_to_top(a, cheapest, b);
 		ft_printf("Stack a post top: \n");
 		print_stack(*a);
@@ -112,7 +115,6 @@ void	sort_b(t_stack **a, t_stack **b)
 		push_a(a, b);
 		// if ((*b)->nb == find_min(*b)->nb)
 		// 	rotate_b(b);
-        prep_stack_a(a, b);
 		// index_in_stack(a);
 		// index_in_stack(b);
 		// total_cost(*a, *b);
@@ -122,20 +124,15 @@ void	sort_b(t_stack **a, t_stack **b)
 
 void	last_sort(t_stack **a)
 {
-	// t_stack	*min;
-	// int stack_len;
-	// stack_len = ft_stack_size(a);
-
-	// min = find_min(*a);
 	while((*a)->nb != find_min(*a)->nb)
 	{
 		index_in_stack(a);
-		if ((*a)->is_in_top)
+		if (find_min(*a)->is_in_top)
 			rotate_a(a);
 		else
 			rev_rotate_a(a);
 	}
-	
+
 }
 
 t_stack	*find_node(t_stack *lst, int nb)

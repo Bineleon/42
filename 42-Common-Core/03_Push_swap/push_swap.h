@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/03 18:21:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/06 14:55:54 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void				target_a_in_b(t_stack **a, t_stack **b);
 void				find_target(t_stack **a, t_stack **b);
 void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 						t_stack **b);
-void				get_cheapest(t_stack **a);
+void				get_cheapest(t_stack **stack);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
 int					is_sorted_b(t_stack *lst);
@@ -110,6 +110,10 @@ void				calculate_total_cost(t_stack *a, t_stack *b);
 void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
+void				single_rotate(t_stack **stack, int count,
+					    void (*move)(t_stack **));
+void				double_rotate(t_stack **a, t_stack **b, int count,
+					    void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 #endif
