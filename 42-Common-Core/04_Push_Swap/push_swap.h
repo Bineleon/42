@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 21:22:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:38:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,8 @@ void				rrr(t_stack **a, t_stack **b);
 void				ft_swap(int *a, int *b);
 int					partition(int arr[], int low, int high);
 int					quick_select(int arr[], int low, int high, int k);
-int					*find_pivots(t_stack *stack, int size, int *pivots);
+int					*find_pivots(t_stack *stack);
 void				assign_segment(t_stack **a, int pivots[3]);
-void				fill_arr(t_stack *stack, int **arr);
 
 //  prep_sort
 
@@ -94,21 +93,8 @@ void				prep_stack_b(t_stack **b, t_stack **a);
 
 void				assign_cost_in_a(t_stack **a);
 void				get_cheapest_by_segment(t_stack **a, int seg);
-void				set_cheapest_to_null(t_stack **lst);
-
-// a_to_b
-
-void				assign_target(t_stack *a, t_stack **b, t_stack **target,
-						int nb);
-
-// b_to_a
-
-void				both_to_top(t_stack **b, t_stack *cheapest, t_stack **a,
-						int cost_b);
 
 // sort
-
-void				sort_main(t_stack **a, t_stack **b);
 void				sort_three_a(t_stack **lst);
 void				sort_b(t_stack **a, t_stack **b);
 void				total_cost(t_stack *a, t_stack *b);
@@ -139,9 +125,9 @@ void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
 void				single_rotate(t_stack **stack, int count,
-						void (*move)(t_stack **));
+					void (*move)(t_stack **));
 void				double_rotate(t_stack **a, t_stack **b, int count,
-						void (*move)(t_stack **, t_stack **));
+					void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 #endif
