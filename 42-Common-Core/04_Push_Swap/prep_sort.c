@@ -1,4 +1,4 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   prep_sort.c                                        :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:08:51 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/24 20:06:44 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 20:15:16 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	index_in_stack(t_stack **lst)
 void	prep_sort(t_stack **a, t_stack **b)
 {
 	t_stack	*min_b;
-	// int		stack_len_a = ft_stack_size(*a);
 	int		i;
 
 	i = 0;
-	// stack_len_a = ft_stack_size(*a);
 	while (i++ < 2)
 		push_a(a, b);
 	min_b = find_min(*b);
@@ -62,29 +60,26 @@ void	prep_sort(t_stack **a, t_stack **b)
 
 void	prep_stack_a(t_stack **a)
 {
-    int *pivot;
+	int	*pivots;
+	int	size;
 
-    pivot = find_pivots(*a);
-    assign_segment(a, pivot);
+	size = ft_stack_size(*a);
+	pivots = malloc(4 * sizeof(int));
+	if (!pivots)
+	{
+		return ;
+	}
+	pivots = find_pivots(*a, size, pivots);
+	assign_segment(a, pivots);
 }
 
 void	prep_stack_b(t_stack **b, t_stack **a)
 {
 	index_in_stack(a);
-	// ft_printf("Index a DONE\n");
-
 	index_in_stack(b);
-	// ft_printf("Index b DONE\n");
-
 	find_target_b_in_a(*b, *a);
-	// ft_printf("target b in a DONE\n");
-
 	target_cost(b, a);
-	// ft_printf("target cost DONE\n");
-
 	total_cost(*b, *a);
-	// ft_printf("total cost DONE\n");
-
+	set_cheapest_to_null(b);
 	get_cheapest(b);
-	// ft_printf("get cheapest DONE\n");
 }

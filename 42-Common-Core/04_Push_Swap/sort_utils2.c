@@ -1,45 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils2.c                                       :+:      :+:    :+:   */
+/*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 23:50:00 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/28 18:29:49 by neleon           ###   ########.fr       */
+/*   Created: 2024/03/27 16:25:18 by neleon            #+#    #+#             */
+/*   Updated: 2024/05/14 20:19:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_stack_size(t_stack *lst)
+t_stack	*find_max(t_stack *lst)
 {
-	int	node;
+	t_stack	*max_node;
+	int		max;
 
-	node = 0;
+	max_node = lst;
+	max = INT_MIN;
 	while (lst)
 	{
+		if (lst->nb > max)
+		{
+			max_node = lst;
+			max = lst->nb;
+		}
 		lst = lst->next;
-		node++;
 	}
-	return (node);
+	return (max_node);
 }
 
-int mid_stack(t_stack *lst)
+t_stack	*find_min(t_stack *lst)
 {
-    int mid;
+	t_stack	*min_node;
+	int		min;
 
-    mid = ft_stack_size(lst) / 2;
-    return (mid);
+	min_node = lst;
+	min = INT_MAX;
+	while (lst)
+	{
+		if (lst->nb < min)
+		{
+			min_node = lst;
+			min = lst->nb;
+		}
+		lst = lst->next;
+	}
+	return (min_node);
 }
-
-
-// int is_first(t_stack *lst, int nb)
-// {
-// 	t_stack *stack;
-
-// 	stack = lst;
-// 	if (lst->nb == nb)
-// 		return (1);
-// 	return (0);
-// }
