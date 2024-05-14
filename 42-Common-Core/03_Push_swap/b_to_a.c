@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:09:38 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/13 17:56:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 17:56:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,31 +72,46 @@ void	find_target_b_in_a(t_stack *b, t_stack *a)
 void b_and_target_to_top(t_stack **b, t_stack *cheapest, t_stack **a)
 {
     int cost_b;
-    int target_cost = cheapest->target_cost;  // Clarification de l'utilisation de target_cost
+    int target_cost;  
 
-
+	target_cost = calculate_node_cost(cheapest->target_node, ft_stack_size(*a));
 	cost_b = calculate_node_cost(cheapest, ft_stack_size(*b));
-
     if ((cheapest->is_in_top && cheapest->target_node->is_in_top) ||
-        (!cheapest->is_in_top && !cheapest->target_node->is_in_top)) {
-        // Les deux noeuds sont soit tous les deux en haut, soit tous les deux en bas
-        if (cheapest->is_in_top) {
+        (!cheapest->is_in_top && !cheapest->target_node->is_in_top))
+		{
+        if (cheapest->is_in_top)
+		{
             double_rotate(a, b, ft_min(cost_b, target_cost), rr);
-        } else {
+        }
+		else 
+		{
             double_rotate(a, b, ft_min(cost_b, target_cost), rrr);
         }
-
-        if (cost_b < target_cost) {
-            single_rotate(a, target_cost - cost_b, rotate_a);
-        } else if (cost_b > target_cost) {
-            single_rotate(b, cost_b - target_cost, rotate_b);
+        if (cost_b < target_cost)
+		{
+			if (cheapest->is_in_top)
+            	single_rotate(a, target_cost - cost_b, rotate_a);
+			else
+				single_rotate(a, target_cost - cost_b, rev_rotate_a);
         }
-    } else {
+		else if (cost_b > target_cost)
+		{
+			if (cheapest->is_in_top)
+            	single_rotate(b, cost_b - target_cost, rotate_b);
+			else
+				single_rotate(b, cost_b - target_cost, rev_rotate_b);
+        }
+    }
+	else
+	{
         // Un noeud est en haut et l'autre en bas
-        if (cheapest->is_in_top) {
+        if (cheapest->is_in_top)
+		{
             single_rotate(a, target_cost, rev_rotate_a);
             single_rotate(b, cost_b, rotate_b);
-        } else {
+        }
+		else
+		{
             single_rotate(a, target_cost, rotate_a);
             single_rotate(b, cost_b, rev_rotate_b);
         }

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/13 18:53:42 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 18:52:49 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ void				rrr(t_stack **a, t_stack **b);
 void				ft_swap(int *a, int *b);
 int					partition(int arr[], int low, int high);
 int					quick_select(int arr[], int low, int high, int k);
-int					*find_pivots(t_stack *stack);
+int					*find_pivots(t_stack *stack, int size, int *pivots);
 void				assign_segment(t_stack **a, int pivots[3]);
+void				fill_arr(t_stack *stack, int **arr);
 
 //  prep_sort
 
@@ -93,6 +94,7 @@ void				prep_stack_b(t_stack **b, t_stack **a);
 
 void				assign_cost_in_a(t_stack **a);
 void				get_cheapest_by_segment(t_stack **a, int seg);
+void				set_cheapest_to_null(t_stack **lst);
 
 // sort
 void				sort_three_a(t_stack **lst);
@@ -125,9 +127,9 @@ void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
 void				single_rotate(t_stack **stack, int count,
-					void (*move)(t_stack **));
+						void (*move)(t_stack **));
 void				double_rotate(t_stack **a, t_stack **b, int count,
-					void (*move)(t_stack **, t_stack **));
+						void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 #endif

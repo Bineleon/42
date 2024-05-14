@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/13 19:32:33 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 18:56:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,35 @@ void	get_cheapest(t_stack **a)
 {
 	t_stack	*stack_a;
 	t_stack	*cheapest;
-    // t_stack *tmp;
 	int		cheapest_cost;
 
 	cheapest = NULL;
 	cheapest_cost = INT_MAX;
 	stack_a = *a;
-    // tmp = stack_a;
-    // while (tmp) {
-    //     tmp->is_cheapest = 0;
-    //     tmp = tmp->next;
-    // }
 	while (stack_a)
 	{
 		if (stack_a->total_cost < cheapest_cost)
 		{
 			cheapest_cost = stack_a->total_cost;
 			cheapest = stack_a;
-			// printf("cheapest ==> %d\n", cheapest->nb);
 		}
 		stack_a = stack_a->next;
 	}
 	if (cheapest)
-        cheapest->is_cheapest = 1;
+		cheapest->is_cheapest = 1;
 }
 
+void	set_cheapest_to_null(t_stack **lst)
+{
+	t_stack	*stack;
+
+	stack = *lst;
+	while (stack)
+	{
+		stack->is_cheapest = 0;
+		stack = stack->next;
+	}
+}
 
 void	get_cheapest_by_segment(t_stack **a, int seg)
 {
@@ -51,55 +55,47 @@ void	get_cheapest_by_segment(t_stack **a, int seg)
 	cheapest = NULL;
 	cheapest_cost = INT_MAX;
 	stack_a = *a;
-    // tmp = stack_a;
-    // while (tmp) {
-    //     tmp->is_cheapest = 0;
-    //     tmp = tmp->next;
-    // }
 	while (stack_a)
 	{
 		if (stack_a->total_cost < cheapest_cost && stack_a->segment == seg)
 		{
 			cheapest_cost = stack_a->total_cost;
 			cheapest = stack_a;
-			// printf("cheapest ==> %d\n", cheapest->nb);
 		}
 		stack_a = stack_a->next;
 	}
 	if (cheapest)
-        cheapest->is_cheapest = 1;
+		cheapest->is_cheapest = 1;
 }
 
-void    assign_cost_in_a(t_stack **a)
+void	assign_cost_in_a(t_stack **a)
 {
-    t_stack *stack_a;
-    int stack_len;
+	t_stack	*stack_a;
+	int		stack_len;
 
-    stack_a = *a;
-    stack_len = ft_stack_size(stack_a);
-    index_in_stack(a);
-    while (stack_a)
-    {
-        stack_a->total_cost = calculate_node_cost(stack_a, stack_len);
-        // printf("stack_a->total_cost : %d", stack_a->total_cost);
-        stack_a = stack_a->next;
-    }
+	stack_a = *a;
+	stack_len = ft_stack_size(stack_a);
+	index_in_stack(a);
+	while (stack_a)
+	{
+		stack_a->total_cost = calculate_node_cost(stack_a, stack_len);
+		stack_a = stack_a->next;
+	}
 }
 
 t_stack	*find_cheapest(t_stack *a)
 {
-	// get_cheapest(&a);
 	t_stack	*stack_a;
 
 	stack_a = a;
 	if (!stack_a)
 		return (NULL);
 	while (stack_a)
-    {
-        if (stack_a->is_cheapest)
-            return (stack_a);
+	{
+		if (stack_a->is_cheapest)
+			return (stack_a);
 		stack_a = stack_a->next;
-    }
+	}
 	return (NULL);
 }
 
@@ -128,11 +124,11 @@ int	calculate_node_cost(t_stack *node, int stack_length)
 		return (stack_length - node->index);
 }
 
-int ft_min(int cost_a, int cost_b)
+int	ft_min(int cost_a, int cost_b)
 {
-    if (cost_a > cost_b)
-        return (cost_b);
-    return (cost_a);
+	if (cost_a > cost_b)
+		return (cost_b);
+	return (cost_a);
 }
 
 void	calculate_total_cost(t_stack *a, t_stack *b)
@@ -158,150 +154,7 @@ void	calculate_total_cost(t_stack *a, t_stack *b)
 	}
 }
 
-void total_cost(t_stack *a, t_stack *b)
+void	total_cost(t_stack *a, t_stack *b)
 {
-    calculate_total_cost(a, b);
+	calculate_total_cost(a, b);
 }
-// void	total_cost(t_stack *a, t_stack *b)
-// {
-// 	// t_stack	*stack_a;
-// 	int		stack_len_a;
-// 	int		stack_len_b;
-
-// 	// stack_a = a;
-// 	stack_len_a = ft_stack_size(a);
-// 	stack_len_b = ft_stack_size(b);
-// 	index_in_stack(a);
-// 	index_in_stack(b);
-// 	while (a)
-// 	{
-// 		// if (a->is_in_top)
-// 		// 	a->total_cost = a->index;
-// 		// else
-// 		// 	a->total_cost = stack_len_a - a->index;
-// 		if ((a->is_in_top && a->target_node->is_in_top)
-// 			|| !(a->is_in_top && a->target_node->is_in_top))
-// 		{
-// 			if ((a->total_cost - a->target_cost) > a->target_cost)
-// 				a->total_cost = a->total_cost - a->target_cost;
-// 			else if ((a->total_cost - a->target_cost) < a->target_cost)
-// 				a->total_cost = a->total_cost - (a->total_cost
-// - a->target_cost);
-// 			else if ((a->total_cost - a->target_cost) == a->total_cost)
-// 				a->total_cost = a->target_cost;
-// 		}
-// 		else if (a->is_in_top && !a->target_node->is_in_top)
-//             	a->total_cost = a->index + (stack_len_b
-// - a->target_node->index);
-// 		else if (!a->is_in_top && a->target_node->is_in_top)
-//             	a->total_cost = (stack_len_a - a->index)
-// + a->target_node->index;
-// 		a = a->next;
-// 	}
-// }
-
-// void	total_cost(t_stack *a, t_stack *b)
-// {
-// 	t_stack	*stack_a;
-// 	int stack_len_a;
-// 	int stack_len_b;
-// 	int cost_a;
-// 	int total = -1;
-// 	int target_index = -1;
-// 	int nb = -1;
-// 	int top = -1;
-// 	int	target_top = -1;
-// 	int index = -1;
-// 	int target = -1;
-
-// 	cost_a = -1;
-// 	stack_a = a;
-// 	stack_len_a = ft_stack_size(a);
-// 	stack_len_b = ft_stack_size(b);
-// 	// index_in_stack(a);
-// 	// target_cost(a, b);
-// 	while (stack_a)
-// 	{
-// 		nb = stack_a->nb;
-// 		top = stack_a->is_in_top;
-// 		index = stack_a->index;
-// 		target_top = stack_a->target_node->is_in_top;
-// 		target_index = stack_a->target_node->index;
-
-// 		if (stack_a->is_in_top)
-// 		{
-// 			stack_a->total_cost = stack_a->index;
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		else
-// 		{
-// 			stack_a->total_cost = stack_len_a - stack_a->index;
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		if ((stack_a->is_in_top && stack_a->target_node->is_in_top)
-			// || (!stack_a->is_in_top
-// 				&& !stack_a->target_node->is_in_top))
-// 		{
-// 			if ((stack_a->total_cost
-					// - stack_a->target_cost) > stack_a->target_cost)
-// 			{
-// 					stack_a->total_cost = stack_a->target_cost
-						// + ((stack_a->total_cost - stack_a->target_cost)
-						// - stack_a->target_cost);
-// 					total = stack_a->total_cost;
-// 					target = stack_a->target_cost;
-// 			}
-// 			else if ((stack_a->total_cost
-					// - stack_a->target_cost) < stack_a->target_cost)
-// 			{
-// 					stack_a->total_cost = (stack_a->total_cost
-						// - stack_a->target_cost) + (stack_a->target_cost
-						// - (stack_a->total_cost - stack_a->target_cost));
-// 					total = stack_a->total_cost;
-// 					target = stack_a->target_cost;
-// 			}
-// 			else if ((a->total_cost - a->target_cost) == a->target_cost)
-// 			{
-// 				stack_a->total_cost = stack_a->target_cost;
-// 				total = stack_a->total_cost;
-// 				target = stack_a->target_cost;
-// 				// a = a->next;
-// 				// continue ;
-// 			}
-// 		}
-// 		if (stack_a->target_node->is_in_top && !stack_a->is_in_top)
-// 		{
-// 			stack_a->total_cost += stack_a->target_node->index + (stack_len_a
-				// - stack_a->index);
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		else if (!stack_a->target_node->is_in_top && stack_a->is_in_top)
-// 		{
-// 			stack_a->total_cost += stack_a->index + (stack_len_b
-				// - stack_a->target_node->index);
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		stack_a = stack_a->next;
-
-// 	}
-// }
-
-// if (stack_a->target_node->is_in_top)
-// 		{
-// 			stack_a->total_cost += stack_a->target_node->index;
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		else
-// 		{
-// 			stack_a->total_cost += stack_len_b - stack_a->target_node->index;
-// 			total = stack_a->total_cost;
-// 			target = stack_a->target_cost;
-// 		}
-// 		stack_a = stack_a->next;
-
-// 	}
