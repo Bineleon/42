@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/06 17:08:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/13 16:28:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,37 +94,50 @@ void	single_rotate(t_stack **stack, int count, void (*move)(t_stack **))
 	}
 }
 
-void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
+void	node_to_top(t_stack **a, t_stack *node)
 {
 	int	cost_a;
+    int stack_len;
 
-	cost_a = cheapest->total_cost - cheapest->target_cost;
-	if ((cheapest->is_in_top && cheapest->target_node->is_in_top)
-		|| (!cheapest->is_in_top && !cheapest->target_node->is_in_top))
-	{
-		if (cheapest->is_in_top)
-			double_rotate(a, b, ft_min(cost_a, cheapest->target_cost), rr);
-		else
-			double_rotate(a, b, ft_min(cost_a, cheapest->target_cost), rrr);
-		if (cost_a < cheapest->target_cost)
-			single_rotate(b, cheapest->target_cost - cost_a, rotate_b);
-		else if (cost_a > cheapest->target_cost)
-			single_rotate(a, cost_a - cheapest->target_cost, rotate_a);
-	}
-	else
-	{
-		if (cheapest->is_in_top)
-		{
-			single_rotate(b, cheapest->target_cost, rev_rotate_b);
-			single_rotate(a, cost_a, rotate_a);
-		}
-		else
-		{
-			single_rotate(b, cheapest->target_cost, rotate_b);
-			single_rotate(a, cost_a, rev_rotate_a);
-		}
-	}
+    stack_len = ft_stack_size(*a);
+	cost_a = calculate_node_cost(node, stack_len);
+    if (node->is_in_top)
+        single_rotate(a, cost_a, rotate_a);
+    else
+        single_rotate(a, cost_a, rev_rotate_a);
 }
+
+// void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
+// {
+// 	int	cost_a;
+
+// 	cost_a = cheapest->total_cost - cheapest->target_cost;
+// 	if ((cheapest->is_in_top && cheapest->target_node->is_in_top)
+// 		|| (!cheapest->is_in_top && !cheapest->target_node->is_in_top))
+// 	{
+// 		if (cheapest->is_in_top)
+// 			double_rotate(a, b, ft_min(cost_a, cheapest->target_cost), rr);
+// 		else
+// 			double_rotate(a, b, ft_min(cost_a, cheapest->target_cost), rrr);
+// 		if (cost_a < cheapest->target_cost)
+// 			single_rotate(b, cheapest->target_cost - cost_a, rotate_b);
+// 		else if (cost_a > cheapest->target_cost)
+// 			single_rotate(a, cost_a - cheapest->target_cost, rotate_a);
+// 	}
+// 	else
+// 	{
+// 		if (cheapest->is_in_top)
+// 		{
+// 			single_rotate(b, cheapest->target_cost, rev_rotate_b);
+// 			single_rotate(a, cost_a, rotate_a);
+// 		}
+// 		else
+// 		{
+// 			single_rotate(b, cheapest->target_cost, rotate_b);
+// 			single_rotate(a, cost_a, rev_rotate_a);
+// 		}
+// 	}
+// }
 
 // void	a_and_target_to_top(t_stack **a, t_stack *cheapest, t_stack **b)
 // {

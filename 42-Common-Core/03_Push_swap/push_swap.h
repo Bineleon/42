@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/06 14:55:54 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/13 18:53:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_stack
 	int				is_in_top;
 	int				total_cost;
 	int				target_cost;
-	// int				cheapest_cost;
+	int				segment;
 	int				is_cheapest;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
@@ -75,11 +75,24 @@ void				rev_rotate_a(t_stack **a);
 void				rev_rotate_b(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
+// Opti
+
+void				ft_swap(int *a, int *b);
+int					partition(int arr[], int low, int high);
+int					quick_select(int arr[], int low, int high, int k);
+int					*find_pivots(t_stack *stack);
+void				assign_segment(t_stack **a, int pivots[3]);
+
 //  prep_sort
 
 void				prep_sort(t_stack **a, t_stack **b);
-void				prep_stack_a(t_stack **a, t_stack **b);
+void				prep_stack_a(t_stack **a);
 void				prep_stack_b(t_stack **b, t_stack **a);
+
+//  cost
+
+void				assign_cost_in_a(t_stack **a);
+void				get_cheapest_by_segment(t_stack **a, int seg);
 
 // sort
 void				sort_three_a(t_stack **lst);
@@ -99,6 +112,7 @@ t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 t_stack				*find_cheapest(t_stack *a);
+void				node_to_top(t_stack **a, t_stack *node);
 
 void				last_sort(t_stack **a);
 void				b_and_target_to_top(t_stack **b, t_stack *cheapest,
@@ -111,9 +125,9 @@ void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
 void				single_rotate(t_stack **stack, int count,
-					    void (*move)(t_stack **));
+					void (*move)(t_stack **));
 void				double_rotate(t_stack **a, t_stack **b, int count,
-					    void (*move)(t_stack **, t_stack **));
+					void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 #endif

@@ -60,14 +60,12 @@ void	prep_sort(t_stack **a, t_stack **b)
 	}
 }
 
-void	prep_stack_a(t_stack **a, t_stack **b)
+void	prep_stack_a(t_stack **a)
 {
-	index_in_stack(a);
-	index_in_stack(b);
-	target_a_in_b(a, b);
-	target_cost(a, b);
-	total_cost(*a, *b);
-	get_cheapest(a);
+    int *pivot;
+
+    pivot = find_pivots(*a);
+    assign_segment(a, pivot);
 }
 
 void	prep_stack_b(t_stack **b, t_stack **a)

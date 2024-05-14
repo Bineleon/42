@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/07 15:37:35 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/13 18:48:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	main(int ac, char **av)
 		if (ac > 2)
 		{
 			init_stack(&a, av);
-			while (i < ac)
-			{
-				if(not_digit(av[i]) || is_duplicate(a, ft_atoi(av[i]))
-					|| is_not_int(ft_atoi(av[i])))
-					print_error();
-				i++;
-			}
+			// while (i < ac)
+			// {
+			// 	if(not_digit(av[i]) || is_duplicate(a, ft_atoi(av[i]))
+			// 		|| is_not_int(ft_atoi(av[i])))
+			// 		print_error();
+			// 	i++;
+			// }
 		}
 
 		// prep sort b
@@ -112,8 +112,8 @@ int	main(int ac, char **av)
 		// ft_printf("\nStack b : \n");
 		// print_stack(b);
 		last_sort(&lst);
-		// ft_printf("\nStack a : \n");
-		// print_stack(lst);
+		ft_printf("\nStack a : \n");
+		print_stack(lst);
 		// while (stack_b)
 		// {
 		// 	ft_printf("\n");

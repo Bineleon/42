@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:45 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/07 14:48:49 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/13 19:32:33 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,51 @@ void	get_cheapest(t_stack **a)
 	}
 	if (cheapest)
         cheapest->is_cheapest = 1;
+}
+
+
+void	get_cheapest_by_segment(t_stack **a, int seg)
+{
+	t_stack	*stack_a;
+	t_stack	*cheapest;
+	int		cheapest_cost;
+
+	cheapest = NULL;
+	cheapest_cost = INT_MAX;
+	stack_a = *a;
+    // tmp = stack_a;
+    // while (tmp) {
+    //     tmp->is_cheapest = 0;
+    //     tmp = tmp->next;
+    // }
+	while (stack_a)
+	{
+		if (stack_a->total_cost < cheapest_cost && stack_a->segment == seg)
+		{
+			cheapest_cost = stack_a->total_cost;
+			cheapest = stack_a;
+			// printf("cheapest ==> %d\n", cheapest->nb);
+		}
+		stack_a = stack_a->next;
+	}
+	if (cheapest)
+        cheapest->is_cheapest = 1;
+}
+
+void    assign_cost_in_a(t_stack **a)
+{
+    t_stack *stack_a;
+    int stack_len;
+
+    stack_a = *a;
+    stack_len = ft_stack_size(stack_a);
+    index_in_stack(a);
+    while (stack_a)
+    {
+        stack_a->total_cost = calculate_node_cost(stack_a, stack_len);
+        // printf("stack_a->total_cost : %d", stack_a->total_cost);
+        stack_a = stack_a->next;
+    }
 }
 
 t_stack	*find_cheapest(t_stack *a)
