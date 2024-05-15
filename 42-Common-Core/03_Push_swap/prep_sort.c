@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:08:51 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 20:15:16 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:48:15 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	prep_stack_a(t_stack **a)
 	}
 	pivots = find_pivots(*a, size, pivots);
 	assign_segment(a, pivots);
+	// free(pivots);
 }
 
 void	prep_stack_b(t_stack **b, t_stack **a)

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 20:30:30 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:51:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,14 @@ void	sort_b(t_stack **a, t_stack **b)
 				current = current->next;
 		}
 	}
+	free_stack(&current);
 }
 
 void	last_sort(t_stack **a)
 {
+	index_in_stack(a);
 	while ((*a)->nb != find_min(*a)->nb)
 	{
-		index_in_stack(a);
 		if (find_min(*a)->is_in_top)
 			rotate_a(a);
 		else
