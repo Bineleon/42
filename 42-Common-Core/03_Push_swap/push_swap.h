@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 21:22:12 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:38:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,7 @@ void				single_rotate(t_stack **stack, int count,
 void				double_rotate(t_stack **a, t_stack **b, int count,
 						void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
+
+void				free_stack(t_stack **lst);
 
 #endif

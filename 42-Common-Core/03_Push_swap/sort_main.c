@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_main.c                                        :+:      :+:    :+:   */
+/*   sort_main copy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/15 16:28:24 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:42:25 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int ac, char **av)
 				i++;
 			}
 			init_split(&a, split_args);
+			free(split_args);
 		}
 		if (ac > 2)
 		{
@@ -66,5 +67,7 @@ int	main(int ac, char **av)
 			last_sort(&a);
 		}
 		print_stack(a);
+		free_stack(&a);
+		free_stack(&b);
 	}
 }
