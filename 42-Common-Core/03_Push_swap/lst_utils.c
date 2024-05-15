@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 21:33:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/08 17:32:07 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 20:09:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_stack	*ft_stacklast(t_stack *lst)
 	return (lst);
 }
 
-t_stack *before_last(t_stack *lst)
+t_stack	*before_last(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);

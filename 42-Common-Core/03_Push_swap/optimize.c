@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:49:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 18:56:09 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 20:14:19 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ int	*find_pivots(t_stack *stack, int size, int *pivots)
 		pivots[3] = quick_select(values, 0, size - 1, (4 * size) / 5);
 	}
 	else
-		pivots[0] = pivots[1] = pivots[2] = pivots[3] = 0;
+	{
+		while (i++ <= 3)
+			pivots[i] = 0;
+	}
 	free(values);
 	return (pivots);
 }

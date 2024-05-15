@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 16:25:18 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/10 16:45:46 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 20:19:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*find_max(t_stack *lst)
 		if (lst->nb > max)
 		{
 			max_node = lst;
-			max = lst->nb;	
+			max = lst->nb;
 		}
 		lst = lst->next;
 	}
@@ -49,4 +49,3 @@ t_stack	*find_min(t_stack *lst)
 	}
 	return (min_node);
 }
-
