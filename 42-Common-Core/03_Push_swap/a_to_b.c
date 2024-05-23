@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:46:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 20:37:07 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 19:53:36 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	assign_target(t_stack *a, t_stack **b, t_stack **target, int nb)
 	{
 		if (a->nb > stack_b->nb && stack_b->nb > nb)
 		{
-			target = &stack_b;
+			*target = stack_b;
 			nb = stack_b->nb;
 		}
 		stack_b = stack_b->next;

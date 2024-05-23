@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 14:52:59 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 20:26:50 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_stack
 }					t_stack;
 
 // parsing
-void				init_stack(t_stack **stack_a, char **av);
+// void				init_stack(t_stack **stack_a, char **av);
+void	init_stack(t_stack **stack_a, char *joined_args);
 void				init_split(t_stack **stack_a, char **av);
 t_stack				*init_b(void);
 

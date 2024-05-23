@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 18:22:16 by neleon            #+#    #+#              #
-#    Updated: 2024/05/14 21:14:59 by neleon           ###   ########.fr        #
+#    Updated: 2024/05/23 20:45:57 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_1			= stack_utils.c lst_utils.c check_errors.c\
 
 CC				= cc
 RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -g3
+FLAGS			= -Wall -Wextra -g3
 LIBFTDIR		= libft/
 OBJ_DIR			= obj/
 SRC_DIR			= ./
