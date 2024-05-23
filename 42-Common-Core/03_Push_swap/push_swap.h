@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 20:26:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 21:33:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack
 
 // parsing
 // void				init_stack(t_stack **stack_a, char **av);
-void	init_stack(t_stack **stack_a, char *joined_args);
+void				init_stack(t_stack **stack_a, char *joined_args);
 void				init_split(t_stack **stack_a, char **av);
 t_stack				*init_b(void);
 
@@ -50,7 +50,7 @@ int					mid_stack(t_stack *lst);
 // errors
 int					is_duplicate(t_stack *stack_a, int nb);
 int					not_digit(char *str);
-int					is_not_int(long nbr);
+int					is_not_int(t_stack *stack);
 void				print_error(t_stack **stack);
 
 // prints
@@ -141,9 +141,9 @@ void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
 void				single_rotate(t_stack **stack, int count,
-						void (*move)(t_stack **));
+					void (*move)(t_stack **));
 void				double_rotate(t_stack **a, t_stack **b, int count,
-						void (*move)(t_stack **, t_stack **));
+					void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 void				free_stack(t_stack **lst);

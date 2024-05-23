@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 22:47:33 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 15:09:30 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 21:32:44 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,14 @@ int	is_duplicate(t_stack *stack_a, int nb)
 	return (0);
 }
 
-int	is_not_int(long nbr)
+int	is_not_int(t_stack *stack)
 {
-	if (nbr > INT_MAX || nbr < INT_MIN)
-		return (1);
+    while (stack)
+    {
+        if (stack->nb > INT_MAX || stack->nb < INT_MIN)
+            return (1);
+        stack = stack->next;
+    }
 	return (0);
 }
 

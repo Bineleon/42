@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:57:14 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 20:59:56 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 22:28:44 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,29 @@ int	is_duplicate_in_stack(t_stack *stack)
 
 void	sort_stack(t_stack **a, t_stack **b)
 {
-	sort_b(a, b);
-	sort_three_a(a);
-	sort_a(a, b);
-	last_sort(a);
+    if (!is_sorted(*a))
+    {
+        sort_b(a, b);
+        sort_three_a(a);
+        sort_a(a, b);
+        last_sort(a);
+    }
 }
 
-void	check_single_empty_argument(int ac, char **av)
+void check_empty_args(int ac, char **av)
 {
-	if (ac == 2 && av[1][0] == '\0')
-		print_error(NULL);
+    if (ac == 2)
+    {
+        char *arg = av[1];
+        while (*arg)
+        {
+            if (*arg != ' ')
+                return;
+            arg++;
+        }
+        ft_putstr_fd("Error\n", 2);
+	    exit(1);
+    }
 }
 
 void	validate_and_init_stack(t_stack **a, char *joined_args)
@@ -93,12 +106,17 @@ void	validate_and_init_stack(t_stack **a, char *joined_args)
 
 void	check_dup_and_sort(t_stack **a, t_stack **b)
 {
+    if (is_not_int(*a))
+        print_error(a);
 	if (is_duplicate_in_stack(*a))
 		print_error(a);
-	if (ft_stack_size(*a) == 3)
-		sort_three_a(a);
-	else
-		sort_stack(a, b);
+    if (!is_sorted(*a))
+    {
+        if (ft_stack_size(*a) == 3)
+            sort_three_a(a);
+        else
+            sort_stack(a, b);
+    }
 }
 
 int	main(int ac, char **av)
@@ -111,12 +129,12 @@ int	main(int ac, char **av)
 	b = init_b();
 	if (ac > 1)
 	{
-		check_single_empty_argument(ac, av);
+		check_empty_args(ac, av);
 		joined_args = join_arguments(ac, av);
 		validate_and_init_stack(&a, joined_args);
 		free(joined_args);
 		check_dup_and_sort(&a, &b);
-		print_stack(a);
+		// print_stack(a);
 		free_stack(&a);
 		free_stack(&b);
 	}
