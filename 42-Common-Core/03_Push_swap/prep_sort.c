@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:08:51 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/15 17:48:15 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 12:48:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,11 @@ void	prep_stack_a(t_stack **a)
 	size = ft_stack_size(*a);
 	pivots = malloc(4 * sizeof(int));
 	if (!pivots)
-	{
-		return ;
-	}
+		return;
 	pivots = find_pivots(*a, size, pivots);
+	set_cheapest_to_null(a);
 	assign_segment(a, pivots);
-	// free(pivots);
+	free(pivots);
 }
 
 void	prep_stack_b(t_stack **b, t_stack **a)

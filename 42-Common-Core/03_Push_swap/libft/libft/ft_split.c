@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:43:29 by neleon            #+#    #+#             */
-/*   Updated: 2023/12/05 18:50:46 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 13:42:55 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_word_len(char const *s, char c)
 	return (len);
 }
 
-static void	free_malloc(char **split, int size)
+void	free_malloc(char **split, int size)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:49:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 20:14:19 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/22 18:50:42 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	*find_pivots(t_stack *stack, int size, int *pivots)
 	int	i;
 	int	*values;
 
-	i = 0;
+	i = -1;
 	values = (int *)malloc(size * sizeof(int));
 	if (!values)
 		return (NULL);
@@ -85,7 +85,7 @@ int	*find_pivots(t_stack *stack, int size, int *pivots)
 	}
 	else
 	{
-		while (i++ <= 3)
+		while (++i <= 3)
 			pivots[i] = 0;
 	}
 	free(values);
@@ -98,6 +98,9 @@ void	assign_segment(t_stack **a, int *pivot)
 	t_stack	*stack_a;
 
 	stack_a = *a;
+	// stack_a->is_cheapest = 0;
+	// stack_a->segment = 0;
+	value = stack_a->nb;
 	while (stack_a)
 	{
 		value = stack_a->nb;

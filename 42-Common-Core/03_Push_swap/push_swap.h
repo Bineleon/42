@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/15 17:38:31 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 14:52:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
 // parsing
 void				init_stack(t_stack **stack_a, char **av);
 void				init_split(t_stack **stack_a, char **av);
+t_stack				*init_b(void);
 
 // lst_utils
 t_stack				*ft_stacknew(int nb);
@@ -49,7 +50,7 @@ int					mid_stack(t_stack *lst);
 int					is_duplicate(t_stack *stack_a, int nb);
 int					not_digit(char *str);
 int					is_not_int(long nbr);
-void				print_error(void);
+void				print_error(t_stack **stack);
 
 // prints
 void				print_stack(t_stack *stack);

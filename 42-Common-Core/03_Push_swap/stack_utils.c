@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 20:31:43 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 12:41:03 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,28 @@ void	init_stack(t_stack **stack_a, char **av)
 void	init_split(t_stack **stack_a, char **av)
 {
 	int	i;
+	char **split_args;
 
 	i = 1;
-	*stack_a = ft_stacknew(ft_atoi(av[0]));
-	while (av[i])
+	split_args = av;
+	*stack_a = ft_stacknew(ft_atoi(split_args[0]));
+	while (split_args[i])
 	{
-		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(av[i])));
+		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(split_args[i])));
 		i++;
 	}
+	while(*split_args)
+	{
+		free(*split_args);
+		split_args++;
+	}
+	free(*split_args);
+	
+}
+
+t_stack	*init_b(void)
+{	
+	return (NULL);
 }
 
 void	print_stack(t_stack *stack)

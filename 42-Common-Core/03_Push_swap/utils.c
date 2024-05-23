@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:36:02 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/15 17:55:59 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:04:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,9 @@ void	free_stack(t_stack **lst)
 	stack = *lst;
 	while (stack)
 	{
-		// if (stack->next)
-		// {
 		tmp = stack->next;
 		free(stack);
 		stack = tmp;
-		// }
-		// free(stack);
 	}
 	stack = NULL;
-	// tmp = NULL;
 }

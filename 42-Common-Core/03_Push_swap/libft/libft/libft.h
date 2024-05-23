@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:05:23 by neleon            #+#    #+#             */
-/*   Updated: 2024/04/04 13:33:34 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/23 13:43:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define LIBFT_H
 
 // # include <error.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 // 1rst part
 
@@ -58,6 +58,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				free_malloc(char **split, int size);
 
 // Lists
 
