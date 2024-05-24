@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 21:33:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 16:46:46 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:18:29 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ t_stack	*ft_stacknew(long nb)
 	new->nb = nb;
 	new->next = NULL;
 	return (new);
-}
-
-void	ft_stackadd_front(t_stack **lst, t_stack *new)
-{
-	if (lst && new)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
 }
 
 void	ft_stackadd_back(t_stack **lst, t_stack *new)

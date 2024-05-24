@@ -6,22 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 16:50:19 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:20:38 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
-
-int	is_sorted_b(t_stack *lst)
-{
-	while (lst->next)
-	{
-		if (lst->nb < lst->next->nb)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
-}
 
 void	sort_a(t_stack **a, t_stack **b)
 {

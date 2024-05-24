@@ -6,13 +6,13 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 22:47:33 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 17:15:40 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:27:24 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	is_duplicate_in_stack(t_stack *stack)
+int	check_duplicate_in_stack(t_stack *stack)
 {
 	t_stack	*current;
 	t_stack	*runner;

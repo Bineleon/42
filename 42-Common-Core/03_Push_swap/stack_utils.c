@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 16:52:20 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:27:37 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	validate_and_init_stack(t_stack **a, char *joined_args)
 
 void	check_dup_and_sort(t_stack **a, t_stack **b)
 {
-	if (is_duplicate_in_stack(*a) || is_not_int(*a))
+	if (check_duplicate_in_stack(*a) || is_not_int(*a))
 		print_error(a);
 	if (!is_sorted(*a))
 	{
@@ -55,27 +55,17 @@ void	check_dup_and_sort(t_stack **a, t_stack **b)
 	}
 }
 
-void	print_stack(t_stack *stack)
+void	free_stack(t_stack **lst)
 {
+	t_stack	*stack;
 	t_stack	*tmp;
-	int		nbr;
-	int		first_seen;
 
-	if (!stack)
-		return ;
-	first_seen = 1;
-	tmp = stack;
-	while (tmp)
+	stack = *lst;
+	while (stack)
 	{
-		nbr = tmp->nb;
-		if (first_seen == 1)
-		{
-			ft_printf("%d", nbr);
-			first_seen = 0;
-		}
-		else if (first_seen == 0)
-			ft_printf(" %d", nbr);
-		tmp = tmp->next;
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
 	}
-	ft_printf("\n");
+	stack = NULL;
 }

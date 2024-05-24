@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:36:02 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 21:04:28 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:22:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,27 @@ int	ft_min(int cost_a, int cost_b)
 	return (cost_a);
 }
 
-void	free_stack(t_stack **lst)
+void	print_stack(t_stack *stack)
 {
-	t_stack	*stack;
 	t_stack	*tmp;
+	int		nbr;
+	int		first_seen;
 
-	stack = *lst;
-	while (stack)
+	if (!stack)
+		return ;
+	first_seen = 1;
+	tmp = stack;
+	while (tmp)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		nbr = tmp->nb;
+		if (first_seen == 1)
+		{
+			ft_printf("%d", nbr);
+			first_seen = 0;
+		}
+		else if (first_seen == 0)
+			ft_printf(" %d", nbr);
+		tmp = tmp->next;
 	}
-	stack = NULL;
+	ft_printf("\n");
 }

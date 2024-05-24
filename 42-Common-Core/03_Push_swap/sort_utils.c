@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:46:53 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 17:06:18 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:20:45 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ int	is_sorted(t_stack *lst)
 	while (lst->next)
 	{
 		if (lst->nb > lst->next->nb)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
+
+int	is_sorted_b(t_stack *lst)
+{
+	while (lst->next)
+	{
+		if (lst->nb < lst->next->nb)
 			return (0);
 		lst = lst->next;
 	}
