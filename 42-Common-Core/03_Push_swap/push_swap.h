@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 21:33:31 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:14:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "libft/ft_printf/srcs/ft_printf.h"
+# include "libft/gnl/get_next_line_bonus.h"
 # include "libft/libft/libft.h"
 # include <limits.h>
 
 typedef struct s_stack
 {
-	int				nb;
+	long			nb;
 	int				index;
 	int				is_in_top;
 	int				total_cost;
@@ -31,13 +32,18 @@ typedef struct s_stack
 }					t_stack;
 
 // parsing
-// void				init_stack(t_stack **stack_a, char **av);
 void				init_stack(t_stack **stack_a, char *joined_args);
-void				init_split(t_stack **stack_a, char **av);
+char				*join_arguments(int ac, char **av);
+int					is_valid_number_string(char *str);
+int					is_duplicate_in_stack(t_stack *stack);
+void				check_empty_args(int ac, char **av);
+void				validate_and_init_stack(t_stack **a, char *joined_args);
+void				check_dup_and_sort(t_stack **a, t_stack **b);
 t_stack				*init_b(void);
 
+void				sort_stack(t_stack **a, t_stack **b);
 // lst_utils
-t_stack				*ft_stacknew(int nb);
+t_stack				*ft_stacknew(long nb);
 t_stack				*ft_stacklast(t_stack *lst);
 t_stack				*before_last(t_stack *lst);
 void				index_in_stack(t_stack **lst);
@@ -49,7 +55,6 @@ int					mid_stack(t_stack *lst);
 
 // errors
 int					is_duplicate(t_stack *stack_a, int nb);
-int					not_digit(char *str);
 int					is_not_int(t_stack *stack);
 void				print_error(t_stack **stack);
 
@@ -77,7 +82,7 @@ void				rev_rotate_a(t_stack **a);
 void				rev_rotate_b(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
-// Opti
+// opti
 
 void				ft_swap(int *a, int *b);
 int					partition(int arr[], int low, int high);
@@ -88,7 +93,6 @@ void				fill_arr(t_stack *stack, int **arr);
 
 //  prep_sort
 
-void				prep_sort(t_stack **a, t_stack **b);
 void				prep_stack_a(t_stack **a);
 void				prep_stack_b(t_stack **b, t_stack **a);
 
@@ -99,9 +103,11 @@ void				get_cheapest_by_segment(t_stack **a, int seg);
 void				set_cheapest_to_null(t_stack **lst);
 
 // a_to_b
-
-void				assign_target(t_stack *a, t_stack **b, t_stack **target,
-						int nb);
+void				node_to_top(t_stack **a, t_stack *node);
+void				single_rotate(t_stack **stack, int count,
+						void (*move)(t_stack **));
+void				double_rotate(t_stack **a, t_stack **b, int count,
+						void (*move)(t_stack **, t_stack **));
 
 // b_to_a
 
@@ -116,7 +122,6 @@ void				sort_b(t_stack **a, t_stack **b);
 void				total_cost(t_stack *a, t_stack *b);
 void				target_cost(t_stack **a, t_stack **b);
 void				cheapest_cost(t_stack *a);
-void				target_a_in_b(t_stack **a, t_stack **b);
 void				find_target(t_stack **a, t_stack **b);
 void				a_and_target_to_top(t_stack **a, t_stack *cheapest,
 						t_stack **b);
@@ -124,11 +129,9 @@ void				get_cheapest(t_stack **stack);
 int					is_rev_sort_three(t_stack *lst);
 int					is_sorted(t_stack *lst);
 int					is_sorted_b(t_stack *lst);
-t_stack				*find_node(t_stack *lst, int nb);
 t_stack				*find_max(t_stack *lst);
 t_stack				*find_min(t_stack *lst);
 t_stack				*find_cheapest(t_stack *a);
-void				node_to_top(t_stack **a, t_stack *node);
 
 void				last_sort(t_stack **a);
 void				b_and_target_to_top(t_stack **b, t_stack *cheapest,
@@ -140,10 +143,6 @@ void				calculate_total_cost(t_stack *a, t_stack *b);
 void				target_b_in_a(t_stack **b, t_stack **a);
 void				find_target_b_in_a(t_stack *b, t_stack *a);
 
-void				single_rotate(t_stack **stack, int count,
-					void (*move)(t_stack **));
-void				double_rotate(t_stack **a, t_stack **b, int count,
-					void (*move)(t_stack **, t_stack **));
 int					ft_count_words(char const *s, char c);
 
 void				free_stack(t_stack **lst);

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:08:51 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 12:48:28 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:08:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,6 @@ void	index_in_stack(t_stack **lst)
 	}
 }
 
-void	prep_sort(t_stack **a, t_stack **b)
-{
-	t_stack	*min_b;
-	int		i;
-
-	i = 0;
-	while (i++ < 2)
-		push_a(a, b);
-	min_b = find_min(*b);
-	if ((*b)->nb == min_b->nb)
-		swap_b(b);
-	else if ((*b)->nb < (*b)->next->nb)
-		swap_b(b);
-	push_a(a, b);
-	if ((*b)->nb < (*b)->next->nb)
-		swap_b(b);
-	if ((*b)->next->nb < (*b)->next->next->nb)
-	{
-		rev_rotate_b(b);
-		swap_b(b);
-	}
-}
-
 void	prep_stack_a(t_stack **a)
 {
 	int	*pivots;
@@ -66,7 +43,7 @@ void	prep_stack_a(t_stack **a)
 	size = ft_stack_size(*a);
 	pivots = malloc(4 * sizeof(int));
 	if (!pivots)
-		return;
+		return ;
 	pivots = find_pivots(*a, size, pivots);
 	set_cheapest_to_null(a);
 	assign_segment(a, pivots);

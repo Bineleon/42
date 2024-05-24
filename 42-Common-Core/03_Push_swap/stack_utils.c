@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:03:42 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/23 21:01:46 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:52:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,35 @@ void	init_stack(t_stack **stack_a, char *joined_args)
 		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(split_args[i])));
 		i++;
 	}
-	free(split_args);
-}
-
-void	init_split(t_stack **stack_a, char **av)
-{
-	int		i;
-	char	**split_args;
-
-	i = 1;
-	split_args = av;
-	*stack_a = ft_stacknew(ft_atoi(split_args[0]));
-	while (split_args[i])
-	{
-		ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(split_args[i])));
-		i++;
-	}
-	while (*split_args)
-	{
-		free(*split_args);
-		split_args++;
-	}
-	free(*split_args);
+	free_malloc(split_args, ft_count_words(joined_args, ' '));
 }
 
 t_stack	*init_b(void)
 {
 	return (NULL);
+}
+
+void	validate_and_init_stack(t_stack **a, char *joined_args)
+{
+	if (!joined_args || !is_valid_number_string(joined_args))
+	{
+		free(joined_args);
+		print_error(a);
+	}
+	init_stack(a, joined_args);
+}
+
+void	check_dup_and_sort(t_stack **a, t_stack **b)
+{
+	if (is_duplicate_in_stack(*a) || is_not_int(*a))
+		print_error(a);
+	if (!is_sorted(*a))
+	{
+		if (ft_stack_size(*a) == 3)
+			sort_three_a(a);
+		else
+			sort_stack(a, b);
+	}
 }
 
 void	print_stack(t_stack *stack)

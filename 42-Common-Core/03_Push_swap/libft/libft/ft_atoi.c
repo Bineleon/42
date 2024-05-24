@@ -6,13 +6,13 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:05:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/24 19:12:44 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:17:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	int		i;
 	long	sign;

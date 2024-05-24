@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:46:53 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/14 21:32:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 17:06:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,4 @@ int	is_sorted(t_stack *lst)
 		lst = lst->next;
 	}
 	return (1);
-}
-
-void	sort_main(t_stack **a, t_stack **b)
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = *a;
-	stack_b = *b;
-	if (ft_stack_size(stack_a) == 3)
-	{
-		sort_three_a(&stack_a);
-	}
-	else
-	{
-		sort_b(&stack_a, &stack_b);
-		sort_three_a(&stack_a);
-		sort_a(&stack_a, &stack_b);
-		last_sort(&stack_a);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:49:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/22 18:50:42 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:47:07 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ void	assign_segment(t_stack **a, int *pivot)
 	t_stack	*stack_a;
 
 	stack_a = *a;
-	// stack_a->is_cheapest = 0;
-	// stack_a->segment = 0;
 	value = stack_a->nb;
 	while (stack_a)
 	{

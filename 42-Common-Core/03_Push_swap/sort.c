@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/22 18:04:37 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:50:19 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,13 @@ void	last_sort(t_stack **a)
 	}
 }
 
-t_stack	*find_node(t_stack *lst, int nb)
+void	sort_stack(t_stack **a, t_stack **b)
 {
-	t_stack	*stack;
-
-	stack = lst;
-	while (stack->nb != nb)
-		stack = stack->next;
-	return (stack);
+	if (!is_sorted(*a))
+	{
+		sort_b(a, b);
+		sort_three_a(a);
+		sort_a(a, b);
+		last_sort(a);
+	}
 }

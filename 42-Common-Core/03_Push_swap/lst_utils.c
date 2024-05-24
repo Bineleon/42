@@ -6,19 +6,16 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 21:33:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/22 18:53:20 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:46:46 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-t_stack	*ft_stacknew(int nb)
+t_stack	*ft_stacknew(long nb)
 {
 	t_stack	*new;
-	
-	// new = NULL;
-	// if (!nb)
-	// 	return (NULL);
+
 	new = malloc(1 * sizeof(t_stack));
 	if (!new)
 		return (NULL);
