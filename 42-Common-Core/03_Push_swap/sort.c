@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:52:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 17:20:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/26 17:21:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_a(t_stack **a, t_stack **b)
 		prep_stack_b(b, a);
 		cheapest = find_cheapest(*b);
 		b_and_target_to_top(b, cheapest, a);
-		push_b(b, a);
+		push_a(b, a);
 	}
 }
 
@@ -44,7 +44,7 @@ void	sort_b(t_stack **a, t_stack **b)
 			if (current->segment == seg && current->is_cheapest)
 			{
 				node_to_top(a, current);
-				push_a(a, b);
+				push_b(a, b);
 				current = *a;
 				size--;
 			}

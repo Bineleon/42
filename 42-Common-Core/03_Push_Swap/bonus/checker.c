@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_moves.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 15:33:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/26 17:20:49 by neleon           ###   ########.fr       */
+/*   Created: 2024/05/26 18:23:56 by neleon            #+#    #+#             */
+/*   Updated: 2024/05/26 19:25:24 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "../push_swap.h"
 
-void	push_top_to_stack(t_stack **src, t_stack **dst)
+void	checker(t_stack **a, t_stack **b, char *line)
 {
-	t_stack	*tmp;
-
-	if (!src)
-		return ;
-	tmp = *src;
-	*src = (*src)->next;
-	if (!dst)
+	while (line)
 	{
-		*dst = tmp;
-		(*dst)->next = NULL;
+		mv_read_exe(a, b, line);
+		line = get_next_line(0);
 	}
+	if (!is_sorted(a))
+		ft_putstr_fd("KO\n", 1);
+	else if (*b)
+		ft_putstr_fd("KO\n", 1);
 	else
-	{
-		tmp->next = *dst;
-		*dst = tmp;
-	}
-}
-
-void	push_b(t_stack **a, t_stack **b)
-{
-	push_top_to_stack(a, b);
-	ft_printf("pb\n");
-}
-
-void	push_a(t_stack **b, t_stack **a)
-{
-	push_top_to_stack(b, a);
-	ft_printf("pa\n");
+		ft_putstr_fd("OK\n", 1);
 }
