@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:12:40 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/26 19:25:19 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/26 22:39:10 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	prep_main(int ac, char **av, t_stack **a)
 	joined_args = NULL;
 	check_empty_args(ac, av);
 	joined_args = join_arguments(ac, av);
-	validate_and_init_stack(&a, joined_args);
+	validate_and_init_stack(a, joined_args);
 	free(joined_args);
-	check_duplicate_in_stack(&a);
+	check_duplicate_in_stack(*a);
 }
 
 void	error_checker(void)
