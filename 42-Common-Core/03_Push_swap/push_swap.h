@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:43:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/26 19:15:41 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/28 23:43:02 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int					calculate_node_cost(t_stack *node, int stack_length);
 // a_to_b
 void				node_to_top(t_stack **a, t_stack *node);
 void				single_rotate(t_stack **stack, int count,
-					void (*move)(t_stack **));
+						void (*move)(t_stack **));
 void				double_rotate(t_stack **a, t_stack **b, int count,
-					void (*move)(t_stack **, t_stack **));
+						void (*move)(t_stack **, t_stack **));
 
 // b_to_a
 void				find_target_b_in_a(t_stack *b, t_stack *a);
@@ -140,13 +140,13 @@ int					ft_count_words(char const *s, char c);
 int					ft_min(int cost_a, int cost_b);
 
 // Bonus
-void				error_checker(void);
-void				swap_mv_read_exe(t_stack **a, t_stack **b, char *line);
-void				push_mv_read_exe(t_stack **a, t_stack **b, char *line);
-void				rotate_mv_read_exe(t_stack **a, t_stack **b, char *line);
-void				rev_rot_mv_read_exe(t_stack **a, t_stack **b, char *line);
-void				mv_read_exe(t_stack **a, t_stack **b, char *line);
-void				checker(t_stack **a, t_stack **b, char *line);
-void				prep_main(int ac, char **av, t_stack **a);
+void				error_checker(t_stack **a, t_stack **b, char **line);
+void				swap_mv_read_exe(t_stack **a, t_stack **b, char **line);
+void				push_mv_read_exe(t_stack **a, t_stack **b, char **line);
+void				rotate_mv_read_exe(t_stack **a, t_stack **b, char **line);
+void				rev_rot_mv_read_exe(t_stack **a, t_stack **b, char **line);
+void				mv_read_exe(t_stack **a, t_stack **b, char **line);
+void				checker(t_stack **a, t_stack **b, char **line);
+void				prep_main(int ac, char **av, t_stack **a, t_stack **b);
 
 #endif

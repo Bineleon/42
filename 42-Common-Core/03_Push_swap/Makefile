@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 18:22:16 by neleon            #+#    #+#              #
-#    Updated: 2024/05/26 23:21:28 by neleon           ###   ########.fr        #
+#    Updated: 2024/05/28 21:40:20 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC_BONUS		= main_checker.c checker_moves.c checker.c checker_utils.c\
 
 CC				= cc
 RM				= rm -f
-FLAGS			= -Wall -Wextra -g3
+FLAGS			= -Wall -Wextra -Werror -g3
 LIBFTDIR		= libft/
 OBJ_DIR			= obj/
 SRC_DIR			= ./
@@ -79,6 +79,6 @@ fclean: clean
 	${RM} ${NAME} ${BONUS}
 	@cd ${LIBFTDIR} && ${MAKE} fclean
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: all clean fclean re bonus

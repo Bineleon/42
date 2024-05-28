@@ -6,17 +6,23 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 22:20:47 by neleon            #+#    #+#             */
-/*   Updated: 2024/03/23 22:48:07 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/29 00:25:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int flag)
 {
 	static char	*chars_rd[FD_MAX];
 	char		*line;
 
+	if (flag == 1)
+	{
+		free(*chars_rd);
+		*chars_rd = NULL;
+		return (NULL);
+	}
 	line = NULL;
 	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -24,11 +30,6 @@ char	*get_next_line(int fd)
 	if (!chars_rd[fd])
 		return (NULL);
 	line = gnl_extract_line(&chars_rd[fd]);
-	if (!line)
-	{
-		free(line);
-		return (NULL);
-	}
 	return (line);
 }
 

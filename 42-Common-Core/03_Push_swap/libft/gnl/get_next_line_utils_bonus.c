@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 22:14:13 by neleon            #+#    #+#             */
-/*   Updated: 2024/02/28 20:08:09 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/29 00:24:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,7 @@ char	*gnl_substr(char *s, unsigned int start, size_t len)
 		return (NULL);
 	full_len = gnl_strlen(s);
 	if (start >= full_len)
-	{
-		substr = (char *)malloc(1);
-		if (!substr)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
-	}
+		return (NULL);
 	if (start + len > full_len)
 		len = full_len - start;
 	substr = (char *)malloc((len + 1) * sizeof(char));

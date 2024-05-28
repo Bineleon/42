@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:33:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/26 17:20:49 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/29 00:34:14 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_top_to_stack(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
-	if (!src)
+	if (!src || !*src || !dst || !*dst)
 		return ;
 	tmp = *src;
 	*src = (*src)->next;

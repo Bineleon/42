@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 19:19:26 by neleon            #+#    #+#              #
-#    Updated: 2024/05/23 16:31:25 by neleon           ###   ########.fr        #
+#    Updated: 2024/05/28 21:39:58 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ GNL				= gnl/get_next_line_bonus.c gnl/get_next_line_utils_bonus.c
 OBJS			= ${LIBFT:.c=.o} ${FT_PRINTF:.c=.o} ${GNL:.c=.o}
 
 CC 				= cc
-FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -Wall -Wextra -Werror -g3
 RM				= rm -f
 
 .c.o:
