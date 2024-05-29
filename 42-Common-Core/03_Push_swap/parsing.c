@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:22:31 by neleon            #+#    #+#             */
-/*   Updated: 2024/05/24 17:15:19 by neleon           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:02:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ char	*join_arguments(int ac, char **av)
 	{
 		temp = ft_strjoin(joined_args, " ");
 		free(joined_args);
-		joined_args = ft_strjoin(temp, av[i]);
+		if (av[i])
+			joined_args = ft_strjoin(temp, av[i]);
+		else
+			i++;
 		free(temp);
 		i++;
 	}
@@ -38,7 +41,7 @@ void	check_empty_args(int ac, char **av)
 {
 	char	*arg;
 
-	if (ac == 2)
+	if (ac >= 2)
 	{
 		arg = av[1];
 		while (*arg)
