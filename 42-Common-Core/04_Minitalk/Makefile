@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 14:46:15 by neleon            #+#    #+#              #
-#    Updated: 2024/06/03 12:13:44 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/04 17:54:28 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,22 @@ ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 	@echo "Compiling $< into ${<:.c=.o}"
 	${CC} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJ}
+${NAME_SERVER}: ${OBJ}
 	@echo "\nCreating libft.a\n"
 	make -C $(LIBFTDIR)
 	@echo "\nlibft DONE"
-	@echo "\nCreating nMinitalk\n"
-	${CC} ${FLAGS} ${OBJ} -o ${NAME} ${INCLUDE}
-	@echo "\nMinitalk DONE\n"
+	@echo "\nCreating Minitalk SERVER\n"
+	${CC} ${FLAGS} ${OBJ} -o ${NAME_SERVER} ${INCLUDE}
+	@echo "\nMinitalk SERVER DONE\n"
 
+# ${NAME_CLIENT}: ${OBJ}
+# 	@echo "\nCreating libft.a\n"
+# 	make -C $(LIBFTDIR)
+# 	@echo "\nlibft DONE"
+# 	@echo "\nCreating Minitalk CLIENT\n"
+# 	${CC} ${FLAGS} ${OBJ} -o ${NAME_CLIENT} ${INCLUDE}
+# 	@echo "\nMinitalk CLIENT DONE\n"
+	
 # ${BONUS}: ${OBJ} ${BONUS_OBJ}
 # 	@echo "\nCreating libft.a\n"
 # 	make -C $(LIBFTDIR)
@@ -62,16 +70,16 @@ ${NAME}: ${OBJ}
 # 	${CC} ${FLAGS} ${OBJ} ${BONUS_OBJ} -o ${BONUS} ${INCLUDE}
 # 	@echo "\nBonus DONE\n"
 
-all: ${NAME}
+all: ${NAME_SERVER} # ${NAME_CLIENT}
 
 # bonus: ${BONUS}
 
 clean:
-	${RM} -rf $(OBJ_DIR) ${NAME}
+	${RM} -rf $(OBJ_DIR) ${NAME_SERVER} ${NAME_CLIENT}
 	@cd ${LIBFTDIR} && ${MAKE} clean
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME_SERVER} ${NAME_CLIENT}
 	@cd ${LIBFTDIR} && ${MAKE} fclean
 
 re: fclean all

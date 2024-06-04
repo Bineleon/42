@@ -6,9 +6,15 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:40:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/03 11:41:30 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/04 17:52:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+
+int main(void)
+{
+    ft_printf("Server PID : ");
+    ft_printf("%d\n", getpid());
+}
