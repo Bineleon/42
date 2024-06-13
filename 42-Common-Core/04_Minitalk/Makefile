@@ -6,53 +6,101 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 14:46:15 by neleon            #+#    #+#              #
-#    Updated: 2024/06/12 19:08:54 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/13 19:47:19 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_SERVER = server
-NAME_CLIENT = client
 
-SRC_SERVER = server.c
-SRC_CLIENT = client.c
+# NAME			= server client
 
-OBJ_SERVER = $(SRC_SERVER:.c=.o)
-OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
+# SRC				= server.c client.c
 
-CC = cc
-RM = rm -f
-FLAGS = -Wall -Wextra -Werror
-LIBFTDIR = libft/
-INCLUDE = -L./libft -lft
+# CC				= cc
+# RM				= rm -f
+# FLAGS			= -Wall -Wextra -Werror
+# LIBFTDIR		= libft/
+# OBJ_DIR			= obj/
+# SRC_DIR			= ./
 
-%.o: %.c
+# OBJ				= ${addprefix ${OBJ_DIR},${SRC:.c=.o}}
+
+# INCLUDE			= -L./libft -lft
+
+# ${OBJ_DIR}%.o: ${SRC_DIR}%.c
+# 	@mkdir -p ${OBJ_DIR}
+# 	@echo "Compiling $< into $@"
+# 	@${CC} ${FLAGS} -c $< -o $@
+
+# ${NAME}: ${OBJ} 
+# 	@echo "\nCreating libft.a\n"
+# 	@make -C ${LIBFTDIR}
+# 	@echo "libft DONE"
+# 	@echo "\nCreating Minitalk \n"
+# 	@${CC} ${FLAGS} ${OBJ} -o ${NAME} ${INCLUDE}
+# 	@echo "Minitalk DONE\n"
+	
+# all: ${NAME}
+
+# clean:
+# 	@${RM} -rf ${OBJ_DIR} ${NAME}
+# 	@cd ${LIBFTDIR} && ${MAKE} clean
+
+# fclean: clean
+# 	@${RM} ${NAME}
+# 	@cd ${LIBFTDIR} && ${MAKE} fclean
+
+# re: fclean all
+
+# .PHONY: all clean fclean re
+
+NAME_SERVER		= server
+NAME_CLIENT		= client
+
+SRC_SERVER		= server.c
+SRC_CLIENT		= client.c
+
+CC				= cc
+RM				= rm -f
+FLAGS			= -Wall -Wextra -Werror
+LIBFTDIR		= libft/
+OBJ_DIR			= obj/
+SRC_DIR			= ./
+
+OBJ_SERVER		= ${addprefix ${OBJ_DIR},${SRC_SERVER:.c=.o}}
+OBJ_CLIENT		= ${addprefix ${OBJ_DIR},${SRC_CLIENT:.c=.o}}
+
+INCLUDE			= -L./libft -lft
+
+${OBJ_DIR}%.o: ${SRC_DIR}%.c
+	@mkdir -p ${OBJ_DIR}
 	@echo "Compiling $< into $@"
 	@${CC} ${FLAGS} -c $< -o $@
 
-all: ${NAME_SERVER} ${NAME_CLIENT}
-
+${NAME_CLIENT}: ${OBJ_CLIENT}
+	@echo "\nCreating libft.a client\n"
+	@make -C ${LIBFTDIR}
+	@echo "libft DONE"
+	@echo "\nCreating Minitalk CLIENT\n"
+	@${CC} ${FLAGS} ${OBJ_CLIENT} -o ${NAME_CLIENT} ${INCLUDE}
+	@echo "Minitalk CLIENT DONE\n"
+	
 ${NAME_SERVER}: ${OBJ_SERVER}
-	@echo "\nCreating libft.a\n"
-	@make -C $(LIBFTDIR)
+	@echo "\nCreating libft.a server\n"
+	@make -C ${LIBFTDIR}
 	@echo "libft DONE"
 	@echo "\nCreating Minitalk SERVER\n"
 	@${CC} ${FLAGS} ${OBJ_SERVER} -o ${NAME_SERVER} ${INCLUDE}
 	@echo "Minitalk SERVER DONE\n"
 
-${NAME_CLIENT}: ${OBJ_CLIENT}
-	@echo "Creating libft.a\n"
-	@make -C $(LIBFTDIR)
-	@echo "libft DONE"
-	@echo "\nCreating Minitalk CLIENT\n"
-	@${CC} ${FLAGS} ${OBJ_CLIENT} -o ${NAME_CLIENT} ${INCLUDE}
-	@echo "Minitalk CLIENT DONE\n"
+	
+all: ${NAME_SERVER} ${NAME_CLIENT}
 
 clean:
-	${RM} ${OBJ_SERVER} ${OBJ_CLIENT}
+	@${RM} -rf ${OBJ_DIR} ${NAME_CLIENT} ${NAME_SERVER}
 	@cd ${LIBFTDIR} && ${MAKE} clean
 
 fclean: clean
-	${RM} ${NAME_SERVER} ${NAME_CLIENT}
+	@${RM} ${NAME_SERVER} ${NAME_CLIENT}
 	@cd ${LIBFTDIR} && ${MAKE} fclean
 
 re: fclean all
