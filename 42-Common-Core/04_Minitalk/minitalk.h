@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:37:15 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/03 11:39:21 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/12 11:10:09 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #define MINITALK_H
 
 # include "libft/ft_printf/srcs/ft_printf.h"
-# include "libft/gnl/get_next_line_bonus.h"
 # include "libft/libft/libft.h"
+# include <signal.h>
 
+#define MAX_ATTEMPTS 50
+#define ATTEMPT_DELAY 100
 
 #endif

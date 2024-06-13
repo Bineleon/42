@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 19:19:26 by neleon            #+#    #+#              #
-#    Updated: 2024/05/28 21:39:58 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/12 18:51:13 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT			= libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c 
 				libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c\
 				libft/ft_lstlast.c libft/ft_lstadd_back.c libft/ft_lstdelone.c\
 				libft/ft_lstclear.c libft/ft_lstiter.c libft/ft_lstmap.c
-				
+
 FT_PRINTF		= ft_printf/srcs/ft_printf.c ft_printf/srcs/ft_puttxt.c ft_printf/srcs/ft_putnbr.c ft_printf/srcs/ft_puthex.c
 
 GNL				= gnl/get_next_line_bonus.c gnl/get_next_line_utils_bonus.c
@@ -34,10 +34,10 @@ FLAGS			= -Wall -Wextra -Werror -g3
 RM				= rm -f
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
-		ar -rcs ${NAME} ${OBJS}
+		@ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 
@@ -45,8 +45,8 @@ clean:
 		${RM} ${OBJS}
 
 fclean:    clean
-		${RM} ${NAME} 
-        
+		${RM} ${NAME}
+
 re:     fclean all
 
 .PHONY: all clean fclean re bonus
