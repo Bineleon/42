@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:41:02 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/13 19:22:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/14 17:40:29 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	s_handler(int signum, siginfo_t *info, void *context)
 		ft_printf("\033[1;32mOH yeah, server got your message\033[0m");
 		ft_printf("\033[1;32m and it's %d byte(s) fat\033[0m\n", i / 8);
 	}
+	else if (signum == SIGINT)
+		exit(EXIT_SUCCESS);
 }
 
 int	char_to_bin(char c, int pid)

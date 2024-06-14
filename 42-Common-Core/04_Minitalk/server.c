@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:40:58 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/13 19:16:22 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/14 17:56:25 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	bin_to_char(int signum, char *c)
 		*c = (*c << 1) | 1;
 	else if (signum == SIGUSR2)
 		*c <<= 1;
+	else if (signum == SIGINT)
+		exit(EXIT_SUCCESS);
 }
 
 void	sig_handler(int signum, siginfo_t *info, void *context)
@@ -70,26 +72,22 @@ void	welcome_message(void)
 	ft_printf(" \033[1;31m*                                        *\033[0m\n");
 	ft_printf(" \033[1;32m*  Hello hello and welcome dear visitors *\033[0m\n");
 	ft_printf(" \033[1;33m*                    *                   *\033[0m\n");
-	sleep(3);
+	sleep(2);
 	ft_printf(" \033[1;36m*                                        *\033[0m\n");
 	ft_printf(" \033[1;32m*         You feel chatty today ?        *\033[0m\n");
 	ft_printf(" \033[1;35m*                    *                   *\033[0m\n");
-	sleep(3);
-	ft_printf(" \033[1;33m*                                        *\033[0m\n");
-	ft_printf(" \033[1;32m*             I know you are !           *\033[0m\n");
-	ft_printf(" \033[1;36m*                    *                   *\033[0m\n");
-	sleep(3);
+	sleep(2);
 	ft_printf(" \033[1;34m*                                        *\033[0m\n");
 	ft_printf(" \033[1;32m* And I bet you wanna get my server PID, *\033[0m\n");
 	ft_printf(" \033[1;32m*              n'est-ce pas?             *\033[0m\n");
 	ft_printf(" \033[1;31m*                    *                   *\033[0m\n");
-	sleep(3);
+	sleep(2);
 	ft_printf(" \033[1;33m*                                        *\033[0m\n");
 	ft_printf(" \033[1;32m*         Well...here...it...is          *\033[0m\n");
 	ft_printf(" \033[1;36m*                    *                   *\033[0m\n");
-	sleep(3);
+	sleep(2);
 	print_border();
-	ft_printf("\n\033[1;31m        *****  PID : %d  *****\033[0m\n", getpid());
+	ft_printf("\n\033[1;31m         *****  PID : %d  *****\033[0m\n", getpid());
 }
 
 int	main(void)
@@ -110,6 +108,7 @@ int	main(void)
 		ft_printf("Oops! Sigaction error");
 		return (1);
 	}
+	sigaction(SIGINT, &sa, NULL);
 	while (1)
 		pause();
 	return (0);

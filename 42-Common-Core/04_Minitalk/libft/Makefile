@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 19:19:26 by neleon            #+#    #+#              #
-#    Updated: 2024/06/12 18:51:13 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/14 16:33:28 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,7 @@ LIBFT			= libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c 
 
 FT_PRINTF		= ft_printf/srcs/ft_printf.c ft_printf/srcs/ft_puttxt.c ft_printf/srcs/ft_putnbr.c ft_printf/srcs/ft_puthex.c
 
-GNL				= gnl/get_next_line_bonus.c gnl/get_next_line_utils_bonus.c
-
-OBJS			= ${LIBFT:.c=.o} ${FT_PRINTF:.c=.o} ${GNL:.c=.o}
+OBJS			= ${LIBFT:.c=.o} ${FT_PRINTF:.c=.o}
 
 CC 				= cc
 FLAGS			= -Wall -Wextra -Werror -g3
@@ -39,13 +37,13 @@ RM				= rm -f
 ${NAME}:${OBJS}
 		@ar -rcs ${NAME} ${OBJS}
 
-all:    ${NAME}
+all:    @${NAME}
 
 clean:
-		${RM} ${OBJS}
+		@${RM} ${OBJS}
 
 fclean:    clean
-		${RM} ${NAME}
+		@${RM} ${NAME}
 
 re:     fclean all
 
