@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:41:02 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/14 17:40:29 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:31:39 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ void	s_handler(int signum, siginfo_t *info, void *context)
 	else if (signum == SIGUSR1)
 	{
 		ft_printf("\033[1;32mOH yeah, server got your message\033[0m");
-		ft_printf("\033[1;32m and it's %d byte(s) fat\033[0m\n", i / 8);
+		if (i / 8 > 100)
+			ft_printf("\033[1;32m and it's a big one too: %d bytes fat 😱\033[0m\n", i / 8);
+		else
+			ft_printf("\033[1;32m but it's so small, only %d byte(s)🤏🥺\033[0m\n", i / 8);
 	}
+			
 	else if (signum == SIGINT)
 		exit(EXIT_SUCCESS);
 }
@@ -61,12 +65,20 @@ int	char_to_bin(char c, int pid)
 	return (0);
 }
 
-void	args_error(int ac)
+void	args_error(int ac, int pid)
 {
+	if (pid < 0)
+	{
+		ft_printf("\033[1;33mHep hep hep!!\033[0m");
+		ft_printf("\033[1;33m I'm not falling for that 💩!\n\033[0m");
+		ft_printf("\033[1;33mTry again with a valid PID babe!\n\033[0m");
+		exit(EXIT_FAILURE);
+	}
 	if (ac != 3)
 	{
 		ft_printf("\033[1;35mHep hep hep!!\033[0m");
 		ft_printf("\033[1;35m You need to put 2 args, not %d\n\033[0m", ac - 1);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -90,12 +102,8 @@ int	main(int ac, char **av)
 	int					byte_index;
 
 	byte_index = 0;
-	if (ac != 3)
-	{
-		args_error(ac);
-		return (1);
-	}
-	pid = atoi(av[1]);
+	pid = ft_atoi(av[1]);
+	args_error(ac, pid);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = s_handler;

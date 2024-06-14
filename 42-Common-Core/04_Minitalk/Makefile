@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 14:46:15 by neleon            #+#    #+#              #
-#    Updated: 2024/06/14 17:37:14 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/14 19:09:43 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ $(OBJ_DIR)%.o: $(SRC_DIR)/%.c
 
 server: $(OBJ_DIR)server.o ${LIBFT}
 	@$(CC) $(CFLAGS) $(OBJ_DIR)server.o ${LIBFT} -o server
-	@echo "$(GREEN)Server : DONE!$(RESET)"
+	@echo "$(GREEN)Server     : DONE!$(RESET)"
 
 client: $(OBJ_DIR)client.o ${LIBFT}
 	@$(CC) $(CFLAGS) $(OBJ_DIR)client.o ${LIBFT} -o client
-	@echo "$(GREEN)Client : DONE!$(RESET)"
+	@echo "$(GREEN)Client     : DONE!$(RESET)"
 
 ${LIBFT}:
 	@$(MAKE) --no-print-directory -C $(LIBFTDIR)
