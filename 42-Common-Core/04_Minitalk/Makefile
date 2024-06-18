@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 14:46:15 by neleon            #+#    #+#              #
-#    Updated: 2024/06/17 18:33:31 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/18 12:04:09 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ GREEN = \033[0;32m\e[1m
 RESET = \e[0m\033[0m
 
 CC = cc
-CFLAGS = -Wall -Wextra # -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = server client
 
 SRC_DIR = .
