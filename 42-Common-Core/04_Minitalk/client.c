@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:41:02 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/14 19:31:39 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/17 18:33:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	s_handler(int signum, siginfo_t *info, void *context)
 		else
 			ft_printf("\033[1;32m but it's so small, only %d byte(s)🤏🥺\033[0m\n", i / 8);
 	}
-			
 	else if (signum == SIGINT)
 		exit(EXIT_SUCCESS);
 }

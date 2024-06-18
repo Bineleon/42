@@ -6,16 +6,15 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 14:46:15 by neleon            #+#    #+#              #
-#    Updated: 2024/06/14 19:09:43 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/17 18:33:31 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Variables de couleur
 GREEN = \033[0;32m\e[1m
 RESET = \e[0m\033[0m
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra # -Werror
 NAME = server client
 
 SRC_DIR = .
@@ -52,7 +51,7 @@ client: $(OBJ_DIR)client.o ${LIBFT}
 ${LIBFT}:
 	@$(MAKE) --no-print-directory -C $(LIBFTDIR)
 
-clean: 
+clean:
 	@${RM} $(OBJ_DIR)
 	@${MAKE} --no-print-directory -C $(LIBFTDIR) fclean
 	@echo "$(GREEN)Clean      : DONE!$(RESET)"
@@ -151,11 +150,11 @@ re: fclean all
 # ${NAME_SERVER}: ${OBJ_SERVER}
 # 	make -C ${LIBFTDIR}
 # 	${CC} ${FLAGS} ${OBJ_SERVER} -o ${NAME_SERVER} ${INCLUDE}
-	
+
 # ${NAME_CLIENT}: ${OBJ_CLIENT}
 # 	make -C ${LIBFTDIR}
 # 	${CC} ${FLAGS} ${OBJ_CLIENT} -o ${NAME_CLIENT} ${INCLUDE}
-	
+
 # all: ${NAME_FULL}
 
 # clean:
@@ -200,7 +199,7 @@ re: fclean all
 # 	@echo "\nCreating Minitalk CLIENT\n"
 # 	@${CC} ${FLAGS} ${OBJ_CLIENT} -o ${NAME_CLIENT} ${INCLUDE}
 # 	@echo "Minitalk CLIENT DONE\n"
-	
+
 # ${NAME_SERVER}: ${OBJ_SERVER}
 # 	@echo "\nCreating libft.a server\n"
 # 	@make -C ${LIBFTDIR}
@@ -209,7 +208,7 @@ re: fclean all
 # 	@${CC} ${FLAGS} ${OBJ_SERVER} -o ${NAME_SERVER} ${INCLUDE}
 # 	@echo "Minitalk SERVER DONE\n"
 
-	
+
 # all: ${NAME_SERVER} ${NAME_CLIENT}
 
 # clean:
