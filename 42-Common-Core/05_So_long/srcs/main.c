@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:53:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/26 12:59:56 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/26 23:48:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int main(int ac, char **av)
 	// void	*mlx_ptr;
 	// void	*win_ptr;
     int     fd_map;
+	t_map	*map;
 
     fd_map = get_map_fd(av[1]);
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (-1);	
 	if (ac != 2)
 	{
 		ft_putstr_fd("\033[1;35mHep hep hep!!\033[0m", 2);
@@ -26,11 +30,16 @@ int main(int ac, char **av)
 	}
 	else if (ac == 2)
 	{
-        if (is_valid_map(fd_map, NULL))
-            printf("Map is valid");
-        else
-            printf("Unvalid map");
-
+		map->hight = 0;
+		map_size(fd_map, &map->lenght, &map->hight);
+		printf("Map lenght : %d\n", map->lenght);
+		printf("Map hight  : %d\n", map->hight);
+		// printf("LINE COUNT : %d\n", count_lines(fd_map, av[1]));
+		
+        // if (is_valid_wall(fd_map))
+        //     printf("Map is valid\n");
+        // else
+        //     printf("Unvalid map\n");
 		// map_cpy(av[1]);
 		// mlx_ptr = mlx_init();
 		// if (!mlx_ptr)
