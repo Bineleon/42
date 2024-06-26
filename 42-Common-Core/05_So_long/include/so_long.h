@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/26 00:23:57 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/26 12:59:36 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef WALL
-#  define WALL "'"
+#  define WALL '\''
 # endif
 
 # ifndef PLAYER
@@ -57,5 +57,6 @@ typedef struct s_map
 char		**map_cpy(int map_fd);
 int			get_map_fd(char *map_file);
 int			is_valid_map(int map_fd, t_map *map);
+int			is_valid_wall_line(char *line);
 
 #endif
