@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/27 00:30:16 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 00:44:55 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,84 @@ int	map_len(char *line)
 	int	count;
 
 	count = 0;
-	while (line[count -1])
+	while (line[count] && line[count] != '\n')
 		count++;
 	return (count);
 }
 
-void	map_size(int map_fd, int *len, int *high)
+void map_size(char *av, t_map *map)
 {
-	char	*line;
-	
-	line = get_next_line(map_fd, 0);
-	if (!line)
-		return ;
-	*high = 1;
-	*len = map_len(line);
-	while (line)
-	{
-		if (map_len(line) != *len)
+    char	*line;
+	int		map_fd;
+
+	map_fd = open(av, O_RDONLY);
+    line = get_next_line(map_fd, 0);
+    if (!line)
+        return;
+    map->col_count = map_len(line);
+    while (line && line[0] != '\n') {
+        if (map_len(line) != map->col_count)
 		{
-			line = NULL;
-			free(line);
-			return;
-		}
-		*high += 1;
-		free(line);
-		get_next_line(map_fd, 0);
-	}
-	line = NULL;
-	free(line);
+            free(line);
+            line = NULL;
+            ft_putstr_fd("Wrong map format\n", 2);
+            exit(1);
+        }
+        map->line_count += 1;
+        free(line);
+        line = NULL;
+        line = get_next_line(map_fd, 0);
+    }
+    free(line);
+    line = NULL;
+    get_next_line(map_fd, 1);
+	close(map_fd);
 }
 
-int	is_valid_middle_wall(char *line)
+char **map_cpy(int map_fd, t_map *map)
 {
-	int	i;
+    char *line;
+    char **map_copy;
+    int i;
 
-	i = 0;
-	if (!line)
-		return (-1);
-	if (line[i] != WALL)
-		return (0);
-	while (line[i] - 1)
-		i++;
-	if (line[i] != WALL)
-		return (0);
-	return (1);
+    i = 0;
+    line = NULL;
+    map_copy = NULL;
+    map_copy = (char **)malloc((map->line_count + 1) * sizeof(char *));
+    if (!map_copy)
+        return NULL;
+    line = get_next_line(map_fd, 0);
+    if (!line)
+        return NULL;
+    while (line)
+	{
+        map_copy[i] = ft_strdup(line);
+        map_copy[i][map->col_count] = '\0';
+        free(line);
+        line = get_next_line(map_fd, 0);
+        i++;
+    }
+    map_copy[i] = NULL;
+    free(line);
+    line = NULL;
+    return (get_next_line(map_fd, 1), map_copy);
 }
+
+// int	is_valid_middle_wall(char *line)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (!line)
+// 		return (-1);
+// 	if (line[i] != WALL)
+// 		return (0);
+// 	while (line[i] - 1)
+// 		i++;
+// 	if (line[i] != WALL)
+// 		return (0);
+// 	return (1);
+// }
 
 // int	is_valid_wall(int map_fd)
 // {

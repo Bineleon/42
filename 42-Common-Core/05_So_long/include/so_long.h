@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/26 23:53:24 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 00:41:27 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../mlx/mlx.h"
 # include <fcntl.h>
 
-///////////////// Macro /////////////////
+/////////////////  Macro  /////////////////
 
 # ifndef WALL
 #  define WALL '\''
@@ -52,13 +52,13 @@ typedef struct s_map
 	int	collec;
 	int	exit;
 	int	player;
-	int	hight;
-	int	lenght;
+	int	line_count;
+	int	col_count;
 }		t_map;
 
 ///////////////// Check_map /////////////////
 
-char	**map_cpy(int map_fd);
+char	**map_cpy(int map_fd, t_map *map);
 int		get_map_fd(char *map_file);
 int		is_valid_map(int map_fd, t_map *map);
 int		is_valid_top_down_wall(char *line, int *col_count);
@@ -67,7 +67,12 @@ int		is_valid_wall(int map_fd);
 int		count_lines(int map_fd, char *map);
 void	count_objects(char *line, int *player, int *exit, int *collec);
 
-void	map_size(int map_fd, int *len, int *high);
+void	map_size(char *av, t_map *map);
 int		map_len(char *line);
 
+/////////////////  Utils   /////////////////
+
+t_map	*ft_mapnew(long line_count, long col_count);
+void	free_map(t_map *map);
+void	malloc_map(char **map, int line_count);
 #endif

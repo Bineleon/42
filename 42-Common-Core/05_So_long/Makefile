@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/06/26 21:19:48 by neleon           ###   ########.fr        #
+#    Updated: 2024/06/27 23:01:31 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ RM				= rm -rf
 SRC_DIR			= ./srcs
 OBJ_DIR			= ./objs/
 
-SRCS			= srcs/main.c srcs/check_map.c
+SRCS			= srcs/main.c srcs/check_map.c srcs/utils.c
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 
-OUTPUT_LEAKS	= valgrind-out.txt
+# OUTPUT_LEAKS	= valgrind-out.txt
 
 LIBFTDIR		= ./libft/
 INCLUDE 		= -L./libft -lft
@@ -44,7 +44,7 @@ else ifeq ($(UNAME), FreeBSD)
 else
 	CC = cc
 	LFLAGS += -lbsd -lXext -lX11 -lm
-	CFLAGS += -D LINUX -fsanitize=leak
+	CFLAGS += -D LINUX 
 endif
 
 ${OBJ_DIR}%.o: ${SRC_DIR}/%.c
@@ -58,7 +58,7 @@ ${OBJ_DIR}%.o: ${SRC_DIR}/%.c
 ${NAME}: ${OBJS}
 	@${MAKE} --no-print-directory -C ${LIBFTDIR}
 	@echo "${GREEN}Libft       : DONE!${RESET}"
-	@${CC} ${FLAGS} ${OBJS} ${LFLAGS} ${LIBFT} -o ${NAME} ${INCLUDE}
+	@${CC} ${CFLAGS} ${OBJS} ${LFLAGS} ${LIBFT} -o ${NAME} ${INCLUDE}
 	@echo "${GREEN}So_long     : DONE!${RESET}"
 	
 all: ${NAME}
