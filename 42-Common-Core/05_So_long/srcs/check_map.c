@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 02:08:42 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 16:05:45 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	get_map_fd(char *map_file)
 	fd = open(map_file, O_RDONLY);
 	return (fd);
 }
-
 
 int	map_len(char *line)
 {
@@ -55,8 +54,7 @@ void	map_size(char *av, t_map *map)
 		line = NULL;
 		line = get_next_line(map_fd, 0);
 	}
-	free(line);
-	line = NULL;
+	free_line(line);
 	get_next_line(map_fd, 1);
 	close(map_fd);
 }
@@ -145,7 +143,6 @@ int	is_valid_format(int map_fd, t_map **map)
 		return (0);
 	}
 	printf("line_count :  % d\n", (*map)->line_count);
-
 	while (i < (*map)->line_count - 1 && line[0] != '\n')
 	{
 		printf("while line_count :  % d\n", i);
@@ -157,6 +154,9 @@ int	is_valid_format(int map_fd, t_map **map)
 			line = NULL;
 			return (0);
 		}
+        if (i == (*map)->line_count - 2)
+            if (!is_valid_top_down_wall(line, &(*map)->col_count))
+	 	        return (0);
 		free(line);
 		line = get_next_line(map_fd, 0);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 02:25:18 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 15:55:40 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	free_map(t_map *map)
 	map->line_count = 0;
 	map->col_count = 0;
 	free(map);
+}
+
+void    free_line(char *line)
+{
+    free(line);
+	line = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 02:23:27 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 15:56:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int		map_len(char *line);
 
 void	ft_mapnew(t_map *map);
 void	free_map(t_map *map);
+void	free_line(char *line);
 void	malloc_map(char **map, int line_count);
 #endif
