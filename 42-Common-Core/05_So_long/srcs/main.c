@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:53:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 02:26:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 19:07:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int main(int ac, char **av)
     fd_map = open(av[1], O_RDONLY);
     if (fd_map < 0)
 	{
-        printf("Error opening file");
+        ft_putstr_fd("Error opening file", 2);
         return 1;
     }
 
     map = malloc(sizeof(t_map));
     if (!map)
 	{
-        printf("Error allocating memory");
+        ft_putstr_fd("Error allocating memory", 2);
         close(fd_map);
         return 1;
     }
@@ -47,7 +47,7 @@ int main(int ac, char **av)
 	map->exit = 0;
 	map->player = 0;
 	map_size(av[1], map);
-	if(is_valid_format(fd_map, &map))
+	if(is_valid_map(fd_map, &map))
 	{
 		printf("Map valid\n");
 		printf("\n\n\nplayers : %d\n\n\n", map->player);

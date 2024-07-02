@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 16:05:45 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 23:52:30 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,16 @@ char	**map_cpy(int map_fd, t_map *map)
 
 int	is_valid_top_down_wall(char *line, int *col_count)
 {
-	while (line[*col_count] - 1)
+	int	i;
+
+	i = 0;
+	while (i < *col_count)
 	{
-		if (line[*col_count] != WALL)
-			return (1);
-		*col_count += 1;
+		if (line[i] != WALL)
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	is_valid_middle_wall(char *line, int col_count, t_map **map)
@@ -107,10 +110,12 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 	if (!line)
 		return (-1);
 	if (line[0] != WALL || line[col_count - 1] != WALL)
+	{
+		printf("ICI\n");
 		return (0);
+	}
 	while (i < col_count)
 	{
-		printf("i = % d, line[i] : %c\n", i, line[i]);
 		if (line[i] != PLAYER && line[i] != WALL && line[i] != PATH
 			&& line[i] != COLLEC && line[i] != EXIT)
 		{
@@ -143,39 +148,44 @@ int	is_valid_format(int map_fd, t_map **map)
 		return (0);
 	}
 	printf("line_count :  % d\n", (*map)->line_count);
-	while (i < (*map)->line_count - 1 && line[0] != '\n')
+	while (i <= (*map)->line_count - 1 && line[0] != '\n')
 	{
 		printf("while line_count :  % d\n", i);
-		if (!is_valid_middle_wall(line, (*map)->col_count, map)
-			|| !is_valid_top_down_wall(line, &(*map)->col_count))
+		printf("line : %s\n", line);
+		if (!is_valid_middle_wall(line, (*map)->col_count, map))
 		{
 			printf("ERROR line %d\n", i);
+			printf("ERROR line %s\n", line);
 			free(line);
 			line = NULL;
 			return (0);
 		}
-        if (i == (*map)->line_count - 2)
+        if (i == (*map)->line_count - 1)
             if (!is_valid_top_down_wall(line, &(*map)->col_count))
 	 	        return (0);
 		free(line);
 		line = get_next_line(map_fd, 0);
 		i++;
 	}
-	// line = get_next_line(map_fd, 0);
-	// if (!is_valid_top_down_wall(line, &(*map)->col_count))
-	// 	return (0);
 	free(line);
 	line = NULL;
 	get_next_line(map_fd, 1);
 	return (1);
 }
 
-// void	count_objects(char *line, int *player, int *exit, int *collec)
-// {
-// 	if (*line == PLAYER)
-// 		*player++;
-// 	else if (*line == EXIT)
-// 		*exit++;
-// 	else if (*line == COLLEC)
-// 		*collec++;
-// }
+int	is_valid_obj_count(t_map *map)
+{
+	if (map->player != 1 || map->exit != 1)
+		return (0);
+	if (map->collec < 1)
+		return (0);
+	return (1);
+}
+
+int	is_valid_map(int map_fd, t_map **map)
+{
+	if (!is_valid_format(map_fd, map) || !is_valid_obj_count(*map))
+		return (0);
+	return (1);
+}
+

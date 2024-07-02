@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 15:56:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/06/28 19:07:24 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_map
 
 char	**map_cpy(int map_fd, t_map *map);
 int		get_map_fd(char *map_file);
-int		is_valid_map(int map_fd, t_map *map);
+int		is_valid_map(int map_fd, t_map **map);
 int		is_valid_top_down_wall(char *line, int *col_count);
 int		is_valid_middle_wall(char *line, int col_count, t_map **map);
 int		is_valid_format(int map_fd, t_map **map);
