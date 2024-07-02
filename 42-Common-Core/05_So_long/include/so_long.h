@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/02 15:50:01 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/02 18:29:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../libft/gnl/get_next_line_bonus.h"
 # include "../libft/libft/libft.h"
 # include "../mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 
 /////////////////  Macro  /////////////////
@@ -59,6 +61,14 @@ typedef struct s_map
 	t_point	player_pos;
 }			t_map;
 
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*textures[5];
+	t_map	*map;
+}			t_data;
+
 ///////////////// Check_map /////////////////
 
 char		**map_cpy(int map_fd, t_map *map);
@@ -78,6 +88,7 @@ int			map_len(char *line);
 void		ft_mapnew(t_map *map);
 void		free_map(t_map *map);
 void		free_line(char *line);
+void		check_empty_line(char *line, int map_fd);
 void		malloc_map(char **map, int line_count);
 
 /////////////////  Parsing   /////////////////

@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/02 15:51:53 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/02 18:24:26 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,8 @@ RM				= rm -rf
 SRC_DIR			= ./srcs
 OBJ_DIR			= ./objs/
 
-SRCS			= srcs/main.c srcs/check_map.c srcs/utils.c srcs/parsing.c\
-				srcs/main_parsing.c\
+SRCS			= srcs/main.c srcs/main_mlx.c srcs/check_map.c srcs/utils.c\
+				srcs/parsing.c\
 
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 
