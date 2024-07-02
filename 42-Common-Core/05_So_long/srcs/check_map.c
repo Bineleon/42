@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/28 23:52:30 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/02 15:48:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,14 +155,15 @@ int	is_valid_format(int map_fd, t_map **map)
 		if (!is_valid_middle_wall(line, (*map)->col_count, map))
 		{
 			printf("ERROR line %d\n", i);
-			printf("ERROR line %s\n", line);
-			free(line);
-			line = NULL;
+			free_line(line);
 			return (0);
 		}
         if (i == (*map)->line_count - 1)
             if (!is_valid_top_down_wall(line, &(*map)->col_count))
+            {
+                free_line(line);
 	 	        return (0);
+            }
 		free(line);
 		line = get_next_line(map_fd, 0);
 		i++;
