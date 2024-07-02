@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/02 15:48:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/02 16:50:15 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ char	**map_cpy(int map_fd, t_map *map)
 	line = get_next_line(map_fd, 0);
 	if (!line)
 		return (NULL);
+
 	while (line)
 	{
+		printf("%s\n", line);
 		map_copy[i] = ft_strdup(line);
 		map_copy[i][map->col_count] = '\0';
 		free(line);
@@ -111,7 +113,6 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 		return (-1);
 	if (line[0] != WALL || line[col_count - 1] != WALL)
 	{
-		printf("ICI\n");
 		return (0);
 	}
 	while (i < col_count)
@@ -150,8 +151,8 @@ int	is_valid_format(int map_fd, t_map **map)
 	printf("line_count :  % d\n", (*map)->line_count);
 	while (i <= (*map)->line_count - 1 && line[0] != '\n')
 	{
-		printf("while line_count :  % d\n", i);
-		printf("line : %s\n", line);
+		// printf("while line_count :  % d\n", i);
+		// printf("line : %s\n", line);
 		if (!is_valid_middle_wall(line, (*map)->col_count, map))
 		{
 			printf("ERROR line %d\n", i);
