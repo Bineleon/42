@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/02 18:10:07 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/11 19:32:21 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void init_map(t_map *map)
+{
+    map->line_count = 0;
+	map->col_count = 0;
+	map->collec	= 0;
+	map->exit = 0;
+	map->player = 0;
+	map->ff_collec	= 0;
+	map->ff_exit = 0;
+}
 
 int	map_len(char *line)
 {

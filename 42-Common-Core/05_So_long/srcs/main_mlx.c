@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:12:46 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/11 19:24:09 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:11:27 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ int main(void)
 	return (0);
 }
 
-// int main(void)
-// {
-// 	void *mlx_ptr;
-// 	void *win_ptr;
+int main(void)
+{
+	void *mlx_ptr;
+	void *win_ptr;
 
-// 	mlx_ptr = mlx_init();
-// 	if (!mlx_ptr)
-// 		return (1);
-// 	win_ptr = mlx_new_window(mlx_ptr, 600, 400, "So_long baby");
-// 	if (!win_ptr)
-// 		return (free(mlx_ptr), 1);
-// 	mlx_loop(mlx_ptr);
-// 	mlx_destroy_window(mlx_ptr, win_ptr);
-// 	mlx_destroy_display(mlx_ptr);
-// 	free(mlx_ptr);
-// 	return (0);
-// }
+	mlx_ptr = mlx_init();
+	if (!mlx_ptr)
+		return (1);
+	win_ptr = mlx_new_window(mlx_ptr, 600, 400, "So_long baby");
+	if (!win_ptr)
+		return (free(mlx_ptr), 1);
+	mlx_loop(mlx_ptr);
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
+	return (0);
+}

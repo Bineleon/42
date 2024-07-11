@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/11 19:25:08 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:14:23 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_point
 	int		y;
 }			t_point;
 
+/////////////////  Structures  /////////////////
+
 typedef struct s_map
 {
 	int		line_count;
@@ -69,7 +71,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*textures[5];
+	void	*textures[6];
 	t_map	*map;
 }			t_data;
 
@@ -86,6 +88,7 @@ void		count_objects(char *line, int *player, int *exit, int *collec);
 
 void		map_size(char *av, t_map *map);
 int			map_len(char *line);
+void    init_map(t_map *map);
 
 /////////////////  Utils   /////////////////
 
@@ -94,6 +97,16 @@ void		free_map(t_map *map);
 void		free_line(char *line);
 void		check_empty_line(char *line, int map_fd);
 void		malloc_map(char **map, int line_count);
+
+/////////////////  Main_utils   /////////////////
+
+void *init_graphics();
+void check_arguments(int ac);
+int open_map_file(char *filename);
+t_map *allocate_map();
+char **validate_and_copy_map(int fd_map, t_map *map, char *filename);
+void validate_objects(t_map *map, char **map_copy);
+void free_resources(char **map_copy, t_map *map, int fd_map);
 
 /////////////////  Parsing   /////////////////
 
