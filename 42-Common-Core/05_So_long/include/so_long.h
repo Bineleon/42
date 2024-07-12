@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/11 20:14:23 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/12 22:23:05 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 #  define EXIT 'E'
 # endif
 
-# ifndef PATH
-#  define PATH ' '
+# ifndef FLOOR
+#  define FLOOR ' '
 # endif
 
 # ifndef IMG_SIZE
@@ -65,6 +65,7 @@ typedef struct s_map
 	int		ff_collec;
 	int		ff_exit;
 	t_point	player_pos;
+	char  **map;
 }			t_map;
 
 typedef struct s_data
@@ -72,38 +73,45 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*textures[6];
+	void  *ptr_img_collec;
+	void  *ptr_img_exit;
+	void  *ptr_img_char_left;
+	void  *ptr_img_char_right;
+	void  *ptr_img_wall;
+	void  *ptr_img_floor;
 	t_map	*map;
 }			t_data;
 
 ///////////////// Check_map /////////////////
 
-char		**map_cpy(int map_fd, t_map *map);
-int			get_map_fd(char *map_file);
-int			is_valid_map(int map_fd, t_map **map);
-int			is_valid_top_down_wall(char *line, int *col_count);
-int			is_valid_middle_wall(char *line, int col_count, t_map **map);
-int			is_valid_format(int map_fd, t_map **map);
-int			count_lines(int map_fd, char *map);
-void		count_objects(char *line, int *player, int *exit, int *collec);
+char	**map_cpy(int map_fd, t_map *map);
+int		get_map_fd(char *map_file);
+int		is_valid_map(int map_fd, t_map **map);
+int		is_valid_top_down_wall(char *line, int *col_count);
+int		is_valid_middle_wall(char *line, int col_count, t_map **map);
+int		is_valid_format(int map_fd, t_map **map);
+int		count_lines(int map_fd, char *map);
+void	count_objects(char *line, int *player, int *exit, int *collec);
 
-void		map_size(char *av, t_map *map);
-int			map_len(char *line);
+void	map_size(char *av, t_map *map);
+int		map_len(char *line);
 void    init_map(t_map *map);
 
 /////////////////  Utils   /////////////////
 
-void		ft_mapnew(t_map *map);
-void		free_map(t_map *map);
-void		free_line(char *line);
-void		check_empty_line(char *line, int map_fd);
-void		malloc_map(char **map, int line_count);
+void	ft_mapnew(t_map *map);
+void	free_map(t_map *map);
+void	free_line(char *line);
+void	check_empty_line(char *line, int map_fd);
+void	malloc_map(char **map, int line_count);
+void    init_data(t_data *game, t_map *map);
 
 /////////////////  Main_utils   /////////////////
 
 void *init_graphics();
 void check_arguments(int ac);
 int open_map_file(char *filename);
-t_map *allocate_map();
+t_map	*allocate_map();
 char **validate_and_copy_map(int fd_map, t_map *map, char *filename);
 void validate_objects(t_map *map, char **map_copy);
 void free_resources(char **map_copy, t_map *map, int fd_map);
@@ -113,5 +121,11 @@ void free_resources(char **map_copy, t_map *map, int fd_map);
 void		find_player_pos(t_map *map, char **map_cpy);
 void		flood_fill(char **map_copy, t_map *map, int x, int y);
 int			objs_are_reachable(t_map *map);
+
+/////////////////  Graphics_utils   /////////////////
+
+void	assign_img_ptr(t_data *game);
+void	init_win(t_data *game);
+void display_map(t_data *game);
 
 #endif

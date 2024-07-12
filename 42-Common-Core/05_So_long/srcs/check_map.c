@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/11 19:54:24 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/12 16:53:35 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 	}
 	while (i < col_count)
 	{
-		if (line[i] != PLAYER && line[i] != WALL && line[i] != PATH
+		if (line[i] != PLAYER && line[i] != WALL && line[i] != FLOOR
 			&& line[i] != COLLEC && line[i] != EXIT)
 		{
 			printf("ERROR obj col %d\n", i);

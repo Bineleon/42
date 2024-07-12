@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/11 19:32:21 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/12 21:56:16 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void init_map(t_map *map)
 {
-    map->line_count = 0;
+	map->line_count = 0;
 	map->col_count = 0;
 	map->collec	= 0;
 	map->exit = 0;
 	map->player = 0;
 	map->ff_collec	= 0;
 	map->ff_exit = 0;
+  map->map = NULL;
 }
 
 int	map_len(char *line)
@@ -79,6 +80,9 @@ char	**map_cpy(int map_fd, t_map *map)
 	map_copy = (char **)malloc((map->line_count + 1) * sizeof(char *));
 	if (!map_copy)
 		return (NULL);
+  map->map = (char **)malloc((map->line_count + 1) * sizeof(char *));
+	if (!map_copy)
+		return (NULL);
 	line = get_next_line(map_fd, 0);
 	if (!line || line[0] != WALL)
 	{
@@ -90,13 +94,16 @@ char	**map_cpy(int map_fd, t_map *map)
 	}
 	while (line)
 	{
-		printf("%s\n", line);
+    map->map[i] = ft_strdup(line);
+		printf("%s\n", map->map[i]);
 		map_copy[i] = ft_strdup(line);
+    map->map[i][map->col_count] = '\0';
 		map_copy[i][map->col_count] = '\0';
 		free(line);
 		line = get_next_line(map_fd, 0);
 		i++;
 	}
+  map->map[i] = NULL;
 	map_copy[i] = NULL;
 	if (line)
 		free_line(line);

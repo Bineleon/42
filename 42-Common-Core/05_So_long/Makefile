@@ -6,7 +6,7 @@
 #    By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/11 20:06:49 by bineleon         ###   ########.fr        #
+#    Updated: 2024/07/12 16:34:16 by bineleon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ SRC_DIR			= ./srcs
 OBJ_DIR			= ./objs/
 
 SRCS			= srcs/main.c srcs/main_mlx.c srcs/check_map.c srcs/utils.c\
-				srcs/parsing.c srcs/map_utils.c srcs/main_clear.c srcs/main_utils.c \
+				srcs/parsing.c srcs/map_utils.c srcs/main_clear.c srcs/main_utils.c\
+				srcs/graphics_utils.c\
 
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 

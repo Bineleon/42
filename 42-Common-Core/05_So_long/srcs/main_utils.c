@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/11 20:03:21 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/12 22:24:02 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void *init_graphics()
     if (!mlx_ptr)
     {
         ft_putstr_fd("Error initializing graphics", 2);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     return (mlx_ptr);
 }
@@ -30,8 +30,8 @@ void check_arguments(int ac)
     if (ac != 2)
     {
         ft_putstr_fd("\033[1;35mHep hep hep!!\033[0m", 2);
-        printf("\033[1;35m You need to put 1 args, not %d\n\033[0m", ac - 1);
-        exit(1);
+        ft_printf("\033[1;35m You need to put 1 args, not %d\n\033[0m", ac - 1);
+        exit(EXIT_FAILURE);
     }
 }
 int open_map_file(char *filename)
@@ -42,12 +42,12 @@ int open_map_file(char *filename)
     if (fd_map < 0)
     {
         ft_putstr_fd("Error opening file", 2);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     return (fd_map);
 }
 
-t_map *allocate_map()
+t_map  *allocate_map()
 {
     t_map *map;
 
@@ -55,7 +55,7 @@ t_map *allocate_map()
     if (!map)
     {
         ft_putstr_fd("Error allocating memory", 2);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     init_map(map);
     return (map);
@@ -101,9 +101,11 @@ void free_resources(char **map_copy, t_map *map, int fd_map)
     int i;
 
     i = 0;
+    (void) map;
+    (void) fd_map;
     while (map_copy[i])
         i++;
     free_malloc(map_copy, i);
-    free_map(map);
-    close(fd_map);
+    // free_map(map);
+    // close(fd_map);
 }
