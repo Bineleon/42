@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 19:06:06 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:35:53 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_win(t_data *game)
 	int win_y_size;
 
 	win_x_size = game->map->col_count * IMG_SIZE;
-	win_y_size = game->map->line_count * IMG_SIZE;
+	win_y_size = (game->map->line_count) * IMG_SIZE;
 	printf("/nICI init_win\n");
 	game->win_ptr = mlx_new_window(game->mlx_ptr, win_x_size, win_y_size, "So_long baby");
 	if (!game->win_ptr)

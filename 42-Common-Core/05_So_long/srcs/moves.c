@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 19:00:59 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:34:12 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int handle_key(int key, t_data *game)
         move_left(game);
     else if (key == KEY_RIGHT)
         move_right(game);
-    mlx_clear_window(game->mlx_ptr, game->win_ptr);
+    // mlx_clear_window(game->mlx_ptr, game->win_ptr);
     display_new_map(game, x_old, y_old);
     return (0);
 }
