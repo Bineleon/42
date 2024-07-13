@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 18:27:29 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:00:59 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ int handle_key(int key, t_data *game)
     int y_old = game->map->player_pos_y;
 
     printf("ICI handle_key\n");
-    if (key == KEY_UP)
+    if (key == XK_Escape)
+        clean(game);
+    else if (key == KEY_UP)
         move_up(game);
     else if (key == KEY_DOWN)
         move_down(game);

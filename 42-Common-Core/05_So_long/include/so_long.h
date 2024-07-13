@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/13 18:30:08 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:00:49 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	free_line(char *line);
 void	check_empty_line(char *line, int map_fd);
 void	malloc_map(char **map, int line_count);
 void    init_data(t_data *game, t_map *map);
+int	clean(t_data *game);
 
 /////////////////  Main_utils   /////////////////
 
@@ -105,6 +106,9 @@ void	assign_img_ptr(t_data *game);
 void	init_win(t_data *game);
 void display_map(t_data *game);
 void display_new_map(t_data *game, int x_old, int y_old);
+void update_player_position(t_data *game, int x_old, int y_old);
+void draw_tile(t_data *game, char tile, int x, int y);
+void draw_line(t_data *game, int y);
 
 /////////////////  Moves   /////////////////
 
@@ -114,5 +118,11 @@ void move_down(t_data *game);
 void move_left(t_data *game);
 void move_right(t_data *game);
 int handle_key(int key, t_data *game);
+
+/////////////////  Hooks   /////////////////
+int handle_key_release(int key, t_data *game);
+int handle_destroy(t_data *game);
+int	handle_keyrelease(int keysym, t_data *game);
+void setup_hooks(t_data *game);
 
 #endif
