@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/13 15:43:08 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:45:19 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void init_map(t_map *map)
 	map->player = 0;
 	map->ff_collec	= 0;
 	map->ff_exit = 0;
+  map->player_pos_x = 0;
+  map->player_pos_y = 0;
   map->map = NULL;
 }
 

@@ -6,7 +6,7 @@
 #    By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/12 16:34:16 by bineleon         ###   ########.fr        #
+#    Updated: 2024/07/13 18:32:32 by bineleon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ OBJ_DIR			= ./objs/
 
 SRCS			= srcs/main.c srcs/main_mlx.c srcs/check_map.c srcs/utils.c\
 				srcs/parsing.c srcs/map_utils.c srcs/main_clear.c srcs/main_utils.c\
-				srcs/graphics_utils.c\
+				srcs/graphics_utils.c srcs/moves.c srcs/handle_hooks.c\
 
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 

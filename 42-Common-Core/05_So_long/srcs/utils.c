@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 22:10:01 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:57:10 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void init_data(t_data *game, t_map *map)
 {
-	game->mlx_ptr = NULL;
-	// game->win_ptr = NULL;
-	game->ptr_img_collec = NULL;
+	  game->mlx_ptr = NULL;
+	  // game->win_ptr = NULL;
+	  game->ptr_img_collec = NULL;
   	game->ptr_img_exit = NULL;
   	game->ptr_img_char_left = NULL;
   	game->ptr_img_char_right = NULL;
   	game->ptr_img_wall = NULL;
   	game->ptr_img_floor = NULL;
-	game->map = map;
+    game->collected = 0;
+	  game->map = map;
 }
 
 void	ft_mapnew(t_map *map)

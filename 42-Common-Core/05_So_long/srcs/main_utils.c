@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 15:40:50 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:44:58 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char **validate_and_copy_map(int fd_map, t_map *map, char *filename)
         close(fd_map);
         exit(1);
     }
-    printf("\nICI\n");
     if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
         exit(EXIT_FAILURE);
     return (map_copy);
@@ -85,8 +84,9 @@ char **validate_and_copy_map(int fd_map, t_map *map, char *filename)
 
 void validate_objects(t_map *map, char **map_copy)
 {
+	printf("\nICI_valiate_object\n");
     find_player_pos(map, map_copy);
-    flood_fill(map_copy, map, map->player_pos.x, map->player_pos.y);
+    flood_fill(map_copy, map, map->player_pos_x, map->player_pos_y);
     printf("\n\n\ncollec : %d\n\n\n", map->ff_collec);
     printf("\n\n\nexit : %d\n\n\n", map->ff_exit);
     if (objs_are_reachable(map))

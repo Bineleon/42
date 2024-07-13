@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/13 15:29:02 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:30:08 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_map
 	int		exit;
 	int		ff_collec;
 	int		ff_exit;
-	t_point	player_pos;
+	int   player_pos_y;
+  int   player_pos_x;
 	char  **map;
 }			t_map;
 
@@ -54,6 +55,7 @@ typedef struct s_data
 	void  *ptr_img_char_right;
 	void  *ptr_img_wall;
 	void  *ptr_img_floor;
+  int   collected;
 	t_map	*map;
 }			t_data;
 
@@ -102,5 +104,15 @@ int			objs_are_reachable(t_map *map);
 void	assign_img_ptr(t_data *game);
 void	init_win(t_data *game);
 void display_map(t_data *game);
+void display_new_map(t_data *game, int x_old, int y_old);
+
+/////////////////  Moves   /////////////////
+
+void check_collectible(t_data *game, int y, int x);
+void move_up(t_data *game);
+void move_down(t_data *game);
+void move_left(t_data *game);
+void move_right(t_data *game);
+int handle_key(int key, t_data *game);
 
 #endif
