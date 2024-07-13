@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 22:23:05 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:29:02 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,18 @@
 # include "../libft/gnl/get_next_line_bonus.h"
 # include "../libft/libft/libft.h"
 # include "../mlx/mlx.h"
+# include "./constants.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 
-/////////////////  Macro  /////////////////
-
-# ifndef WALL
-#  define WALL '\''
-# endif
-
-# ifndef PLAYER
-#  define PLAYER 'P'
-# endif
-
-# ifndef COLLEC
-#  define COLLEC 'C'
-# endif
-
-# ifndef EXIT
-#  define EXIT 'E'
-# endif
-
-# ifndef FLOOR
-#  define FLOOR ' '
-# endif
-
-# ifndef IMG_SIZE
-#  define IMG_SIZE 75
-# endif
+/////////////////  Structures  /////////////////
 
 typedef struct s_point
 {
 	int		x;
 	int		y;
 }			t_point;
-
-/////////////////  Structures  /////////////////
 
 typedef struct s_map
 {

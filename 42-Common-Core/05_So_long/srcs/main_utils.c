@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/12 22:24:02 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:40:50 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char **validate_and_copy_map(int fd_map, t_map *map, char *filename)
 {
     char **map_copy;
 
+
     map_size(filename, map);
     if (is_valid_map(fd_map, &map))
         printf("Map valid\n");
@@ -76,6 +77,7 @@ char **validate_and_copy_map(int fd_map, t_map *map, char *filename)
         close(fd_map);
         exit(1);
     }
+    printf("\nICI\n");
     if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
         exit(EXIT_FAILURE);
     return (map_copy);

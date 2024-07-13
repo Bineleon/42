@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 21:56:16 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:43:08 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	**map_cpy(int map_fd, t_map *map)
 	char	*line;
 	char	**map_copy;
 	int		i;
+
 
 	i = 0;
 	line = NULL;

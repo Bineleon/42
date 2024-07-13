@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:00:34 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 22:22:50 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:44:02 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 //     return (0);
 // }
 
+int handle_key(int key, void *param)
+{
+    (void)param;
+    printf("Key pressed: %d\n", key);
+    return (0);
+}
+
 int main(int ac, char **av)
 {
 	int fd_map;
@@ -38,7 +45,7 @@ int main(int ac, char **av)
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
-	game.mlx_ptr = mlx_init();
+	game.mlx_ptr = mlx_ptr;
 	if (!game.mlx_ptr)
 		return (EXIT_FAILURE);
 
@@ -53,15 +60,15 @@ int main(int ac, char **av)
 		free(map);
 		return (EXIT_FAILURE);
 	}
+  printf("\nICI\n");
 	validate_objects(map, map_copy);
 	init_data(&game, map);
 	game.mlx_ptr = mlx_ptr;
 
 	assign_img_ptr(&game);
-  	printf("ICI\n");
 	init_win(&game);
 
-
+  mlx_key_hook(game.win_ptr, handle_key, NULL);
 	mlx_loop(game.mlx_ptr);
 
 	free_resources(map_copy, map, fd_map);
