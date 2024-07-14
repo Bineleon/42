@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 15:45:51 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 17:26:36 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,11 @@ void move_right(t_data *game)
 
 int handle_key(int key, t_data *game)
 {
-    int x_old = game->map->player_pos_x;
-    int y_old = game->map->player_pos_y;
+    int x_old;
+    int y_old;
 
-    printf("ICI handle_key\n");
+    x_old = game->map->player_pos_x;
+    y_old = game->map->player_pos_y;
     if (key == XK_Escape)
         clean(game);
     else if (key == KEY_UP)
@@ -91,9 +92,15 @@ int handle_key(int key, t_data *game)
     else if (key == KEY_DOWN)
         move_down(game);
     else if (key == KEY_LEFT)
+    {
+        game->current_img_char = game->ptr_img_char_left;
         move_left(game);
+    }
     else if (key == KEY_RIGHT)
+    {
+        game->current_img_char = game->ptr_img_char_right;
         move_right(game);
+    }
     // mlx_clear_window(game->mlx_ptr, game->win_ptr);
     display_new_map(game, x_old, y_old);
     return (0);

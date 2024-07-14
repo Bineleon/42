@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/14 15:25:24 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 17:31:58 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void init_data(t_data *game, t_map *map)
   	game->ptr_img_char_right = NULL;
   	game->ptr_img_wall = NULL;
   	game->ptr_img_floor = NULL;
+    game->current_img_char = NULL;
     game->collected = 0;
     game->player_steps = 0;
 	  game->map = map;

@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/14 15:51:39 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 17:56:47 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data
 	void  *ptr_img_char_right;
 	void  *ptr_img_wall;
 	void  *ptr_img_floor;
+  void  *current_img_char;
   int   collected;
   int   player_steps;
 	t_map	*map;
@@ -110,6 +111,8 @@ void display_new_map(t_data *game, int x_old, int y_old);
 void update_player_position(t_data *game, int x_old, int y_old);
 void draw_tile(t_data *game, char tile, int x, int y);
 void draw_line(t_data *game, int y);
+void display_header(t_data *game);
+void display_text(t_data *game, int x, int y, char *text);
 
 /////////////////  Moves   /////////////////
 

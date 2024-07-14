@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 16:01:57 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:52:17 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ void	assign_img_ptr(t_data *game)
 	game->ptr_img_char_right = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/character_right.xpm", &img_size, &img_size);
 	if (!game->ptr_img_char_right)
 		exit(EXIT_FAILURE);
-	game->ptr_img_collec = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/collec.xpm", &img_size, &img_size);
+  game->current_img_char = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/character_right.xpm", &img_size, &img_size);
+	if (!game->current_img_char)
+		exit(EXIT_FAILURE);
+	game->ptr_img_collec = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/collec2.xpm", &img_size, &img_size);
 	if (!game->ptr_img_collec)
 		exit(EXIT_FAILURE);
-	game->ptr_img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/exit.xpm", &img_size, &img_size);
+	game->ptr_img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/exit2.xpm", &img_size, &img_size);
 	if (!game->ptr_img_exit)
 		exit(EXIT_FAILURE);
 	game->ptr_img_floor = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/floor.xpm", &img_size, &img_size);
 	if (!game->ptr_img_floor)
 		exit(EXIT_FAILURE);
-	game->ptr_img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/wall.xpm", &img_size, &img_size);
+	game->ptr_img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/wall2.xpm", &img_size, &img_size);
 	if (!game->ptr_img_wall)
 		exit(EXIT_FAILURE);
 }
@@ -43,7 +46,7 @@ void	init_win(t_data *game)
 	int win_y_size;
 
 	win_x_size = game->map->col_count * IMG_SIZE;
-	win_y_size = (game->map->line_count) * IMG_SIZE;
+	win_y_size = (game->map->line_count + 1) * IMG_SIZE;
 	game->win_ptr = mlx_new_window(game->mlx_ptr, win_x_size, win_y_size, "Peaceful Pete & the mushroom quest");
 	if (!game->win_ptr)
 	{
@@ -69,23 +72,23 @@ void update_player_position(t_data *game, int x_old, int y_old)
 void draw_tile(t_data *game, char tile, int x, int y)
 {
     if (tile == WALL)
-        img_to_win(game, game->ptr_img_wall, x * IMG_SIZE, y * IMG_SIZE);
+        img_to_win(game, game->ptr_img_wall, x * IMG_SIZE, (y + 1) * IMG_SIZE);
     else if (tile == FLOOR)
-        img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, y * IMG_SIZE);
+        img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, (y + 1) * IMG_SIZE);
     else if (tile == PLAYER)
-        img_to_win(game, game->ptr_img_char_right, x * IMG_SIZE, y * IMG_SIZE);
+        img_to_win(game, game->current_img_char, x * IMG_SIZE, (y + 1) * IMG_SIZE);
     else if (tile == COLLEC)
-        img_to_win(game, game->ptr_img_collec, x * IMG_SIZE, y * IMG_SIZE);
+        img_to_win(game, game->ptr_img_collec, x * IMG_SIZE, (y + 1) * IMG_SIZE);
     else if (tile == EXIT)
     {
         if (game->map->collec == game->collected)
         {
-            ft_printf("\033[1;32m\e[5mPeaceful Pete finnaly got all the mushrooms 🥵 \e[0m\033[0m");
+            ft_printf("\033[1;32m\e[5mPeaceful Pete finnaly got all the mushrooms 🍄 \e[0m\033[0m");
             ft_printf("\033[1;32m\e[5mtime to go back to the van !\e[0m\033[0m\n");
-            img_to_win(game, game->ptr_img_exit, x * IMG_SIZE, y * IMG_SIZE);
+            img_to_win(game, game->ptr_img_exit, x * IMG_SIZE, (y + 1) * IMG_SIZE);
         }
         else
-            img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, y * IMG_SIZE);
+            img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, (y + 1) * IMG_SIZE);
     }
 }
 
@@ -103,11 +106,26 @@ void draw_line(t_data *game, int y)
     }
 }
 
+void display_header(t_data *game)
+{
+    int x;
+
+    // Dessiner la ligne de "floor" en haut de la fenêtre
+    x = 0;
+    while (x < game->map->col_count)
+    {
+        img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, 0);
+        x++;
+    }
+}
+
+
 void display_new_map(t_data *game, int x_old, int y_old)
 {
     int y;
 
     y = 0;
+    display_header(game);
     update_player_position(game, x_old, y_old);
     while (y < game->map->line_count)
     {
@@ -124,25 +142,25 @@ void display_map(t_data *game)
 
     y = 0;
     tile = 0;
-	  printf("\nICI display_map\n");
-    while (y < game->map->line_count)
+    display_header(game);
+    while (y < game->map->line_count )
     {
         x = 0;
         while (x < game->map->col_count)
         {
             tile = game->map->map[y][x];
             if (tile == WALL)
-                img_to_win(game, game->ptr_img_wall, x * IMG_SIZE, y * IMG_SIZE);
+                img_to_win(game, game->ptr_img_wall, x * IMG_SIZE, (y + 1) * IMG_SIZE);
             else if (tile == FLOOR || tile == EXIT)
-                img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, y * IMG_SIZE);
+                img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, (y + 1) * IMG_SIZE);
             else if (tile == PLAYER)
             {
-                img_to_win(game, game->ptr_img_char_right, x * IMG_SIZE, y * IMG_SIZE);
+                img_to_win(game, game->ptr_img_char_right, x * IMG_SIZE, (y + 1) * IMG_SIZE);
                 game->map->player_pos_x = x;
                 game->map->player_pos_y = y;
             }
             else if (tile == COLLEC)
-                img_to_win(game, game->ptr_img_collec, x * IMG_SIZE, y * IMG_SIZE);
+                img_to_win(game, game->ptr_img_collec, x * IMG_SIZE, (y + 1) * IMG_SIZE);
             x++;
         }
         y++;
