@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:26:59 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 19:06:14 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 21:44:48 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,31 +94,16 @@
 # define D_9 "./assets/alpha_num/9.xpm"
 
 // Lettres de A à Z
-# define LR_A "./assets/alpha_num/A.xpm"
-# define LR_B "./assets/alpha_num/B.xpm"
 # define LR_C "./assets/alpha_num/C.xpm"
-# define LR_D "./assets/alpha_num/D.xpm"
-# define LR_E "./assets/alpha_num/E.xpm"
-# define LR_F "./assets/alpha_num/F.xpm"
-# define LR_G "./assets/alpha_num/G.xpm"
-# define LR_H "./assets/alpha_num/H.xpm"
-# define LR_I "./assets/alpha_num/I.xpm"
-# define LR_J "./assets/alpha_num/J.xpm"
-# define LR_K "./assets/alpha_num/K.xpm"
-# define LR_L "./assets/alpha_num/L.xpm"
-# define LR_M "./assets/alpha_num/M.xpm"
-# define LR_N "./assets/alpha_num/N.xpm"
-# define LR_O "./assets/alpha_num/O.xpm"
-# define LR_P "./assets/alpha_num/P.xpm"
-# define LR_Q "./assets/alpha_num/Q.xpm"
-# define LR_R "./assets/alpha_num/R.xpm"
+# define LR_E "./assets/alpha_num/e.xpm"
+# define LR_N "./assets/alpha_num/n.xpm"
+# define LR_O "./assets/alpha_num/o.xpm"
+# define LR_P "./assets/alpha_num/p.xpm"
 # define LR_S "./assets/alpha_num/S.xpm"
-# define LR_T "./assets/alpha_num/T.xpm"
-# define LR_U "./assets/alpha_num/U.xpm"
-# define LR_V "./assets/alpha_num/V.xpm"
-# define LR_S_MUSH "./assets/alpha_num/S-mush.xpm"
+# define LR_S_MIN "./assets/alpha_num/s.xpm"
+# define LR_T "./assets/alpha_num/t.xpm"
+# define LR_U "./assets/alpha_num/u.xpm"
 # define LR_SLASH "./assets/alpha_num/slash.xpm"
-# define LR_DOUBLE_P "./assets/alpha_num/double-point.xpm"
-# define LR_Z "./assets/alpha_num/Z.xpm"
+# define LR_DOUBLE_P "./assets/alpha_num/double_point.xpm"
 
 #endif

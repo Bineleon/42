@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:11:33 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 20:55:45 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 21:46:37 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void display_header(t_data *game)
 {
     int x;
     x = 0;
-    display_text(game, &x, "STEPS:");
+    display_text(game, &x, "Steps:");
     display_count(game, &x, game->player_steps);
-    display_text(game, &x, " Mush:");
+    display_text(game, &x, " Count:");
     display_count(game, &x, game->collected);
     display_char(game, '/', &x, IMG_SIZE);
     display_count(game, &x, game->map->collec);
@@ -36,22 +36,24 @@ void display_char(t_data *game, char c, int *x, int img_size)
 
     if (c == 'S')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S, &img_size, &img_size);
-    else if (c == 'T')
+    else if (c == 't')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_T, &img_size, &img_size);
-    else if (c == 'E')
+    else if (c == 'e')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_E, &img_size, &img_size);
-    else if (c == 'P')
+    else if (c == 'p')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_P, &img_size, &img_size);
     else if (c == ':')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_DOUBLE_P, &img_size, &img_size);
-    else if (c == 'M')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_M, &img_size, &img_size);
+    else if (c == 'C')
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_C, &img_size, &img_size);
     else if (c == 'u')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_U, &img_size, &img_size);
-    else if (c == 'h')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_H, &img_size, &img_size);
+    else if (c == 'n')
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_N, &img_size, &img_size);
+    else if (c == 'o')
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_O, &img_size, &img_size);
     else if (c == 's')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S_MUSH, &img_size, &img_size);
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S_MIN, &img_size, &img_size);
     else if (c == '/')
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_SLASH, &img_size, &img_size);
     else if (c == ' ')
