@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 18:52:17 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 19:12:57 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ void	assign_img_ptr(t_data *game)
 	int	img_size;
 
 	img_size = IMG_SIZE;
-	game->ptr_img_char_left = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/character_left.xpm", &img_size, &img_size);
+	game->ptr_img_char_left = mlx_xpm_file_to_image(game->mlx_ptr, CHAR_L_PATH, &img_size, &img_size);
 	if (!game->ptr_img_char_left)
 		exit(EXIT_FAILURE);
-	game->ptr_img_char_right = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/character_right.xpm", &img_size, &img_size);
+	game->ptr_img_char_right = mlx_xpm_file_to_image(game->mlx_ptr, CHAR_R_PATH, &img_size, &img_size);
 	if (!game->ptr_img_char_right)
 		exit(EXIT_FAILURE);
-  game->current_img_char = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/character_right.xpm", &img_size, &img_size);
+  game->current_img_char = mlx_xpm_file_to_image(game->mlx_ptr, CHAR_R_PATH, &img_size, &img_size);
 	if (!game->current_img_char)
 		exit(EXIT_FAILURE);
-	game->ptr_img_collec = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/collec2.xpm", &img_size, &img_size);
+	game->ptr_img_collec = mlx_xpm_file_to_image(game->mlx_ptr, COLLEC_PATH, &img_size, &img_size);
 	if (!game->ptr_img_collec)
 		exit(EXIT_FAILURE);
-	game->ptr_img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/exit2.xpm", &img_size, &img_size);
+	game->ptr_img_exit = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_PATH, &img_size, &img_size);
 	if (!game->ptr_img_exit)
 		exit(EXIT_FAILURE);
-	game->ptr_img_floor = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/floor.xpm", &img_size, &img_size);
+	game->ptr_img_floor = mlx_xpm_file_to_image(game->mlx_ptr, FLOOR_PATH, &img_size, &img_size);
 	if (!game->ptr_img_floor)
 		exit(EXIT_FAILURE);
-	game->ptr_img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "./assets/wall2.xpm", &img_size, &img_size);
+	game->ptr_img_wall = mlx_xpm_file_to_image(game->mlx_ptr, WALL_PATH, &img_size, &img_size);
 	if (!game->ptr_img_wall)
 		exit(EXIT_FAILURE);
 }
@@ -105,20 +105,6 @@ void draw_line(t_data *game, int y)
         x++;
     }
 }
-
-void display_header(t_data *game)
-{
-    int x;
-
-    // Dessiner la ligne de "floor" en haut de la fenêtre
-    x = 0;
-    while (x < game->map->col_count)
-    {
-        img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, 0);
-        x++;
-    }
-}
-
 
 void display_new_map(t_data *game, int x_old, int y_old)
 {

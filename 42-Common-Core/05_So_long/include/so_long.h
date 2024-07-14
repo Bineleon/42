@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/14 17:56:47 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 20:51:13 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int			objs_are_reachable(t_map *map);
 
 /////////////////  Graphics_utils   /////////////////
 
+void	img_to_win(t_data *game, void *img, int x, int y);
 void	assign_img_ptr(t_data *game);
 void	init_win(t_data *game);
 void display_map(t_data *game);
@@ -111,8 +112,6 @@ void display_new_map(t_data *game, int x_old, int y_old);
 void update_player_position(t_data *game, int x_old, int y_old);
 void draw_tile(t_data *game, char tile, int x, int y);
 void draw_line(t_data *game, int y);
-void display_header(t_data *game);
-void display_text(t_data *game, int x, int y, char *text);
 
 /////////////////  Moves   /////////////////
 
@@ -131,4 +130,12 @@ int handle_destroy(t_data *game);
 int	handle_keyrelease(int keysym, t_data *game);
 void setup_hooks(t_data *game);
 
+/////////////////  Bonus   /////////////////
+
+void display_header(t_data *game);
+void display_text(t_data *game, int *x, char *text);
+void display_digits(t_data *game, char c, int *x, int img_size);
+void display_count(t_data *game, int *x, int count);
+void display_char(t_data *game, char c, int *x, int img_size);
+char *digit_path(char c);
 #endif
