@@ -6,12 +6,20 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 19:34:12 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 15:45:51 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+void  count_and_display_steps(t_data *game)
+{
+  game->player_steps += 1;
+  if (game->player_steps == 1)
+    ft_printf("\033[1;35mPeaceful Pete took his first step 🥹\n\n\033[0m");
+  else
+    ft_printf("\033[1;35mPeaceful Pete walked %d steps\n\n\033[0m", game->player_steps);
+}
 void check_collectible(t_data *game, int y, int x)
 {
     if (game->map->map[y][x] == COLLEC)
@@ -27,6 +35,7 @@ void move_up(t_data *game)
     {
         check_collectible(game, y_old - 1, x_old);
         game->map->player_pos_y -= 1;
+        count_and_display_steps(game);
     }
 }
 
@@ -39,6 +48,7 @@ void move_down(t_data *game)
     {
         check_collectible(game, y_old + 1, x_old);
         game->map->player_pos_y += 1;
+        count_and_display_steps(game);
     }
 }
 
@@ -51,6 +61,7 @@ void move_left(t_data *game)
     {
         check_collectible(game, y_old, x_old - 1);
         game->map->player_pos_x -= 1;
+        count_and_display_steps(game);
     }
 }
 
@@ -63,6 +74,7 @@ void move_right(t_data *game)
     {
         check_collectible(game, y_old, x_old + 1);
         game->map->player_pos_x += 1;
+        count_and_display_steps(game);
     }
 }
 

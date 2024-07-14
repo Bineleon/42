@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/13 19:35:53 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/14 16:01:57 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void	init_win(t_data *game)
 
 	win_x_size = game->map->col_count * IMG_SIZE;
 	win_y_size = (game->map->line_count) * IMG_SIZE;
-	printf("/nICI init_win\n");
-	game->win_ptr = mlx_new_window(game->mlx_ptr, win_x_size, win_y_size, "So_long baby");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, win_x_size, win_y_size, "Peaceful Pete & the mushroom quest");
 	if (!game->win_ptr)
 	{
 		free(game->mlx_ptr);
@@ -80,7 +79,11 @@ void draw_tile(t_data *game, char tile, int x, int y)
     else if (tile == EXIT)
     {
         if (game->map->collec == game->collected)
+        {
+            ft_printf("\033[1;32m\e[5mPeaceful Pete finnaly got all the mushrooms 🥵 \e[0m\033[0m");
+            ft_printf("\033[1;32m\e[5mtime to go back to the van !\e[0m\033[0m\n");
             img_to_win(game, game->ptr_img_exit, x * IMG_SIZE, y * IMG_SIZE);
+        }
         else
             img_to_win(game, game->ptr_img_floor, x * IMG_SIZE, y * IMG_SIZE);
     }
