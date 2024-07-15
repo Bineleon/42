@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 16:53:35 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:14:12 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ int	is_valid_format(int map_fd, t_map **map)
 			close(map_fd);
 			return (0);
 		}
-        if (i == (*map)->line_count - 1)
-            if (!is_valid_top_down_wall(line, &(*map)->col_count))
-            {
-                free_line(line);
+		if (i == (*map)->line_count - 1)
+			if (!is_valid_top_down_wall(line, &(*map)->col_count))
+			{
+				free_line(line);
 				get_next_line(map_fd, 1);
 				close(map_fd);
-	 	        return (0);
-            }
+				return (0);
+			}
 		free(line);
 		line = get_next_line(map_fd, 0);
 		i++;

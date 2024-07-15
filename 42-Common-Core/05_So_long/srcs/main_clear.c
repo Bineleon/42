@@ -3,32 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main_clear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:00:34 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/14 17:34:02 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:33:11 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int main(int ac, char **av)
+int on_destroy(t_data *game)
 {
-	int fd_map;
-	t_map *map;
-	char **map_copy;
-	t_data game;
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	exit(0);
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	int		fd_map;
+	t_map	*map;
+	char	**map_copy;
+	t_data	game;
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
 	game.mlx_ptr = mlx_ptr;
 	if (!game.mlx_ptr)
 		return (EXIT_FAILURE);
-
 	check_arguments(ac);
-
 	fd_map = open_map_file(av[1]);
-
 	map = allocate_map();
 	map_copy = validate_and_copy_map(fd_map, map, av[1]);
 	if (!map_copy)
@@ -37,18 +43,17 @@ int main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	validate_objects(map, map_copy);
-  printf("\nICI_main\n");
+	printf("\nICI_main\n");
 	init_data(&game, map);
 	game.mlx_ptr = mlx_ptr;
-
 	assign_img_ptr(&game);
 	init_win(&game);
-
-  setup_hooks(&game);
+	setup_hooks(&game);
 	mlx_loop(game.mlx_ptr);
+	// clean(&game);
+	// mlx_destroy_window(mlx_ptr, game.win_ptr);
+	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
 
-	free_resources(map_copy, map, fd_map);
-  	free(map);
-
+	map_copy = NULL;
 	return (0);
 }

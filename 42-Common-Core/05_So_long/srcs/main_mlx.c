@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:12:46 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/12 21:10:25 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:32:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int on_destroy(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	exit(0);
-	return (0);
-}
+// int on_destroy(t_data *data)
+// {
+// 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+// 	mlx_destroy_display(data->mlx_ptr);
+// 	free(data->mlx_ptr);
+// 	exit(0);
+// 	return (0);
+// }
 
-int on_keypress(int keysym, t_data *data)
-{
-	(void)data;
-	printf("Pressed key: %d\\n", keysym);
-	return (0);
-}
+// int on_keypress(int keysym, t_data *data)
+// {
+// 	(void)data;
+// 	printf("Pressed key: %d\\n", keysym);
+// 	return (0);
+// }
 
 // int main(void)
 // {

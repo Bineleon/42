@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:11:33 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 21:46:37 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:49:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,75 @@ void display_header(t_data *game)
 
 void display_char(t_data *game, char c, int *x, int img_size)
 {
-    void *img = NULL;
-
+    void *img;
+    
+    img = NULL;
     if (c == 'S')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S, &img_size, &img_size);
-    else if (c == 't')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_T, &img_size, &img_size);
-    else if (c == 'e')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_E, &img_size, &img_size);
-    else if (c == 'p')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_P, &img_size, &img_size);
-    else if (c == ':')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_DOUBLE_P, &img_size, &img_size);
-    else if (c == 'C')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_C, &img_size, &img_size);
-    else if (c == 'u')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_U, &img_size, &img_size);
-    else if (c == 'n')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_N, &img_size, &img_size);
-    else if (c == 'o')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_O, &img_size, &img_size);
-    else if (c == 's')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S_MIN, &img_size, &img_size);
-    else if (c == '/')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_SLASH, &img_size, &img_size);
-    else if (c == ' ')
-        img = mlx_xpm_file_to_image(game->mlx_ptr, FLOOR_PATH, &img_size, &img_size);
-    else if (c >= '0' && c <= '9')
     {
-        display_digits(game, c, x, img_size);
-        return;
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S, &img_size, &img_size);
+        game->a_num->ptr_ltr_s = img;
     }
+    else if (c == 't')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_T, &img_size, &img_size);
+    }
+    else if (c == 'e')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_E, &img_size, &img_size);
+    }
+    else if (c == 'p')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_P, &img_size, &img_size);
+    }
+    else if (c == ':')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_DOUBLE_P, &img_size, &img_size);
+    }
+    else if (c == 'C')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_C, &img_size, &img_size);
+    }
+    else if (c == 'u')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_U, &img_size, &img_size);
+    }
+    else if (c == 'n')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_N, &img_size, &img_size);
+    }
+    else if (c == 'o')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_O, &img_size, &img_size);
+    }
+    else if (c == 's')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S_MIN, &img_size, &img_size);
+    }
+    else if (c == '/')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, LR_SLASH, &img_size, &img_size);
+    }
+    else if (c == ' ')
+    {
+        
+        img = mlx_xpm_file_to_image(game->mlx_ptr, FLOOR_PATH, &img_size, &img_size);
+    }
+    else if (c >= '0' && c <= '9')
+        display_digits(game, c, x, img_size);
     if (img)
         mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, img, (*x * IMG_SIZE), 0);
     *x += 1;
+    game->img_curr_display = img;
 }
 
 
@@ -110,6 +145,7 @@ void display_digits(t_data *game, char c, int *x, int img_size)
     if (img)
         mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, img, (*x * IMG_SIZE), 0);
     *x += 1;
+    game->img_curr_display = img;
 }
 
 

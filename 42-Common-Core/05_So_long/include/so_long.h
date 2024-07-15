@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/14 20:51:13 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:49:23 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,62 +39,79 @@ typedef struct s_map
 	int		exit;
 	int		ff_collec;
 	int		ff_exit;
-	int   player_pos_y;
-  int   player_pos_x;
-	char  **map;
+	int		player_pos_y;
+	int		player_pos_x;
+	char	**map;
 }			t_map;
+
+typedef struct s_a_num
+{
+	void	*ptr_ltr_s;
+	void	*ptr_img_ltr_t;
+	void	*ptr_img_ltr_e;
+	void	*ptr_img_ltr_p;
+	void	*ptr_img_dble_p;
+	void	*ptr_img_ltr_s_min;
+	void	*ptr_img_ltr_c;
+	void	*ptr_img_ltr_u;
+	void	*ptr_img_ltr_n;
+	void	*ptr_img_ltr_o;
+	void	*ptr_img_slash;
+}			t_a_num;
+
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*textures[6];
-	void  *ptr_img_collec;
-	void  *ptr_img_exit;
-	void  *ptr_img_char_left;
-	void  *ptr_img_char_right;
-	void  *ptr_img_wall;
-	void  *ptr_img_floor;
-  void  *current_img_char;
-  int   collected;
-  int   player_steps;
+	void	*ptr_img_collec;
+	void	*ptr_img_exit;
+	void	*ptr_img_char_left;
+	void	*ptr_img_char_right;
+	void	*ptr_img_wall;
+	void	*ptr_img_floor;
+	void	*current_img_char;
+	void	*img_curr_display;
+	int		collected;
+	int		player_steps;
 	t_map	*map;
+	t_a_num	*a_num;
 }			t_data;
 
 ///////////////// Check_map /////////////////
 
-char	**map_cpy(int map_fd, t_map *map);
-int		get_map_fd(char *map_file);
-int		is_valid_map(int map_fd, t_map **map);
-int		is_valid_top_down_wall(char *line, int *col_count);
-int		is_valid_middle_wall(char *line, int col_count, t_map **map);
-int		is_valid_format(int map_fd, t_map **map);
-int		count_lines(int map_fd, char *map);
-void	count_objects(char *line, int *player, int *exit, int *collec);
+char		**map_cpy(int map_fd, t_map *map);
+int			get_map_fd(char *map_file);
+int			is_valid_map(int map_fd, t_map **map);
+int			is_valid_top_down_wall(char *line, int *col_count);
+int			is_valid_middle_wall(char *line, int col_count, t_map **map);
+int			is_valid_format(int map_fd, t_map **map);
+int			count_lines(int map_fd, char *map);
+void		count_objects(char *line, int *player, int *exit, int *collec);
 
-void	map_size(char *av, t_map *map);
-int		map_len(char *line);
-void    init_map(t_map *map);
+void		map_size(char *av, t_map *map);
+int			map_len(char *line);
+void		init_map(t_map *map);
 
 /////////////////  Utils   /////////////////
 
-void	ft_mapnew(t_map *map);
-void	free_map(t_map *map);
-void	free_line(char *line);
-void	check_empty_line(char *line, int map_fd);
-void	malloc_map(char **map, int line_count);
-void    init_data(t_data *game, t_map *map);
-int	clean(t_data *game);
+void		ft_mapnew(t_map *map);
+void		free_map(t_map *map);
+void		free_line(char *line);
+void		check_empty_line(char *line, int map_fd);
+void		malloc_map(char **map, int line_count);
+void		init_data(t_data *game, t_map *map);
+int			clean(t_data *game);
 
 /////////////////  Main_utils   /////////////////
 
-void *init_graphics();
-void check_arguments(int ac);
-int open_map_file(char *filename);
-t_map	*allocate_map();
-char **validate_and_copy_map(int fd_map, t_map *map, char *filename);
-void validate_objects(t_map *map, char **map_copy);
-void free_resources(char **map_copy, t_map *map, int fd_map);
+void		*init_graphics(void);
+void		check_arguments(int ac);
+int			open_map_file(char *filename);
+t_map		*allocate_map(void);
+char		**validate_and_copy_map(int fd_map, t_map *map, char *filename);
+void		validate_objects(t_map *map, char **map_copy);
+void		free_resources(char **map_copy, t_map *map);
 
 /////////////////  Parsing   /////////////////
 
@@ -104,38 +121,37 @@ int			objs_are_reachable(t_map *map);
 
 /////////////////  Graphics_utils   /////////////////
 
-void	img_to_win(t_data *game, void *img, int x, int y);
-void	assign_img_ptr(t_data *game);
-void	init_win(t_data *game);
-void display_map(t_data *game);
-void display_new_map(t_data *game, int x_old, int y_old);
-void update_player_position(t_data *game, int x_old, int y_old);
-void draw_tile(t_data *game, char tile, int x, int y);
-void draw_line(t_data *game, int y);
+void		img_to_win(t_data *game, void *img, int x, int y);
+void		assign_img_ptr(t_data *game);
+void		init_win(t_data *game);
+void		display_map(t_data *game);
+void		display_new_map(t_data *game, int x_old, int y_old);
+void		update_player_position(t_data *game, int x_old, int y_old);
+void		draw_tile(t_data *game, char tile, int x, int y);
+void		draw_line(t_data *game, int y);
 
 /////////////////  Moves   /////////////////
 
-void  count_and_display_steps(t_data *game);
-void check_collectible(t_data *game, int y, int x);
-void move_up(t_data *game);
-void move_down(t_data *game);
-void move_left(t_data *game);
-void move_right(t_data *game);
-int handle_key(int key, t_data *game);
+void		count_and_display_steps(t_data *game);
+void		check_collectible(t_data *game, int y, int x);
+void		move_up(t_data *game);
+void		move_down(t_data *game);
+void		move_left(t_data *game);
+void		move_right(t_data *game);
+int			handle_key(int key, t_data *game);
 
 /////////////////  Hooks   /////////////////
 
-int handle_key_release(int key, t_data *game);
-int handle_destroy(t_data *game);
-int	handle_keyrelease(int keysym, t_data *game);
-void setup_hooks(t_data *game);
+int			handle_keyrelease(int key, t_data *game);
+int			handle_destroy(t_data *game);
+void		setup_hooks(t_data *game);
 
 /////////////////  Bonus   /////////////////
 
-void display_header(t_data *game);
-void display_text(t_data *game, int *x, char *text);
-void display_digits(t_data *game, char c, int *x, int img_size);
-void display_count(t_data *game, int *x, int count);
-void display_char(t_data *game, char c, int *x, int img_size);
-char *digit_path(char c);
+void		display_header(t_data *game);
+void		display_text(t_data *game, int *x, char *text);
+void		display_digits(t_data *game, char c, int *x, int img_size);
+void		display_count(t_data *game, int *x, int count);
+void		display_char(t_data *game, char c, int *x, int img_size);
+char		*digit_path(char c);
 #endif

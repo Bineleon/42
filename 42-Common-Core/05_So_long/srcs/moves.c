@@ -3,105 +3,115 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 17:26:36 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:21:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void  count_and_display_steps(t_data *game)
+void	count_and_display_steps(t_data *game)
 {
-  game->player_steps += 1;
-  if (game->player_steps == 1)
-    ft_printf("\033[1;35mPeaceful Pete took his first step 🥹\n\n\033[0m");
-  else
-    ft_printf("\033[1;35mPeaceful Pete walked %d steps\n\n\033[0m", game->player_steps);
-}
-void check_collectible(t_data *game, int y, int x)
-{
-    if (game->map->map[y][x] == COLLEC)
-        game->collected += 1;
+	game->player_steps += 1;
+	if (game->player_steps == 1)
+		ft_printf("\033[1;35mPeaceful Pete took his first step 🥹\n\n\033[0m");
+	else
+		ft_printf("\033[1;35mPeaceful Pete walked %d steps\n\n\033[0m",
+			game->player_steps);
 }
 
-void move_up(t_data *game)
+void	check_collectible(t_data *game, int y, int x)
 {
-    int y_old = game->map->player_pos_y;
-    int x_old = game->map->player_pos_x;
-
-    if (game->map->map[y_old - 1][x_old] != WALL)
-    {
-        check_collectible(game, y_old - 1, x_old);
-        game->map->player_pos_y -= 1;
-        count_and_display_steps(game);
-    }
+	if (game->map->map[y][x] == COLLEC)
+		game->collected += 1;
 }
 
-void move_down(t_data *game)
+void	move_up(t_data *game)
 {
-    int y_old = game->map->player_pos_y;
-    int x_old = game->map->player_pos_x;
+	int	y_old;
+	int	x_old;
 
-    if (game->map->map[y_old + 1][x_old] != WALL)
-    {
-        check_collectible(game, y_old + 1, x_old);
-        game->map->player_pos_y += 1;
-        count_and_display_steps(game);
-    }
+	y_old = game->map->player_pos_y;
+	x_old = game->map->player_pos_x;
+	if (game->map->map[y_old - 1][x_old] != WALL)
+	{
+		check_collectible(game, y_old - 1, x_old);
+		game->map->player_pos_y -= 1;
+		count_and_display_steps(game);
+	}
 }
 
-void move_left(t_data *game)
+void	move_down(t_data *game)
 {
-    int y_old = game->map->player_pos_y;
-    int x_old = game->map->player_pos_x;
+	int	y_old;
+	int	x_old;
 
-    if (game->map->map[y_old][x_old - 1] != WALL)
-    {
-        check_collectible(game, y_old, x_old - 1);
-        game->map->player_pos_x -= 1;
-        count_and_display_steps(game);
-    }
+	y_old = game->map->player_pos_y;
+	x_old = game->map->player_pos_x;
+	if (game->map->map[y_old + 1][x_old] != WALL)
+	{
+		check_collectible(game, y_old + 1, x_old);
+		game->map->player_pos_y += 1;
+		count_and_display_steps(game);
+	}
 }
 
-void move_right(t_data *game)
+void	move_left(t_data *game)
 {
-    int y_old = game->map->player_pos_y;
-    int x_old = game->map->player_pos_x;
+	int	y_old;
+	int	x_old;
 
-    if (game->map->map[y_old][x_old + 1] != WALL)
-    {
-        check_collectible(game, y_old, x_old + 1);
-        game->map->player_pos_x += 1;
-        count_and_display_steps(game);
-    }
+	y_old = game->map->player_pos_y;
+	x_old = game->map->player_pos_x;
+	if (game->map->map[y_old][x_old - 1] != WALL)
+	{
+		check_collectible(game, y_old, x_old - 1);
+		game->map->player_pos_x -= 1;
+		count_and_display_steps(game);
+	}
 }
 
-int handle_key(int key, t_data *game)
+void	move_right(t_data *game)
 {
-    int x_old;
-    int y_old;
+	int	y_old;
+	int	x_old;
 
-    x_old = game->map->player_pos_x;
-    y_old = game->map->player_pos_y;
-    if (key == XK_Escape)
-        clean(game);
-    else if (key == KEY_UP)
-        move_up(game);
-    else if (key == KEY_DOWN)
-        move_down(game);
-    else if (key == KEY_LEFT)
-    {
-        game->current_img_char = game->ptr_img_char_left;
-        move_left(game);
-    }
-    else if (key == KEY_RIGHT)
-    {
-        game->current_img_char = game->ptr_img_char_right;
-        move_right(game);
-    }
-    // mlx_clear_window(game->mlx_ptr, game->win_ptr);
-    display_new_map(game, x_old, y_old);
-    return (0);
+	y_old = game->map->player_pos_y;
+	x_old = game->map->player_pos_x;
+	if (game->map->map[y_old][x_old + 1] != WALL)
+	{
+		check_collectible(game, y_old, x_old + 1);
+		game->map->player_pos_x += 1;
+		count_and_display_steps(game);
+	}
+}
+
+int	handle_key(int key, t_data *game)
+{
+	int	x_old;
+	int	y_old;
+
+	x_old = game->map->player_pos_x;
+	y_old = game->map->player_pos_y;
+	if (key == XK_Escape)
+		clean(game);
+	else if (key == KEY_UP)
+		move_up(game);
+	else if (key == KEY_DOWN)
+		move_down(game);
+	else if (key == KEY_LEFT)
+	{
+		game->current_img_char = game->ptr_img_char_left;
+		move_left(game);
+	}
+	else if (key == KEY_RIGHT)
+	{
+		game->current_img_char = game->ptr_img_char_right;
+		move_right(game);
+	}
+	// mlx_clear_window(game->mlx_ptr, game->win_ptr);
+	display_new_map(game, x_old, y_old);
+	return (0);
 }
