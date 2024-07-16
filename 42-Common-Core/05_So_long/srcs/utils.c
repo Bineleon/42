@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/15 16:37:39 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:49:56 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void	free_line(char *line)
 
 int	clean(t_data *game)
 {
-	int	i;
-
-	i = 0;
 	if (game->map)
 	{
 		free_resources(game->map->map, game->map);
@@ -71,6 +68,8 @@ int	clean(t_data *game)
 		mlx_destroy_image(game->mlx_ptr, game->ptr_img_floor);
 		mlx_destroy_image(game->mlx_ptr, game->current_img_char);
 		mlx_destroy_image(game->mlx_ptr, game->img_curr_display);
+    mlx_destroy_image(game->mlx_ptr, game->ptr_ltr_s);
+    mlx_destroy_image(game->mlx_ptr, game->ptr_img_ltr_t);
 	}
 	if(game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
@@ -95,6 +94,7 @@ void	init_data(t_data *game, t_map *map)
 	game->ptr_img_floor = NULL;
 	game->current_img_char = NULL;
 	game->img_curr_display = NULL;
+  game->ptr_ltr_s = NULL;
 	game->collected = 0;
 	game->player_steps = 0;
 	game->map = map;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:11:33 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/15 17:49:57 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:49:46 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,66 +33,66 @@ void display_header(t_data *game)
 void display_char(t_data *game, char c, int *x, int img_size)
 {
     void *img;
-    
+
     img = NULL;
     if (c == 'S')
     {
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S, &img_size, &img_size);
-        game->a_num->ptr_ltr_s = img;
+        game->ptr_ltr_s = img;
     }
     else if (c == 't')
     {
-        
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_T, &img_size, &img_size);
+        game->ptr_img_ltr_t = img;
     }
     else if (c == 'e')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_E, &img_size, &img_size);
     }
     else if (c == 'p')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_P, &img_size, &img_size);
     }
     else if (c == ':')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_DOUBLE_P, &img_size, &img_size);
     }
     else if (c == 'C')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_C, &img_size, &img_size);
     }
     else if (c == 'u')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_U, &img_size, &img_size);
     }
     else if (c == 'n')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_N, &img_size, &img_size);
     }
     else if (c == 'o')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_O, &img_size, &img_size);
     }
     else if (c == 's')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_S_MIN, &img_size, &img_size);
     }
     else if (c == '/')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, LR_SLASH, &img_size, &img_size);
     }
     else if (c == ' ')
     {
-        
+
         img = mlx_xpm_file_to_image(game->mlx_ptr, FLOOR_PATH, &img_size, &img_size);
     }
     else if (c >= '0' && c <= '9')

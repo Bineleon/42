@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/15 17:49:23 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:47:10 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,20 @@ typedef struct s_map
 	char	**map;
 }			t_map;
 
-typedef struct s_a_num
-{
-	void	*ptr_ltr_s;
-	void	*ptr_img_ltr_t;
-	void	*ptr_img_ltr_e;
-	void	*ptr_img_ltr_p;
-	void	*ptr_img_dble_p;
-	void	*ptr_img_ltr_s_min;
-	void	*ptr_img_ltr_c;
-	void	*ptr_img_ltr_u;
-	void	*ptr_img_ltr_n;
-	void	*ptr_img_ltr_o;
-	void	*ptr_img_slash;
-}			t_a_num;
+// typedef struct s_a_num
+// {
+// 	void	*ptr_ltr_s;
+// 	void	*ptr_img_ltr_t;
+// 	void	*ptr_img_ltr_e;
+// 	void	*ptr_img_ltr_p;
+// 	void	*ptr_img_dble_p;
+// 	void	*ptr_img_ltr_s_min;
+// 	void	*ptr_img_ltr_c;
+// 	void	*ptr_img_ltr_u;
+// 	void	*ptr_img_ltr_n;
+// 	void	*ptr_img_ltr_o;
+// 	void	*ptr_img_slash;
+// }			t_a_num;
 
 
 typedef struct s_data
@@ -75,7 +75,18 @@ typedef struct s_data
 	int		collected;
 	int		player_steps;
 	t_map	*map;
-	t_a_num	*a_num;
+  void	*ptr_ltr_s;
+	void	*ptr_img_ltr_t;
+	void	*ptr_img_ltr_e;
+	void	*ptr_img_ltr_p;
+	void	*ptr_img_dble_p;
+	void	*ptr_img_ltr_s_min;
+	void	*ptr_img_ltr_c;
+	void	*ptr_img_ltr_u;
+	void	*ptr_img_ltr_n;
+	void	*ptr_img_ltr_o;
+	void	*ptr_img_slash;
+	// t_a_num	*a_num;
 }			t_data;
 
 ///////////////// Check_map /////////////////
