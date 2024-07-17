@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:26:59 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/14 21:44:48 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:03:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@
 #endif
 
 
-# define CHAR_L_PATH "./assets/game/character_left.xpm"
-# define CHAR_R_PATH "./assets/game/character_right.xpm"
-# define COLLEC_PATH "./assets/game/collec2.xpm"
-# define EXIT_PATH "./assets/game/exit2.xpm"
 # define FLOOR_PATH "./assets/game/floor.xpm"
 # define WALL_PATH "./assets/game/wall2.xpm"
+# define COLLEC_PATH "./assets/game/collec2.xpm"
+# define CHAR_L_PATH "./assets/game/character_left.xpm"
+# define CHAR_R_PATH "./assets/game/character_right.xpm"
+# define EXIT_PATH "./assets/game/exit2.xpm"
 
 // Chiffres de 0 à 9
 # define D_0 "./assets/alpha_num/0.xpm"

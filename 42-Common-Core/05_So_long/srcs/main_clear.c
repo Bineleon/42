@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:00:34 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/15 17:33:11 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/17 01:25:14 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	validate_objects(map, map_copy);
-	printf("\nICI_main\n");
+	find_size_and_free_map(map_copy);
+	map_copy = NULL;
 	init_data(&game, map);
 	game.mlx_ptr = mlx_ptr;
-	assign_img_ptr(&game);
+	init_textures(&game, IMG_SIZE);
+	// assign_img_ptr(&game);
 	init_win(&game);
 	setup_hooks(&game);
+	printf("\nICI_main\n");
 	mlx_loop(game.mlx_ptr);
 	// clean(&game);
 	// mlx_destroy_window(mlx_ptr, game.win_ptr);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
-
-	map_copy = NULL;
 	return (0);
 }

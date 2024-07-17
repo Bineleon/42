@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/15 16:01:26 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/17 01:06:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	init_map(t_map *map)
 	map->ff_exit = 0;
 	map->player_pos_y = 0;
 	map->player_pos_x = 0;
+	map->exit_pos_y = 0;
+	map->exit_pos_x = 0;
 	map->map = NULL;
 }
 

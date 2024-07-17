@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/15 15:21:59 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/17 01:28:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	handle_key(int key, t_data *game)
 {
 	int	x_old;
 	int	y_old;
-
+	
 	x_old = game->map->player_pos_x;
 	y_old = game->map->player_pos_y;
 	if (key == XK_Escape)
@@ -103,12 +103,12 @@ int	handle_key(int key, t_data *game)
 		move_down(game);
 	else if (key == KEY_LEFT)
 	{
-		game->current_img_char = game->ptr_img_char_left;
+		game->current_img_char = game->textures[3];
 		move_left(game);
 	}
 	else if (key == KEY_RIGHT)
 	{
-		game->current_img_char = game->ptr_img_char_right;
+		game->current_img_char = game->textures[4];
 		move_right(game);
 	}
 	// mlx_clear_window(game->mlx_ptr, game->win_ptr);

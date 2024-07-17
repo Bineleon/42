@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/15 15:48:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/16 21:38:28 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,23 @@ void	validate_objects(t_map *map, char **map_copy)
 	}
 }
 
-void	free_resources(char **map_copy, t_map *map)
+void	free_resources(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	(void)map;
-	while (map_copy[i])
+	
+	while (map->map[i])
 		i++;
-	free_malloc(map_copy, i);
-	// free_map(map);
-	// close(fd_map);
+	free_malloc(map->map, i);
+}
+
+void	find_size_and_free_map(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	free_malloc(map, i);
 }

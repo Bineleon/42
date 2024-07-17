@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/16 15:47:10 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 01:55:47 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,51 +41,22 @@ typedef struct s_map
 	int		ff_exit;
 	int		player_pos_y;
 	int		player_pos_x;
+	int		exit_pos_y;
+	int		exit_pos_x;
 	char	**map;
 }			t_map;
-
-// typedef struct s_a_num
-// {
-// 	void	*ptr_ltr_s;
-// 	void	*ptr_img_ltr_t;
-// 	void	*ptr_img_ltr_e;
-// 	void	*ptr_img_ltr_p;
-// 	void	*ptr_img_dble_p;
-// 	void	*ptr_img_ltr_s_min;
-// 	void	*ptr_img_ltr_c;
-// 	void	*ptr_img_ltr_u;
-// 	void	*ptr_img_ltr_n;
-// 	void	*ptr_img_ltr_o;
-// 	void	*ptr_img_slash;
-// }			t_a_num;
-
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*ptr_img_collec;
-	void	*ptr_img_exit;
-	void	*ptr_img_char_left;
-	void	*ptr_img_char_right;
-	void	*ptr_img_wall;
-	void	*ptr_img_floor;
+	void	*textures[7];
+	void	*alpha[11];
+	void	*num[10];
 	void	*current_img_char;
-	void	*img_curr_display;
 	int		collected;
 	int		player_steps;
 	t_map	*map;
-  void	*ptr_ltr_s;
-	void	*ptr_img_ltr_t;
-	void	*ptr_img_ltr_e;
-	void	*ptr_img_ltr_p;
-	void	*ptr_img_dble_p;
-	void	*ptr_img_ltr_s_min;
-	void	*ptr_img_ltr_c;
-	void	*ptr_img_ltr_u;
-	void	*ptr_img_ltr_n;
-	void	*ptr_img_ltr_o;
-	void	*ptr_img_slash;
 	// t_a_num	*a_num;
 }			t_data;
 
@@ -112,7 +83,6 @@ void		free_line(char *line);
 void		check_empty_line(char *line, int map_fd);
 void		malloc_map(char **map, int line_count);
 void		init_data(t_data *game, t_map *map);
-int			clean(t_data *game);
 
 /////////////////  Main_utils   /////////////////
 
@@ -122,7 +92,7 @@ int			open_map_file(char *filename);
 t_map		*allocate_map(void);
 char		**validate_and_copy_map(int fd_map, t_map *map, char *filename);
 void		validate_objects(t_map *map, char **map_copy);
-void		free_resources(char **map_copy, t_map *map);
+void		free_resources(t_map *map);
 
 /////////////////  Parsing   /////////////////
 
@@ -157,12 +127,27 @@ int			handle_keyrelease(int key, t_data *game);
 int			handle_destroy(t_data *game);
 void		setup_hooks(t_data *game);
 
+/////////////////  Clean   /////////////////
+
+void		clean(t_data *game);
+void		clean_textures(t_data *game);
+void		clean_alpha(t_data *game);
+void		clean_num(t_data *game);
+void		clean_assets(t_data *game);
+void		find_size_and_free_map(char **map);
 /////////////////  Bonus   /////////////////
 
 void		display_header(t_data *game);
 void		display_text(t_data *game, int *x, char *text);
-void		display_digits(t_data *game, char c, int *x, int img_size);
+void		display_digits(t_data *game, char c, int *x);
 void		display_count(t_data *game, int *x, int count);
-void		display_char(t_data *game, char c, int *x, int img_size);
+void		display_char(t_data *game, char c, int *x);
 char		*digit_path(char c);
+
+/////////////////  Init_texture  /////////////////
+
+void		init_textures(t_data *game, int img_size);
+void		init_alpha(t_data *game, int img_size);
+void		init_num(t_data *game, int img_size);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/15 17:29:45 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/16 19:14:27 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,11 +88,11 @@ OBJ_DIR			= ./objs/
 
 SRCS			= srcs/main.c srcs/main_mlx.c srcs/check_map.c srcs/utils.c\
 				srcs/parsing.c srcs/map_utils.c srcs/main_clear.c srcs/main_utils.c\
-				srcs/graphics_utils.c srcs/moves.c srcs/handle_hooks.c bonus/header_utils.c\
+				srcs/graphics_utils.c srcs/moves.c srcs/handle_hooks.c srcs/init_assets.c\
+				srcs/clean.c\
+				bonus/header_utils.c bonus/init_assets_bonus.c\
 
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
-
-# OUTPUT_LEAKS	= valgrind-out.txt
 
 LIBFTDIR		= ./libft/
 INCLUDE 		= -L./libft -lft

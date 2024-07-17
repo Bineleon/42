@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/13 16:43:43 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 01:07:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ void    find_player_pos(t_map *map, char **map_cpy)
         {
             if(map_cpy[y][x] == PLAYER)
             {
-                printf("\nline : %d, col %d\n", y, x);
                 map->player_pos_x = x;
-                printf("\nplayer x : %d\n", x);
                 map->player_pos_y = y;
-                printf("\nplayer y : %d\n", y);
+            }
+            else if(map_cpy[y][x] == EXIT)
+            {
+                map->exit_pos_x = x;
+                map->exit_pos_y = y;
             }
             x++;
         }
