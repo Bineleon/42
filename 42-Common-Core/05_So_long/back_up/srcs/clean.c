@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 16:30:51 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:29:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,9 @@ void	clean(t_data *game)
 {
 	if (game->map)
 	{
-		// free(game->map->map);
 		free_resources(game->map);
 		free_map(game->map);
 		clean_assets(game);
-		printf("ICI CLEAAANNN\n");
-		// mlx_destroy_image(game->mlx_ptr, game->current_img_char);
 	}
 	if (game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:11:33 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 18:32:23 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:26:17 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	display_header(t_data *game)
 	display_count(game, &x, game->collected);
 	display_char(game, '/', &x);
 	display_count(game, &x, game->map->collec);
-	printf("\nx = %d\n", x);
 	while (x < game->map->col_count)
 	{
 		img_to_win(game, game->textures[0], x * IMG_SIZE, 0);

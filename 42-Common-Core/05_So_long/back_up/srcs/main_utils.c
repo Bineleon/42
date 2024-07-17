@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 16:14:35 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:34:06 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ char	**validate_and_copy_map(int fd_map, t_map *map, char *filename)
 		exit(EXIT_FAILURE);
 	}
 	if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
-  {
-    ft_putstr_fd("Wrong map\n", 2);
+	{
+		ft_putstr_fd("Unvalid map\n", 2);
 		exit(EXIT_FAILURE);
-  }
+	}
 	return (map_copy);
 }
 
@@ -76,13 +76,12 @@ void	validate_objects(t_map *map, char **map_copy)
 	printf("\nICI_valiate_object\n");
 	find_player_pos(map, map_copy);
 	flood_fill(map_copy, map, map->player_pos_x, map->player_pos_y);
-	printf("\n\n\ncollec : %d\n\n\n", map->ff_collec);
-	printf("\n\n\nexit : %d\n\n\n", map->ff_exit);
 	if (!objs_are_reachable(map))
-  {
-    // free_resources(map);
+	{
+		free_resources(map);
+		free_map(map);
 		exit(EXIT_FAILURE);
-  }
+	}
 }
 
 void	free_resources(t_map *map)
@@ -90,7 +89,6 @@ void	free_resources(t_map *map)
 	int	i;
 
 	i = 0;
-
 	while (map->map[i])
 		i++;
 	free_malloc(map->map, i);
@@ -98,7 +96,7 @@ void	free_resources(t_map *map)
 
 void	find_size_and_free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])

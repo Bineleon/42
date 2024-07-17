@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 17:07:47 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:20:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_map(t_map *map)
 	map->col_count = 0;
 	map->ff_collec = 0;
 	map->ff_exit = 0;
-  map->player_pos_x = 0;
+	map->player_pos_x = 0;
 	map->player_pos_y = 0;
 	map->exit_pos_x = 0;
 	map->exit_pos_y = 0;
@@ -29,6 +29,13 @@ void	free_map(t_map *map)
 	map = NULL;
 }
 
+void	free_game(t_data *game)
+{
+	game->current_img_char = NULL;
+	game->collected = 0;
+	game->player_steps = 0;
+	free(game);
+}
 
 void	free_line(char *line)
 {
@@ -36,13 +43,12 @@ void	free_line(char *line)
 	line = NULL;
 }
 
-
 void	clean_textures(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < 6 && game->textures[i])
+	while (i < 6 && game->textures[i])
 	{
 		mlx_destroy_image(game->mlx_ptr, game->textures[i]);
 		i++;
@@ -51,10 +57,10 @@ void	clean_textures(t_data *game)
 
 void	clean_alpha(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < 11 && game->alpha[i])
+	while (i < 11 && game->alpha[i])
 	{
 		mlx_destroy_image(game->mlx_ptr, game->alpha[i]);
 		i++;
@@ -63,10 +69,10 @@ void	clean_alpha(t_data *game)
 
 void	clean_num(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < 10 && game->num[i])
+	while (i < 10 && game->num[i])
 	{
 		mlx_destroy_image(game->mlx_ptr, game->num[i]);
 		i++;
@@ -84,21 +90,20 @@ void	clean(t_data *game)
 {
 	if (game->map)
 	{
-		// free(game->map->map);
 		free_resources(game->map);
 		free_map(game->map);
 		clean_assets(game);
-		// mlx_destroy_image(game->mlx_ptr, game->current_img_char);
 	}
 	if (game->win_ptr)
-  {
+	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-  }
+	}
 	if (game->mlx_ptr)
 	{
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
-    printf("\n\n\nICI CLEAN window\n\n\n");
+		printf("\n\n\nICI CLEAN window\n\n\n");
 	}
-	exit(0);
+	free_game(game);
+	exit(EXIT_SUCCESS);
 }

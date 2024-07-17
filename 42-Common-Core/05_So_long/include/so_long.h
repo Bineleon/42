@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 17:42:17 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:50:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ int			is_valid_format(int map_fd, t_map **map);
 int			count_lines(int map_fd, char *map);
 void		count_objects(char *line, int *player, int *exit, int *collec);
 
+char		*read_first_line(int map_fd);
+int			open_map_file(char *av);
+void		validate_first_line(char *line, int map_fd);
+void		calculate_map_size(t_map *map, int map_fd, char *line);
+void		clean_map_reading(char *line, int map_fd);
 void		map_size(char *av, t_map *map);
 int			map_len(char *line);
 void		init_map(t_map *map);
@@ -80,7 +85,7 @@ void		ft_mapnew(t_map *map);
 void		free_map(t_map *map);
 void		free_line(char *line);
 void		check_empty_line(char *line, int map_fd);
-t_data  *allocate_game(t_map *map);
+t_data		*allocate_game(t_map *map);
 void		init_data(t_data *game, t_map *map);
 
 /////////////////  Main_utils   /////////////////
@@ -148,7 +153,10 @@ char		*digit_path(char c);
 void		init_textures(t_data *game, int img_size);
 void		init_alpha(t_data *game, int img_size);
 void		init_num(t_data *game, int img_size);
-int     init_and_check_fail_texture(t_data *game, int i, char *path, int img_size);
-int	    init_and_check_fail_alpha(t_data *game, int i, char *path, int img_size);
-int     init_and_check_fail_num(t_data *game, int i, char *path, int img_size);
+int			init_and_check_fail_texture(t_data *game, int i, char *path,
+				int img_size);
+int			init_and_check_fail_alpha(t_data *game, int i, char *path,
+				int img_size);
+int			init_and_check_fail_num(t_data *game, int i, char *path,
+				int img_size);
 #endif

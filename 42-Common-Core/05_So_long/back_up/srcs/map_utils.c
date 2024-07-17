@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 16:18:06 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:45:55 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void calculate_map_size(t_map *map, int map_fd, char *line)
         if (map_len(line) != map->col_count)
         {
             free(line);
-            ft_putstr_fd("Wrong map format\n", 2);
+            ft_putstr_fd("Unvalid map format : the map should be a rectangle\n", 2);
             exit(1);
         }
         map->line_count += 1;

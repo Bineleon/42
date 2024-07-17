@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 17:13:22 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:23:34 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_empty_line(char *line, int map_fd)
 void	init_data(t_data *game, t_map *map)
 {
 	game->mlx_ptr = NULL;
-  game->win_ptr = NULL;
+	game->win_ptr = NULL;
 	game->current_img_char = NULL;
 	game->collected = 0;
 	game->player_steps = 0;

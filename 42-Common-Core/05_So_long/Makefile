@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/16 19:14:27 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/17 21:19:15 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,8 @@ RM				= rm -rf
 SRC_DIR			= ./srcs
 OBJ_DIR			= ./objs/
 
-SRCS			= srcs/main.c srcs/main_mlx.c srcs/check_map.c srcs/utils.c\
-				srcs/parsing.c srcs/map_utils.c srcs/main_clear.c srcs/main_utils.c\
+SRCS			= srcs/main_clear.c srcs/check_map.c srcs/utils.c\
+				srcs/parsing.c srcs/map_utils.c srcs/main_utils.c\
 				srcs/graphics_utils.c srcs/moves.c srcs/handle_hooks.c srcs/init_assets.c\
 				srcs/clean.c\
 				bonus/header_utils.c bonus/init_assets_bonus.c\
