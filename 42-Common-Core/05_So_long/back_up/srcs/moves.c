@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 17:42:59 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:37:26 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	handle_key(int key, t_data *game)
 		game->current_img_char = game->textures[4];
 		move_right(game);
 	}
+	// mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	display_map(game, x_old, y_old, 1);
 	return (0);
 }

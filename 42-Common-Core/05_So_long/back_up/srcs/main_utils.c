@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 17:31:22 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:14:35 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ void	check_arguments(int ac)
 		exit(EXIT_FAILURE);
 	}
 }
-int	open_map_file(char *filename)
-{
-	int	fd_map;
-
-	fd_map = open(filename, O_RDONLY);
-	if (fd_map < 0)
-	{
-		ft_putstr_fd("Error opening file", 2);
-		exit(EXIT_FAILURE);
-	}
-	return (fd_map);
-}
 
 t_map	*allocate_map(void)
 {
@@ -61,20 +49,6 @@ t_map	*allocate_map(void)
 	return (map);
 }
 
-t_data	*allocate_game(t_map *map)
-{
-	t_data	*game;
-
-	game = malloc(sizeof(t_data));
-	if (!game)
-	{
-		ft_putstr_fd("Error allocating memory", 2);
-		exit(EXIT_FAILURE);
-	}
-	init_data(game, map);
-	return (game);
-}
-
 char	**validate_and_copy_map(int fd_map, t_map *map, char *filename)
 {
 	char	**map_copy;
@@ -87,10 +61,13 @@ char	**validate_and_copy_map(int fd_map, t_map *map, char *filename)
 	if (!map_copy)
 	{
 		close(fd_map);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
+  {
+    ft_putstr_fd("Wrong map\n", 2);
 		exit(EXIT_FAILURE);
+  }
 	return (map_copy);
 }
 
@@ -101,13 +78,11 @@ void	validate_objects(t_map *map, char **map_copy)
 	flood_fill(map_copy, map, map->player_pos_x, map->player_pos_y);
 	printf("\n\n\ncollec : %d\n\n\n", map->ff_collec);
 	printf("\n\n\nexit : %d\n\n\n", map->ff_exit);
-	if (objs_are_reachable(map))
-		printf("Map valid : objs are reachable\n");
-	else
-	{
-		printf("Unvalid map\n");
+	if (!objs_are_reachable(map))
+  {
+    // free_resources(map);
 		exit(EXIT_FAILURE);
-	}
+  }
 }
 
 void	free_resources(t_map *map)

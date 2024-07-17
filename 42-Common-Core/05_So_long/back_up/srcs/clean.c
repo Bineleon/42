@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 17:07:47 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:30:51 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ void	free_map(t_map *map)
 
 void	free_line(char *line)
 {
-	free(line);
-	line = NULL;
+  if (line)
+  {
+	  free(line);
+	  line = NULL;
+  }
 }
 
 
@@ -88,17 +91,15 @@ void	clean(t_data *game)
 		free_resources(game->map);
 		free_map(game->map);
 		clean_assets(game);
+		printf("ICI CLEAAANNN\n");
 		// mlx_destroy_image(game->mlx_ptr, game->current_img_char);
 	}
 	if (game->win_ptr)
-  {
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-  }
 	if (game->mlx_ptr)
 	{
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
-    printf("\n\n\nICI CLEAN window\n\n\n");
 	}
 	exit(0);
 }

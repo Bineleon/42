@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 01:55:47 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/17 17:42:17 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_data
 	int		collected;
 	int		player_steps;
 	t_map	*map;
-	// t_a_num	*a_num;
 }			t_data;
 
 ///////////////// Check_map /////////////////
@@ -81,7 +80,7 @@ void		ft_mapnew(t_map *map);
 void		free_map(t_map *map);
 void		free_line(char *line);
 void		check_empty_line(char *line, int map_fd);
-void		malloc_map(char **map, int line_count);
+t_data  *allocate_game(t_map *map);
 void		init_data(t_data *game, t_map *map);
 
 /////////////////  Main_utils   /////////////////
@@ -105,7 +104,7 @@ int			objs_are_reachable(t_map *map);
 void		img_to_win(t_data *game, void *img, int x, int y);
 void		assign_img_ptr(t_data *game);
 void		init_win(t_data *game);
-void		display_map(t_data *game);
+void		display_map(t_data *game, int x_old, int y_old, int update);
 void		display_new_map(t_data *game, int x_old, int y_old);
 void		update_player_position(t_data *game, int x_old, int y_old);
 void		draw_tile(t_data *game, char tile, int x, int y);
@@ -149,5 +148,7 @@ char		*digit_path(char c);
 void		init_textures(t_data *game, int img_size);
 void		init_alpha(t_data *game, int img_size);
 void		init_num(t_data *game, int img_size);
-
+int     init_and_check_fail_texture(t_data *game, int i, char *path, int img_size);
+int	    init_and_check_fail_alpha(t_data *game, int i, char *path, int img_size);
+int     init_and_check_fail_num(t_data *game, int i, char *path, int img_size);
 #endif

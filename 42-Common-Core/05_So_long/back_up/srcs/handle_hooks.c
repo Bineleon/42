@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   handle_hooks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 17:13:22 by bineleon         ###   ########.fr       */
+/*   Created: 2024/07/13 18:32:00 by bineleon          #+#    #+#             */
+/*   Updated: 2024/07/17 16:49:05 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_empty_line(char *line, int map_fd)
+int	handle_keyrelease(int key, t_data *game)
 {
-	free_line(line);
-	get_next_line(map_fd, 1);
-	close(map_fd);
+	(void)key;
+	(void)game;
+	return (0);
 }
 
-void	init_data(t_data *game, t_map *map)
+int on_destroy(t_data *game)
 {
-	game->mlx_ptr = NULL;
-  game->win_ptr = NULL;
-	game->current_img_char = NULL;
-	game->collected = 0;
-	game->player_steps = 0;
-	game->map = map;
+	clean(game);
+	exit(0);
+	return (0);
+}
+
+void	setup_hooks(t_data *game)
+{
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_key, game);
+	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, handle_keyrelease,
+		game);
+  mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
 }

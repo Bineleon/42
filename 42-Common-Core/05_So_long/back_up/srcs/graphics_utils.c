@@ -6,7 +6,7 @@
 /*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 17:45:31 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:39:02 by bineleon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	draw_tile(t_data *game, char tile, int x, int y)
 		img_to_win(game, game->current_img_char, x * IMG_SIZE, (y + 1) * IMG_SIZE);
 	else if (tile == COLLEC)
 		img_to_win(game, game->textures[2], x * IMG_SIZE, (y + 1) * IMG_SIZE);
-	else if (x == game->map->exit_pos_x && y == game->map->exit_pos_y)
+	else if (tile == EXIT)
 	{
 		if (game->map->collec == game->collected)
 		{
@@ -98,3 +98,4 @@ void display_map(t_data *game, int x_old, int y_old, int update)
         y++;
     }
 }
+
