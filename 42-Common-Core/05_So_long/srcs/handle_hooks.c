@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:32:00 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 21:20:52 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 01:34:49 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	handle_keyrelease(int key, t_data *game)
 int	handle_destroy(t_data *game)
 {
 	clean(game);
+	return (0);
 }
 
 void	setup_hooks(t_data *game)

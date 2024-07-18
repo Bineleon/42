@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 21:25:42 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 01:58:33 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ char	**map_cpy(int map_fd, t_map *map)
 	while (line)
 	{
 		map->map[i] = ft_strdup(line);
-		printf("%s\n", map->map[i]);
 		map_copy[i] = ft_strdup(line);
 		map->map[i][map->col_count] = '\0';
 		map_copy[i][map->col_count] = '\0';

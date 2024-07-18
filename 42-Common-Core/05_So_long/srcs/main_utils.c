@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 20:57:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 01:38:08 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ t_data	*allocate_game(t_map *map)
 	if (!game)
 	{
 		ft_putstr_fd("Error allocating memory", 2);
-		clean(game);
 		exit(EXIT_FAILURE);
 	}
 	init_data(game, map);
