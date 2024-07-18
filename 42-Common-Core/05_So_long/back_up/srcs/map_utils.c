@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 16:27:02 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 19:45:23 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ void calculate_map_size(t_data *game, t_map *map, int map_fd, char *line)
         free(line);
         line = get_next_line(map_fd, 0);
     }
+	if (!check_map_limit_size(map))
+	{
+		close(map_fd);
+		clean(game);
+	}
 }
 
 void clean_map_reading(char *line, int map_fd)

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 19:28:58 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 19:47:10 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int			is_valid_format(int map_fd, t_map **map);
 int			count_lines(int map_fd, char *map);
 void		count_objects(char *line, int *player, int *exit, int *collec);
 
+
+short		check_map_limit_size(t_map *map);
 char		*read_first_line(int map_fd, t_data *game);
 int			open_map_file(char *av);
 void		validate_first_line(char *line, int map_fd);
