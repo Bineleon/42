@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 16:55:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 17:24:25 by neleon           ###   ########.fr       */
+/*   Created: 2024/07/18 18:49:12 by neleon            #+#    #+#             */
+/*   Updated: 2024/07/18 19:36:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_empty_line(char *line, int map_fd)
+short	check_map_limit_size(t_map *map)
 {
-	free_line(line);
-	get_next_line(map_fd, 1);
-	close(map_fd);
-}
-
-void	init_data(t_data *game, t_map *map)
-{
-	game->mlx_ptr = NULL;
-	game->win_ptr = NULL;
-	game->current_img_char = NULL;
-	game->textures[0] = NULL;
-	game->alpha[0] = NULL;
-	game->num[0] = NULL;
-	game->map_copy = NULL;
-	game->collected = 0;
-	game->player_steps = 0;
-	game->map = map;
+	if (map->col_count < 18)
+	{
+		ft_putstr_fd("Sorry but this map is too small 🤏,", 2);
+		ft_putstr_fd(" try with a bigger one!\n", 2);
+		return (0);
+	}
+	else if (map->col_count > 51)
+	{
+		ft_putstr_fd("Sorry but this map is too big 🥵,", 2);
+		ft_putstr_fd(" try with a smaller one!\n", 2);
+		return (0);
+	}
+	return (1);
 }

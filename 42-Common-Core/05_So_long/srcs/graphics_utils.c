@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 21:27:58 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 19:23:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	init_win(t_data *game)
 	game->win_ptr = mlx_new_window(game->mlx_ptr, win_x_size, win_y_size,
 			"Peaceful Pete & the mushroom quest");
 	if (!game->win_ptr)
-	{
 		clean(game);
-	}
 	display_map(game, -1, -1, 0);
 }
 

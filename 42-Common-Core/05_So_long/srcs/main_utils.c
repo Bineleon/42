@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/18 01:38:08 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 18:57:54 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,25 @@ t_data	*allocate_game(t_map *map)
 	return (game);
 }
 
-char	**validate_and_copy_map(int fd_map, t_map *map, char *filename)
+void	validate_and_copy_map(t_data *game, int fd_map, t_map *map, char *filename)
 {
-	char	**map_copy;
-
-	map_size(filename, map);
+	map_size(filename, map, game);
 	if (is_valid_map(fd_map, &map))
-		printf("Map valid\n");
-	fd_map = open(filename, O_RDONLY);
-	map_copy = map_cpy(fd_map, map);
-	if (!map_copy)
 	{
-		close(fd_map);
-		exit(EXIT_FAILURE);
+		fd_map = open(filename, O_RDONLY);
+		game->map_copy = map_cpy(fd_map, map, game);
+		if (!game->map_copy)
+		{
+			close(fd_map);
+			clean(game);
+			exit(EXIT_FAILURE);
+		}
 	}
 	if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
-		exit(EXIT_FAILURE);
-	return (map_copy);
+		clean(game);
 }
+
+//  TODO add GAME->MAP_CPY 
 
 void	validate_objects(t_map *map, char **map_copy)
 {

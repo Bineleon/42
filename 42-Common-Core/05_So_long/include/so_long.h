@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 20:50:21 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 19:28:58 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ typedef struct s_data
 	void	*current_img_char;
 	int		collected;
 	int		player_steps;
+	char	**map_copy;
 	t_map	*map;
 }			t_data;
 
 ///////////////// Check_map /////////////////
 
-char		**map_cpy(int map_fd, t_map *map);
+char		**map_cpy(int map_fd, t_map *map, t_data *game);
 int			get_map_fd(char *map_file);
 int			is_valid_map(int map_fd, t_map **map);
 int			is_valid_top_down_wall(char *line, int *col_count);
@@ -70,12 +71,12 @@ int			is_valid_format(int map_fd, t_map **map);
 int			count_lines(int map_fd, char *map);
 void		count_objects(char *line, int *player, int *exit, int *collec);
 
-char		*read_first_line(int map_fd);
+char		*read_first_line(int map_fd, t_data *game);
 int			open_map_file(char *av);
 void		validate_first_line(char *line, int map_fd);
-void		calculate_map_size(t_map *map, int map_fd, char *line);
+void		calculate_map_size(t_data *game, t_map *map, int map_fd, char *line);
 void		clean_map_reading(char *line, int map_fd);
-void		map_size(char *av, t_map *map);
+void		map_size(char *av, t_map *map, t_data *game);
 int			map_len(char *line);
 void		init_map(t_map *map);
 
@@ -94,7 +95,7 @@ void		*init_graphics(void);
 void		check_arguments(int ac);
 int			open_map_file(char *filename);
 t_map		*allocate_map(void);
-char		**validate_and_copy_map(int fd_map, t_map *map, char *filename);
+void		validate_and_copy_map(t_data *game, int fd_map, t_map *map, char *filename);
 void		validate_objects(t_map *map, char **map_copy);
 void		free_resources(t_map *map);
 
@@ -139,6 +140,7 @@ void		clean_alpha(t_data *game);
 void		clean_num(t_data *game);
 void		clean_assets(t_data *game);
 void		find_size_and_free_map(char **map);
+
 /////////////////  Bonus   /////////////////
 
 void		display_header(t_data *game);
@@ -153,7 +155,7 @@ char		*digit_path(char c);
 void		init_textures(t_data *game, int img_size);
 void		init_alpha(t_data *game, int img_size);
 void		init_num(t_data *game, int img_size);
-int			init_and_check_fail_texture(t_data *game, int i, char *path,
+void		init_and_check_fail_texture(t_data *game, int i, char *path,
 				int img_size);
 int			init_and_check_fail_alpha(t_data *game, int i, char *path,
 				int img_size);

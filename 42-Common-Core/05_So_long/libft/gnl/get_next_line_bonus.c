@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 22:20:47 by neleon            #+#    #+#             */
-/*   Updated: 2024/06/27 18:06:37 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 18:28:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*get_next_line(int fd, int flag)
 
 	if (flag == 1)
 	{
-		free(*chars_rd);
-		*chars_rd = NULL;
+		free(chars_rd[fd]);
+		chars_rd[fd] = NULL;
 		return (NULL);
 	}
 	line = NULL;

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 01:58:33 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 19:31:00 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,18 @@ int	open_map_file(char *av)
 	return (map_fd);
 }
 
-char	*read_first_line(int map_fd)
+char	*read_first_line(int map_fd, t_data *game)
 {
 	char	*line;
 
 	line = get_next_line(map_fd, 0);
+	if (line[0] != WALL)
+	{
+		free_line(line);
+		get_next_line(map_fd, 1);
+		close(map_fd);
+		clean(game);
+	}
 	if (!line)
 	{
 		free_line(line);
@@ -76,21 +83,31 @@ void	validate_first_line(char *line, int map_fd)
 	}
 }
 
-void	calculate_map_size(t_map *map, int map_fd, char *line)
+void	calculate_map_size(t_data *game, t_map *map, int map_fd, char *line)
 {
+
 	map->col_count = map_len(line);
 	while (line && line[0] != '\n')
 	{
 		if (map_len(line) != map->col_count)
 		{
-			free(line);
-			ft_putstr_fd("Unvalid map format : the map should be a rectangle\n",
-				2);
-			exit(1);
+			free_line(line);
+			printf("free line2\n");
+			get_next_line(map_fd, 1);
+			ft_putstr_fd("Unvalid map format : the map should be a rectangle\n", 2);
+			clean(game);
 		}
 		map->line_count += 1;
+		printf("ICI calculate\n\n\n");
 		free(line);
+		printf("free line0\n");
 		line = get_next_line(map_fd, 0);
+		if (!line)
+		{
+			printf("free line1\n");
+			free_line(line);
+		}
+		printf("malloc line\n");
 	}
 }
 
@@ -101,19 +118,20 @@ void	clean_map_reading(char *line, int map_fd)
 	close(map_fd);
 }
 
-void	map_size(char *av, t_map *map)
+void	map_size(char *av, t_map *map, t_data *game)
 {
 	int		map_fd;
 	char	*line;
 
 	map_fd = open_map_file(av);
-	line = read_first_line(map_fd);
+	line = read_first_line(map_fd, game);
 	validate_first_line(line, map_fd);
-	calculate_map_size(map, map_fd, line);
+	calculate_map_size(game, map, map_fd, line);
+	printf("ICI map_size\n\n");
 	clean_map_reading(line, map_fd);
 }
 
-char	**map_cpy(int map_fd, t_map *map)
+char	**map_cpy(int map_fd, t_map *map, t_data *game)
 {
 	char	*line;
 	char	**map_copy;
@@ -124,10 +142,16 @@ char	**map_cpy(int map_fd, t_map *map)
 	map_copy = NULL;
 	map_copy = (char **)malloc((map->line_count + 1) * sizeof(char *));
 	if (!map_copy)
+	{
+		clean(game);
 		return (NULL);
+	}
 	map->map = (char **)malloc((map->line_count + 1) * sizeof(char *));
-	if (!map_copy)
+	if (!map->map)
+	{
+		find_size_and_free_map(map_copy);
 		return (NULL);
+	}
 	line = get_next_line(map_fd, 0);
 	if (!line || line[0] != WALL)
 	{

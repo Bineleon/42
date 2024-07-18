@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 20:45:55 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/18 16:27:02 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,17 @@ void validate_first_line(char *line, int map_fd)
     }
 }
 
-void calculate_map_size(t_map *map, int map_fd, char *line)
+void calculate_map_size(t_data *game, t_map *map, int map_fd, char *line)
 {
     map->col_count = map_len(line);
     while (line && line[0] != '\n')
     {
         if (map_len(line) != map->col_count)
         {
-            free(line);
             ft_putstr_fd("Unvalid map format : the map should be a rectangle\n", 2);
-            exit(1);
+            free(line);
+			clean(game);
+            // exit(1);
         }
         map->line_count += 1;
         free(line);
