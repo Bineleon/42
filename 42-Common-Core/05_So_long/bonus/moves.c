@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bineleon <neleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 18:25:51 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/17 17:42:59 by bineleon         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:51:05 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	count_and_display_steps(t_data *game)
 {
@@ -26,66 +26,6 @@ void	check_collectible(t_data *game, int y, int x)
 {
 	if (game->map->map[y][x] == COLLEC)
 		game->collected += 1;
-}
-
-void	move_up(t_data *game)
-{
-	int	y_old;
-	int	x_old;
-
-	y_old = game->map->player_pos_y;
-	x_old = game->map->player_pos_x;
-	if (game->map->map[y_old - 1][x_old] != WALL)
-	{
-		check_collectible(game, y_old - 1, x_old);
-		game->map->player_pos_y -= 1;
-		count_and_display_steps(game);
-	}
-}
-
-void	move_down(t_data *game)
-{
-	int	y_old;
-	int	x_old;
-
-	y_old = game->map->player_pos_y;
-	x_old = game->map->player_pos_x;
-	if (game->map->map[y_old + 1][x_old] != WALL)
-	{
-		check_collectible(game, y_old + 1, x_old);
-		game->map->player_pos_y += 1;
-		count_and_display_steps(game);
-	}
-}
-
-void	move_left(t_data *game)
-{
-	int	y_old;
-	int	x_old;
-
-	y_old = game->map->player_pos_y;
-	x_old = game->map->player_pos_x;
-	if (game->map->map[y_old][x_old - 1] != WALL)
-	{
-		check_collectible(game, y_old, x_old - 1);
-		game->map->player_pos_x -= 1;
-		count_and_display_steps(game);
-	}
-}
-
-void	move_right(t_data *game)
-{
-	int	y_old;
-	int	x_old;
-
-	y_old = game->map->player_pos_y;
-	x_old = game->map->player_pos_x;
-	if (game->map->map[y_old][x_old + 1] != WALL)
-	{
-		check_collectible(game, y_old, x_old + 1);
-		game->map->player_pos_x += 1;
-		count_and_display_steps(game);
-	}
 }
 
 int	handle_key(int key, t_data *game)

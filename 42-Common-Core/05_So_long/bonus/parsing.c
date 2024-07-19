@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:59:57 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:44:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	is_valid_top_down_wall(char *line, int *col_count)
 {

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:46:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:26:50 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	clean_textures(t_data *game)
 		mlx_destroy_image(game->mlx_ptr, game->textures[i]);
 		i++;
 	}
-	// clean(game);
 }
 
 void	clean_alpha(t_data *game)
@@ -60,13 +59,11 @@ void	clean(t_data *game)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
+	if (!game)
+		exit(EXIT_FAILURE);
 	if (game->map_copy)
-	{
-		while (game->map_copy[i])
-			i++;
-		free_malloc(game->map_copy, i);
-	}
+		find_size_and_free_map(game->map_copy);
 	if (game->map)
 	{
 		if (game->map->map)

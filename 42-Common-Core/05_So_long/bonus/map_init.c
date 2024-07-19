@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:18 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:17:02 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:54:25 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 static void	init_map(t_map *map)
 {
@@ -30,7 +30,7 @@ static void	init_map(t_map *map)
 
 t_map	*allocate_map(void)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = malloc(sizeof(t_map));
 	if (!map)

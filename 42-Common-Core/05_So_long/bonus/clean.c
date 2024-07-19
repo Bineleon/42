@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:44:22 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:41:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	clean_textures(t_data *game)
 {
@@ -57,12 +57,12 @@ void	clean_assets(t_data *game)
 
 void	clean(t_data *game)
 {
-	int  i;
+	int	i;
 
 	i = 0;
 	if (game->map_copy)
 	{
-		while(game->map_copy[i])
+		while (game->map_copy[i])
 			i++;
 		free_malloc(game->map_copy, i);
 	}
@@ -73,7 +73,7 @@ void	clean(t_data *game)
 		free_map(game->map);
 		clean_assets(game);
 	}
-	if (game->win_ptr &&game->mlx_ptr)
+	if (game->win_ptr && game->mlx_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	if (game->mlx_ptr)
 	{

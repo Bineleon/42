@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:48:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:06:57 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:49:16 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	init_data(t_data *game, t_map *map)
 {

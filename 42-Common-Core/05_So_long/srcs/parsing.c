@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:14:43 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:00:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,5 @@ int	is_valid_format(int map_fd, t_map **map)
 	}
 	free_line(line);
 	get_next_line(map_fd, 1);
-	return (1);
-}
-
-short	objs_are_reachable(t_map *map)
-{
-	if (map->ff_collec != map->collec || map->ff_exit != 1)
-	{
-		ft_putstr_fd("Unvalid map : unreachable collectible(s) or exit \n", 2);
-		return (0);
-	}
 	return (1);
 }

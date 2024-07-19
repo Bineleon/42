@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/19 18:10:21 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/19 20:46:14 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,18 @@ SRC_DIR_B		= ./bonus
 OBJ_DIR			= ./objs/
 OBJ_DIR_B		= ./objs_bonus/
 
-SRCS			= srcs/utils.c srcs/map_utils.c srcs/main_utils.c srcs/main.c srcs/clean.c srcs/free.c srcs/game_allocation.c\
+SRCS			= srcs/map_utils.c srcs/main_utils.c srcs/main.c srcs/clean.c srcs/free.c srcs/game_allocation.c\
 				srcs/graphics_operations.c srcs/hooks.c srcs/init_assets.c\
 				srcs/map_cleanup.c srcs/map_flood_fill.c srcs/map_handling.c\
 				srcs/map_operations.c srcs/map_validation.c srcs/moves.c\
-				srcs/parsing.c srcs/player_operations.c\
+				srcs/parsing.c srcs/player_operations.c srcs/map_cpy_utils.c\
 
 SRCS_BONUS		= bonus/header_utils.c bonus/init_assets_bonus.c bonus/graphics_operations.c\
-				bonus/utils.c bonus/map_utils.c bonus/main_utils.c bonus/main.c bonus/clean.c bonus/free.c bonus/game_allocation.c\
-				bonus/hooks.c bonus/init_assets.c\
+				bonus/map_utils.c bonus/main_utils.c bonus/main.c bonus/clean.c bonus/free.c bonus/game_allocation.c\
+				bonus/hooks.c bonus/init_assets.c bonus/header_utils2.c bonus/map_init.c\
 				bonus/map_cleanup.c bonus/map_flood_fill.c bonus/map_handling.c\
 				bonus/map_operations.c bonus/map_validation.c bonus/moves.c\
-				bonus/parsing.c bonus/player_operations.c\
+				bonus/parsing.c bonus/player_operations.c bonus/map_cpy_utils.c\
 
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 OBJS_BONUS		= ${SRCS_BONUS:${SRC_DIR_B}/%.c=${OBJ_DIR_B}%.o}

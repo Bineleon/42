@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:07 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:58:58 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:42:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	flood_fill(char **map_copy, t_map *map, int x, int y)
 {

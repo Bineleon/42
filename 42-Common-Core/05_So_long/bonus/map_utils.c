@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:57:26 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:50:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	map_len(char *line)
 {
@@ -67,4 +67,3 @@ void	validate_first_line(char *line, int map_fd)
 		exit(1);
 	}
 }
-

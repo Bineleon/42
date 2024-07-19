@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:15:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:03:32 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	init_map(t_map *map)
 
 t_map	*allocate_map(void)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = malloc(sizeof(t_map));
 	if (!map)

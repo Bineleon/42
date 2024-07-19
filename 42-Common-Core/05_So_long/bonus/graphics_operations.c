@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:48:47 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:53:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:42:18 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	img_to_win(t_data *game, void *img, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:53:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:11:56 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:42:39 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	init_and_fail_texture(t_data *game, int i, char *path, int img_size)
 {

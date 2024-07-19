@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/19 19:10:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:33:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 short	check_filename_extention(char *av, char *extention)
 {
@@ -42,17 +42,16 @@ void	check_arguments(int ac, char *av, void *mlx_ptr)
 		ft_putstr_fd("\033[1;35m The map file should have a name\033[0m", 2);
 		ft_putstr_fd("\033[1;35m and a \".ber\" extention, \033[0m", 2);
 		ft_putstr_fd("\033[1;35m not whatever 💩 you gave me !\n\033[0m", 2);
-		
 		mlx_destroy_display(mlx_ptr);
 		free(mlx_ptr);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void	validate_and_copy_map(t_data *game, int fd_map, t_map *map, char *filename)
+void	validate_and_copy_map(t_data *game, int fd_map, t_map *map,
+		char *filename)
 {
 	map_size(filename, map, game);
-
 	if (!is_valid_map(fd_map, &map))
 		clean(game);
 	if (is_valid_map(fd_map, &map))
@@ -60,20 +59,19 @@ void	validate_and_copy_map(t_data *game, int fd_map, t_map *map, char *filename)
 		fd_map = open(filename, O_RDONLY);
 		if (fd_map < 0)
 			clean(game);
-		game->map_copy = map_cpy(fd_map, map, game);
+		map_cpy(fd_map, map, game);
 		if (!game->map_copy)
 		{
 			close(fd_map);
 			clean(game);
 		}
 	}
-	printf("ICI validate\n\n");
 }
 
-void	validate_objects(t_map *map, char **map_copy,t_data *game)
+void	validate_objects(t_map *map, char **map_copy, t_data *game)
 {
 	find_player_pos(map, map_copy);
 	flood_fill(map_copy, map, map->player_pos_x, map->player_pos_y);
 	if (!objs_are_reachable(map))
-		exit(EXIT_FAILURE);
+		clean(game);
 }

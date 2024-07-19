@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:17:20 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:33:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../libft/ft_printf/srcs/ft_printf.h"
 # include "../libft/gnl/get_next_line_bonus.h"
@@ -62,7 +62,7 @@ typedef struct s_data
 
 ///////////////// Check_map /////////////////
 
-char		**map_cpy(int map_fd, t_map *map, t_data *game);
+void		map_cpy(int map_fd, t_map *map, t_data *game);
 short		is_valid_map(int map_fd, t_map **map);
 int			is_valid_top_down_wall(char *line, int *col_count);
 int			is_valid_middle_wall(char *line, int col_count, t_map **map);
@@ -92,7 +92,7 @@ void		object_count(char square, int *collec, int *exit);
 /////////////////  Main_utils   /////////////////
 
 void		*init_graphics(void);
-int			open_map_file(char *filename);
+int			open_map_file(char *filename, t_data *game);
 t_map		*allocate_map(void);
 void		validate_and_copy_map(t_data *game, int fd_map, t_map *map,
 				char *filename);
@@ -149,6 +149,8 @@ void		display_text(t_data *game, int *x, char *text);
 void		display_digits(t_data *game, char c, int *x);
 void		display_count(t_data *game, int *x, int count);
 void		display_char(t_data *game, char c, int *x);
+void		*get_alpha_image(t_data *game, char c);
+void		*get_special_image(t_data *game, char c);
 
 /////////////////  Init_texture  /////////////////
 
@@ -161,4 +163,5 @@ int			init_and_check_fail_alpha(t_data *game, int i, char *path,
 				int img_size);
 int			init_and_check_fail_num(t_data *game, int i, char *path,
 				int img_size);
+
 #endif

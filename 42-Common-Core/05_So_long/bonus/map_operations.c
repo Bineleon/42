@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:17:04 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:54:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	find_player_pos(t_map *map, char **map_cpy)
 {

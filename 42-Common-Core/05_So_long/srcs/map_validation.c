@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:13:32 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:59:53 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ short	check_map_limit_size(t_map *map)
 
 short	is_valid_obj_count(t_map *map)
 {
-
 	if (map->player != 1 || map->exit != 1)
-		{
-			ft_putstr_fd("Unvalid map: wrong collectible or exit count\n", 2);
-			return (0);
-		}
+	{
+		ft_putstr_fd("Unvalid map: wrong collectible or exit count\n", 2);
+		return (0);
+	}
 	if (map->collec < 1)
 		return (0);
 	return (1);
@@ -51,4 +50,14 @@ void	object_count(char square, int *collec, int *exit)
 		(*exit)++;
 	else
 		return ;
+}
+
+short	objs_are_reachable(t_map *map)
+{
+	if (map->ff_collec != map->collec || map->ff_exit != 1)
+	{
+		ft_putstr_fd("Unvalid map : unreachable collectible(s) or exit \n", 2);
+		return (0);
+	}
+	return (1);
 }

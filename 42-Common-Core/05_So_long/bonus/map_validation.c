@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:20:38 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:50:24 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 short	check_map_limit_size(t_map *map)
 {
@@ -38,7 +38,7 @@ short	is_valid_obj_count(t_map *map)
 	}
 	if (map->collec < 1)
 	{
-		ft_putstr_fd("Unvalid map: map need at least 1 collectible\n", 2);		
+		ft_putstr_fd("Unvalid map: map need at least 1 collectible\n", 2);
 		return (0);
 	}
 	return (1);

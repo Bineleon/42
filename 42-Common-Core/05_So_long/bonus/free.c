@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:35:24 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:07:39 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:49:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	free_map(t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:17:41 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:33:26 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_data
 
 ///////////////// Check_map /////////////////
 
-char		**map_cpy(int map_fd, t_map *map, t_data *game);
+void		map_cpy(int map_fd, t_map *map, t_data *game);
 short		is_valid_map(int map_fd, t_map **map);
 int			is_valid_top_down_wall(char *line, int *col_count);
 int			is_valid_middle_wall(char *line, int col_count, t_map **map);
@@ -150,6 +150,8 @@ void		display_text(t_data *game, int *x, char *text);
 void		display_digits(t_data *game, char c, int *x);
 void		display_count(t_data *game, int *x, int count);
 void		display_char(t_data *game, char c, int *x);
+void		*get_alpha_image(t_data *game, char c);
+void		*get_special_image(t_data *game, char c);
 
 /////////////////  Init_texture  /////////////////
 

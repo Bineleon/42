@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/19 19:11:18 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:33:12 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	validate_and_copy_map(t_data *game, int fd_map, t_map *map,
 		fd_map = open(filename, O_RDONLY);
 		if (fd_map < 0)
 			clean(game);
-		game->map_copy = map_cpy(fd_map, map, game);
+		map_cpy(fd_map, map, game);
 		if (!game->map_copy)
 		{
 			close(fd_map);

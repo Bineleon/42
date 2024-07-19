@@ -6,11 +6,11 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:00:34 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:09:00 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:42:50 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	main(int ac, char **av)
 {

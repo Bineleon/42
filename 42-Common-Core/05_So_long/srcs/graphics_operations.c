@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:48:47 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 18:47:01 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:03:23 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	init_win(t_data *game)
 void	draw_tile(t_data *game, char tile, int x, int y)
 {
 	if (tile == WALL)
-		img_to_win(game, game->textures[1], x * IMG_SIZE, (y)*IMG_SIZE);
+		img_to_win(game, game->textures[1], x * IMG_SIZE, y * IMG_SIZE);
 	else if (tile == PLAYER)
-		img_to_win(game, game->current_img_char, x * IMG_SIZE, (y)*IMG_SIZE);
+		img_to_win(game, game->current_img_char, x * IMG_SIZE, y * IMG_SIZE);
 	else if (x == game->map->exit_pos_x && y == game->map->exit_pos_y)
 	{
 		if (game->map->collec == game->collected)
@@ -44,15 +44,15 @@ void	draw_tile(t_data *game, char tile, int x, int y)
 			ft_printf("\033[1;32m\e[5mPeaceful Pete collected\e[0m\033[0m");
 			ft_printf("\033[1;32m\e[5m all the mushrooms 🍄 \e[0m\033[0m");
 			ft_printf("\033[1;32m\e[5mtime to go back to the van !\e[0m\033[0m\n");
-			img_to_win(game, game->textures[5], x * IMG_SIZE, (y)*IMG_SIZE);
+			img_to_win(game, game->textures[5], x * IMG_SIZE, y * IMG_SIZE);
 		}
 		else
-			img_to_win(game, game->textures[0], x * IMG_SIZE, (y)*IMG_SIZE);
+			img_to_win(game, game->textures[0], x * IMG_SIZE, y * IMG_SIZE);
 	}
 	else if (tile == FLOOR)
-		img_to_win(game, game->textures[0], x * IMG_SIZE, (y)*IMG_SIZE);
+		img_to_win(game, game->textures[0], x * IMG_SIZE, y * IMG_SIZE);
 	else if (tile == COLLEC)
-		img_to_win(game, game->textures[2], x * IMG_SIZE, (y)*IMG_SIZE);
+		img_to_win(game, game->textures[2], x * IMG_SIZE, y * IMG_SIZE);
 }
 
 void	draw_line(t_data *game, int y)
