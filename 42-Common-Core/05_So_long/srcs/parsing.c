@@ -6,51 +6,110 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/17 21:26:09 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:14:43 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	find_player_pos(t_map *map, char **map_cpy)
+int	is_valid_top_down_wall(char *line, int *col_count)
 {
-	int	x;
-	int	y;
+	int	i;
 
-	x = 0;
-	y = 0;
-	while (map_cpy[y])
+	i = 0;
+	while (i < *col_count)
 	{
-		x = 0;
-		while (map_cpy[y][x])
-		{
-			if (map_cpy[y][x] == PLAYER)
-			{
-				map->player_pos_x = x;
-				map->player_pos_y = y;
-			}
-			else if (map_cpy[y][x] == EXIT)
-			{
-				map->exit_pos_x = x;
-				map->exit_pos_y = y;
-			}
-			x++;
-		}
-		y++;
+		if (line[i] != WALL)
+			return (0);
+		i++;
 	}
+	return (1);
 }
 
-void	object_count(char square, int *collec, int *exit)
+int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 {
-	if (square == COLLEC)
-		(*collec)++;
-	else if (square == EXIT)
-		(*exit)++;
-	else
-		return ;
+	int	i;
+
+	i = 0;
+	if (!line)
+		return (0);
+	if (line[0] != WALL || line[col_count - 1] != WALL)
+		return (0);
+	while (i < col_count)
+	{
+		if (line[i] != PLAYER && line[i] != WALL && line[i] != FLOOR
+			&& line[i] != COLLEC && line[i] != EXIT)
+			return (0);
+		if (line[i] == PLAYER)
+			(*map)->player++;
+		else if (line[i] == COLLEC)
+			(*map)->collec++;
+		else if (line[i] == EXIT)
+			(*map)->exit++;
+		i++;
+	}
+	return (1);
 }
 
-int	objs_are_reachable(t_map *map)
+int	validate_top_wall(char *line, t_map **map, int map_fd)
+{
+	if (!is_valid_top_down_wall(line, &(*map)->col_count))
+	{
+		free(line);
+		get_next_line(map_fd, 1);
+		close(map_fd);
+		return (0);
+	}
+	return (1);
+}
+
+int	validate_middle_line(char *line, t_map **map, int map_fd, int i)
+{
+	if (!is_valid_middle_wall(line, (*map)->col_count, map))
+	{
+		free_line(line);
+		get_next_line(map_fd, 1);
+		close(map_fd);
+		return (0);
+	}
+	if (i == (*map)->line_count - 1)
+	{
+		if (!is_valid_top_down_wall(line, &(*map)->col_count))
+		{
+			free_line(line);
+			get_next_line(map_fd, 1);
+			close(map_fd);
+			return (0);
+		}
+	}
+	return (1);
+}
+
+int	is_valid_format(int map_fd, t_map **map)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = read_first_line_map(map_fd);
+	if (!line)
+		return (-1);
+	if (!validate_top_wall(line, map, map_fd))
+		return (0);
+	while (i <= (*map)->line_count - 1 && line[0] != '\n')
+	{
+		if (!validate_middle_line(line, map, map_fd, i))
+			return (0);
+		free(line);
+		line = get_next_line(map_fd, 0);
+		i++;
+	}
+	free_line(line);
+	get_next_line(map_fd, 1);
+	return (1);
+}
+
+short	objs_are_reachable(t_map *map)
 {
 	if (map->ff_collec != map->collec || map->ff_exit != 1)
 	{
@@ -58,25 +117,4 @@ int	objs_are_reachable(t_map *map)
 		return (0);
 	}
 	return (1);
-}
-
-void	flood_fill(char **map_copy, t_map *map, int x, int y)
-{
-	while (map_copy[y] && map_copy[y][x])
-	{
-		if (map_copy[y][x] != WALL && map_copy[y][x] != 'F')
-		{
-			object_count(map_copy[y][x], &map->ff_collec, &map->ff_exit);
-			map_copy[y][x] = 'F';
-			if (x > 0)
-				flood_fill(map_copy, map, x - 1, y);
-			if (map_copy[y][x + 1])
-				flood_fill(map_copy, map, x + 1, y);
-			if (y > 0)
-				flood_fill(map_copy, map, x, y - 1);
-			if (map_copy[y + 1])
-				flood_fill(map_copy, map, x, y + 1);
-		}
-		break ;
-	}
 }

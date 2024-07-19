@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphics_utils.c                                   :+:      :+:    :+:   */
+/*   graphics_operations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 16:34:38 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/18 19:23:04 by neleon           ###   ########.fr       */
+/*   Created: 2024/07/18 18:48:47 by neleon            #+#    #+#             */
+/*   Updated: 2024/07/19 18:53:38 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	img_to_win(t_data *game, void *img, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, img, x, y);
+}
 
 void	init_win(t_data *game)
 {
@@ -24,24 +29,6 @@ void	init_win(t_data *game)
 	if (!game->win_ptr)
 		clean(game);
 	display_map(game, -1, -1, 0);
-}
-
-void	img_to_win(t_data *game, void *img, int x, int y)
-{
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, img, x, y);
-}
-
-void	update_player_position(t_data *game, int x_old, int y_old)
-{
-	game->map->map[y_old][x_old] = FLOOR;
-	if (game->map->player_pos_y == game->map->exit_pos_y
-		&& game->map->player_pos_x == game->map->exit_pos_x
-		&& game->collected == game->map->collec)
-	{
-		printf("ICI update_player_pos\n");
-		clean(game);
-	}
-	game->map->map[game->map->player_pos_y][game->map->player_pos_x] = PLAYER;
 }
 
 void	draw_tile(t_data *game, char tile, int x, int y)

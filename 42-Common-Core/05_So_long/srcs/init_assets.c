@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:53:08 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 19:18:27 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 17:58:22 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,4 @@ void	init_textures(t_data *game, int img_size)
 	init_and_fail_texture(game, i++, CHAR_R_PATH, img_size);
 	init_and_fail_texture(game, i++, EXIT_PATH, img_size);
 	game->current_img_char = game->textures[4];
-	init_alpha(game, IMG_SIZE);
-	init_num(game, IMG_SIZE);
 }

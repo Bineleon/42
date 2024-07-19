@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 19:34:59 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 16:11:48 by neleon           ###   ########.fr       */
+/*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
+/*   Updated: 2024/07/19 18:59:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 
 	i = 0;
 	if (!line)
-		return (-1);
+		return (0);
 	if (line[0] != WALL || line[col_count - 1] != WALL)
 		return (0);
 	while (i < col_count)
@@ -49,20 +49,6 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 		i++;
 	}
 	return (1);
-}
-
-char	*read_first_line_map(int map_fd)
-{
-	char	*line;
-
-	line = get_next_line(map_fd, 0);
-	if (!line)
-	{
-		free_line(line);
-		get_next_line(map_fd, 1);
-		close(map_fd);
-	}
-	return (line);
 }
 
 int	validate_top_wall(char *line, t_map **map, int map_fd)
@@ -120,21 +106,5 @@ int	is_valid_format(int map_fd, t_map **map)
 	}
 	free_line(line);
 	get_next_line(map_fd, 1);
-	return (1);
-}
-
-int	is_valid_obj_count(t_map *map)
-{
-	if (map->player != 1 || map->exit != 1)
-		return (0);
-	if (map->collec < 1)
-		return (0);
-	return (1);
-}
-
-int	is_valid_map(int map_fd, t_map **map)
-{
-	if (!is_valid_format(map_fd, map) || !is_valid_obj_count(*map))
-		return (0);
 	return (1);
 }

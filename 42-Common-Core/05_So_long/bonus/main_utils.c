@@ -6,26 +6,29 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:02:29 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/18 16:41:18 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:10:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	*init_graphics(void)
+short	check_filename_extention(char *av, char *extention)
 {
-	void	*mlx_ptr;
+	size_t	len;
+	size_t	len_ext;
+	int		cmp;
 
-	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
-	{
-		ft_putstr_fd("Error initializing graphics", 2);
-		exit(EXIT_FAILURE);
-	}
-	return (mlx_ptr);
+	len = ft_strlen(av);
+	len_ext = ft_strlen(extention);
+	if (len == len_ext)
+		return (0);
+	cmp = ft_strncmp(av + (len - len_ext), extention, len_ext);
+	if (cmp != 0)
+		return (0);
+	return (1);
 }
 
-void	check_arguments(int ac)
+void	check_arguments(int ac, char *av, void *mlx_ptr)
 {
 	if (ac != 2)
 	{
@@ -33,73 +36,44 @@ void	check_arguments(int ac)
 		ft_printf("\033[1;35m You need to put 1 args, not %d\n\033[0m", ac - 1);
 		exit(EXIT_FAILURE);
 	}
-}
-
-t_map	*allocate_map(void)
-{
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	if (!map)
+	if (!check_filename_extention(av, ".ber"))
 	{
-		ft_putstr_fd("Error allocating memory", 2);
+		ft_putstr_fd("\033[1;35mHep hep hep!!\033[0m", 2);
+		ft_putstr_fd("\033[1;35m The map file should have a name\033[0m", 2);
+		ft_putstr_fd("\033[1;35m and a \".ber\" extention, \033[0m", 2);
+		ft_putstr_fd("\033[1;35m not whatever 💩 you gave me !\n\033[0m", 2);
+		
+		mlx_destroy_display(mlx_ptr);
+		free(mlx_ptr);
 		exit(EXIT_FAILURE);
 	}
-	init_map(map);
-	return (map);
 }
 
-char	**validate_and_copy_map(int fd_map, t_map *map, char *filename)
+void	validate_and_copy_map(t_data *game, int fd_map, t_map *map, char *filename)
 {
-	char	**map_copy;
+	map_size(filename, map, game);
 
-	map_size(filename, map);
+	if (!is_valid_map(fd_map, &map))
+		clean(game);
 	if (is_valid_map(fd_map, &map))
-		printf("Map valid\n");
-	fd_map = open(filename, O_RDONLY);
-	map_copy = map_cpy(fd_map, map);
-	if (!map_copy)
 	{
-		close(fd_map);
-		exit(EXIT_FAILURE);
+		fd_map = open(filename, O_RDONLY);
+		if (fd_map < 0)
+			clean(game);
+		game->map_copy = map_cpy(fd_map, map, game);
+		if (!game->map_copy)
+		{
+			close(fd_map);
+			clean(game);
+		}
 	}
-	if (!is_valid_format(fd_map, &map) || !is_valid_map(fd_map, &map))
-	{
-		ft_putstr_fd("Unvalid map\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	return (map_copy);
+	printf("ICI validate\n\n");
 }
 
-void	validate_objects(t_map *map, char **map_copy)
+void	validate_objects(t_map *map, char **map_copy,t_data *game)
 {
-	printf("\nICI_valiate_object\n");
 	find_player_pos(map, map_copy);
 	flood_fill(map_copy, map, map->player_pos_x, map->player_pos_y);
 	if (!objs_are_reachable(map))
-	{
-		free_resources(map);
-		free_map(map);
 		exit(EXIT_FAILURE);
-	}
-}
-
-void	free_resources(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->map[i])
-		i++;
-	free_malloc(map->map, i);
-}
-
-void	find_size_and_free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	free_malloc(map, i);
 }

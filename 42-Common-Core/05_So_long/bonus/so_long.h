@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:17:41 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:17:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,20 @@ void		calculate_map_size(t_data *game, t_map *map, int map_fd,
 void		clean_map_reading(char *line, int map_fd);
 void		map_size(char *av, t_map *map, t_data *game);
 int			map_len(char *line);
-void		object_count(char square, int *collec, int *exit);
 // void		init_map(t_map *map);
 
 /////////////////  Utils   /////////////////
 
 void		free_map(t_map *map);
 void		free_line(char *line);
-// void		check_empty_line(char *line, int map_fd);
 t_data		*allocate_game(t_map *map);
 void		init_data(t_data *game, t_map *map);
+void		object_count(char square, int *collec, int *exit);
 
 /////////////////  Main_utils   /////////////////
 
 void		*init_graphics(void);
-// int			open_map_file(char *filename);
+int			open_map_file(char *filename);
 t_map		*allocate_map(void);
 void		validate_and_copy_map(t_data *game, int fd_map, t_map *map,
 				char *filename);

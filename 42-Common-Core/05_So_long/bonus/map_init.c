@@ -1,44 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_operations.c                                   :+:      :+:    :+:   */
+/*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:15:38 by neleon           ###   ########.fr       */
+/*   Created: 2024/07/18 18:49:18 by neleon            #+#    #+#             */
+/*   Updated: 2024/07/19 18:17:02 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	find_player_pos(t_map *map, char **map_cpy)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map_cpy[y])
-	{
-		x = 0;
-		while (map_cpy[y][x])
-		{
-			if (map_cpy[y][x] == PLAYER)
-			{
-				map->player_pos_x = x;
-				map->player_pos_y = y;
-			}
-			else if (map_cpy[y][x] == EXIT)
-			{
-				map->exit_pos_x = x;
-				map->exit_pos_y = y;
-			}
-			x++;
-		}
-		y++;
-	}
-}
 
 static void	init_map(t_map *map)
 {
@@ -68,18 +40,4 @@ t_map	*allocate_map(void)
 	}
 	init_map(map);
 	return (map);
-}
-
-char	*read_first_line_map(int map_fd)
-{
-	char	*line;
-
-	line = get_next_line(map_fd, 0);
-	if (!line)
-	{
-		free_line(line);
-		get_next_line(map_fd, 1);
-		close(map_fd);
-	}
-	return (line);
 }

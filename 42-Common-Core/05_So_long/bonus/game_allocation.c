@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:48:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:08:07 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:06:57 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ t_data	*allocate_game(t_map *map)
 	init_data(game, map);
 	return (game);
 }
+
 void	*init_graphics(void)
 {
-	void *mlx_ptr;
+	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
