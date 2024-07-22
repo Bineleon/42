@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/19 20:46:14 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/22 17:10:49 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME_BONUS		= so_long_bonus
 
 INCS_PATH		= ./include
 INC     		= /usr/include
-LIBMLX  		= mlx
+LIBMLX  		= ./mlx/
 CC				= cc
 CFLAGS			= -Wall -Werror -Wextra -g3 -I$(INC) -I$(INCS_PATH)
 LFLAGS			= -L$(LIBMLX) -lmlx

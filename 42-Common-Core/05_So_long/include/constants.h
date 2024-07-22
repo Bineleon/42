@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:26:59 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/19 19:57:40 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 17:15:31 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,17 @@
 # ifndef IMG_SIZE
 #  define IMG_SIZE 75
 # endif
+
+// Couleurs ANSI
+
+# define RESET "\033[0m"
+# define ROUGE "\033[0;31m"
+# define VERT "\033[0;32m"
+# define JAUNE "\033[0;33m"
+# define BLEU "\033[0;34m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define BLANC "\033[0;37m"
 
 # define FLOOR_PATH "./assets/game/floor.xpm"
 # define WALL_PATH "./assets/game/wall2.xpm"
