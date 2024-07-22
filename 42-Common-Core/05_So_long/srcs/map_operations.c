@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 20:03:32 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:24:51 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,31 @@ t_map	*allocate_map(void)
 	map = malloc(sizeof(t_map));
 	if (!map)
 	{
+		ft_printf(RED);
 		ft_putstr_fd("Error allocating memory", 2);
+		ft_printf(RESET);
 		exit(EXIT_FAILURE);
 	}
 	init_map(map);
 	return (map);
-}
+}   
 
-char	*read_first_line_map(int map_fd)
+char	*read_first_line_map(int map_fd, t_data *game)
 {
 	char	*line;
 
 	line = get_next_line(map_fd, 0);
-	if (!line)
+	if (!line || !line[0])
 	{
 		free_line(line);
 		get_next_line(map_fd, 1);
 		close(map_fd);
+		ft_printf(RED);
+		ft_putstr_fd("Invalid map file\n", 2);
+		ft_printf(RESET);
+		clean_map_reading(line, map_fd);
+		if (game)
+			clean(game);
 	}
 	return (line);
 }

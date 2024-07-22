@@ -6,7 +6,7 @@
 #    By: neleon <neleon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 16:58:44 by neleon            #+#    #+#              #
-#    Updated: 2024/07/22 17:10:49 by neleon           ###   ########.fr        #
+#    Updated: 2024/07/22 17:59:31 by neleon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME_BONUS		= so_long_bonus
 INCS_PATH		= ./include
 INC     		= /usr/include
 LIBMLX  		= ./mlx/
+NAME_MLX		= libmlx.a
 CC				= cc
 CFLAGS			= -Wall -Werror -Wextra -g3 -I$(INC) -I$(INCS_PATH)
 LFLAGS			= -L$(LIBMLX) -lmlx
@@ -45,50 +46,41 @@ SRCS_BONUS		= bonus/header_utils.c bonus/init_assets_bonus.c bonus/graphics_oper
 OBJS			= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}%.o}
 OBJS_BONUS		= ${SRCS_BONUS:${SRC_DIR_B}/%.c=${OBJ_DIR_B}%.o}
 
-
 LIBFTDIR		= ./libft/
 INCLUDE 		= -L./libft -lft
 
-
-ifeq ($(UNAME), Darwin)
-	CC = cc
-	LFLAGS += -framework OpenGL -framework AppKit
-else ifeq ($(UNAME), FreeBSD)
-	CC = clang
-else
-	CC = cc
-	LFLAGS += -lbsd -lXext -lX11 -lm
-	CFLAGS += -D LINUX
-endif
+CC				= cc
+LFLAGS 			+= -lbsd -lXext -lX11 -lm
 
 ${OBJ_DIR}%.o: ${SRC_DIR}/%.c
 	@mkdir -p ${OBJ_DIR}
-	@${CC} ${CFLAGS} -c $< -o $@
+	@${CC} -c $< -o $@
 
 ${OBJ_DIR_B}%.o: ${SRC_DIR_B}/%.c
 	@mkdir -p ${OBJ_DIR_B}
-	@${CC} ${CFLAGS} -c $< -o $@
+	@${CC} -c $< -o $@
 
 .c.o:
 	@echo "Compiling $< into ${<:.c=.o}"
 	${CC} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS} ${LIBMLX}${NAME_MLX}
 	@${MAKE} --no-print-directory -C ${LIBFTDIR}
 	@echo "${GREEN}Libft       : DONE!${RESET}"
-	@${CC} ${CFLAGS} ${OBJS} ${LFLAGS} ${LIBFT} -o ${NAME} ${INCLUDE}
+	@${CC} ${OBJS} ${LFLAGS} ${LIBFT} -o ${NAME} ${INCLUDE}
 	@echo "${GREEN}So_long     : DONE!${RESET}"
 
-${NAME_BONUS}: ${OBJS_BONUS}
+${NAME_BONUS}: ${OBJS_BONUS} ${LIBMLX}${NAME_MLX}
 	@${MAKE} --no-print-directory -C ${LIBFTDIR}
 	@echo "${GREEN}Libft         : DONE!${RESET}"
-	@${CC} ${CFLAGS} ${OBJS_BONUS} ${LFLAGS} ${LIBFT} -o ${NAME_BONUS} ${INCLUDE}
+	@${CC} ${OBJS_BONUS} ${LFLAGS} ${LIBFT} -o ${NAME_BONUS} ${INCLUDE}
 	@echo "${GREEN}So_long bonus : DONE!${RESET}"
 
 all: ${NAME}
 
-${LIBFT}:
-	@${MAKE} --no-print-directory -C ${LIBFTDIR}
+${LIBMLX}${NAME_MLX}:
+	@${MAKE} --no-print-directory -C ${LIBMLX}
+	@echo "${GREEN}MLX         : DONE!${RESET}"
 
 bonus: ${NAME_BONUS}
 

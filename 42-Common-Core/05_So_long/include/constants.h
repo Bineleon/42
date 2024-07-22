@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:26:59 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/22 17:15:31 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 17:39:37 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,16 @@
 // Couleurs ANSI
 
 # define RESET "\033[0m"
-# define ROUGE "\033[0;31m"
-# define VERT "\033[0;32m"
-# define JAUNE "\033[0;33m"
-# define BLEU "\033[0;34m"
-# define MAGENTA "\033[0;35m"
-# define CYAN "\033[0;36m"
-# define BLANC "\033[0;37m"
+# define RED "\033[1;31m"
+# define GREEN "\033[1;32m"
+# define YELLOW "\033[1;33m"
+# define BLUE "\033[1;34m"
+# define MAGENTA "\033[1;35m"
+# define CYAN "\033[1;36m"
 
+// Assets
+
+	// Textures
 # define FLOOR_PATH "./assets/game/floor.xpm"
 # define WALL_PATH "./assets/game/wall2.xpm"
 # define COLLEC_PATH "./assets/game/collec2.xpm"
@@ -91,7 +93,7 @@
 # define CHAR_R_PATH "./assets/game/character_right.xpm"
 # define EXIT_PATH "./assets/game/exit2.xpm"
 
-// Chiffres de 0 à 9
+	// Digits from 0 to 9
 # define D_0 "./assets/alpha_num/0.xpm"
 # define D_1 "./assets/alpha_num/1.xpm"
 # define D_2 "./assets/alpha_num/2.xpm"
@@ -103,7 +105,7 @@
 # define D_8 "./assets/alpha_num/8.xpm"
 # define D_9 "./assets/alpha_num/9.xpm"
 
-// Lettres de A à Z
+	// Letters
 # define LR_C "./assets/alpha_num/C.xpm"
 # define LR_E "./assets/alpha_num/e.xpm"
 # define LR_N "./assets/alpha_num/n.xpm"

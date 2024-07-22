@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:48:35 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 20:01:41 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 17:41:20 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ t_data	*allocate_game(t_map *map)
 	game = malloc(sizeof(t_data));
 	if (!game)
 	{
+		ft_printf(RED);
 		ft_putstr_fd("Error allocating memory", 2);
+		ft_printf(RESET);
 		free_map(map);
 		free(map);
 		exit(EXIT_FAILURE);
@@ -49,7 +51,9 @@ void	*init_graphics(void)
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
 	{
+		ft_printf(RED);
 		ft_putstr_fd("Error initializing graphics\n", 2);
+		ft_printf(RESET);
 		exit(EXIT_FAILURE);
 	}
 	return (mlx_ptr);

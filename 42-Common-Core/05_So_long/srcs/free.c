@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:35:24 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:08:02 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 23:18:59 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	free_map(t_map *map)
 {
-	map->collec = 0;
-	map->exit = 0;
-	map->player = 0;
 	map->line_count = 0;
 	map->col_count = 0;
+	map->player = 0;
+	map->collec = 0;
+	map->exit = 0;
 	map->ff_collec = 0;
 	map->ff_exit = 0;
 	map->player_pos_x = 0;

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:01 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:50:24 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 20:22:36 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ short	is_valid_obj_count(t_map *map)
 	return (1);
 }
 
-short	is_valid_map(int map_fd, t_map **map)
+short	is_valid_map(int map_fd, t_map **map, t_data *game)
 {
-	if (!is_valid_format(map_fd, map) || !is_valid_obj_count(*map))
+	if (!is_valid_format(map_fd, map, game) || !is_valid_obj_count(*map))
 		return (0);
 	return (1);
 }

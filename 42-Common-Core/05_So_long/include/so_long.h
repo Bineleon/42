@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:28:06 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 20:33:26 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 20:22:47 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ typedef struct s_data
 ///////////////// Check_map /////////////////
 
 void		map_cpy(int map_fd, t_map *map, t_data *game);
-short		is_valid_map(int map_fd, t_map **map);
+short		is_valid_map(int map_fd, t_map **map, t_data *game);
 int			is_valid_top_down_wall(char *line, int *col_count);
 int			is_valid_middle_wall(char *line, int col_count, t_map **map);
-int			is_valid_format(int map_fd, t_map **map);
+int			is_valid_format(int map_fd, t_map **map, t_data *game);
 short		is_valid_obj_count(t_map *map);
 
 short		check_map_limit_size(t_map *map);
 char		*read_first_line(int map_fd, t_data *game);
-char		*read_first_line_map(int map_fd);
+char		*read_first_line_map(int map_fd, t_data *game);
 int			open_map_file(char *av, t_data *game);
-void		validate_first_line(char *line, int map_fd);
+void		validate_first_line(char *line, int map_fd, t_data *game);
 void		calculate_map_size(t_data *game, t_map *map, int map_fd,
 				char *line);
 void		clean_map_reading(char *line, int map_fd);

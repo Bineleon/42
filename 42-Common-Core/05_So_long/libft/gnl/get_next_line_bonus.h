@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:32:49 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/18 18:09:15 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 23:12:16 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 14
+#  define BUFFER_SIZE 5
 # endif
 
 # ifndef FD_MAX

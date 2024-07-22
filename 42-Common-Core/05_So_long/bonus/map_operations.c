@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:54:35 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:35:13 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,22 @@ void	find_player_pos(t_map *map, char **map_cpy)
 	}
 }
 
-char	*read_first_line_map(int map_fd)
+char	*read_first_line_map(int map_fd, t_data *game)
 {
 	char	*line;
 
 	line = get_next_line(map_fd, 0);
-	if (!line)
+	if (!line || !line[0])
 	{
 		free_line(line);
 		get_next_line(map_fd, 1);
 		close(map_fd);
+		ft_printf(RED);
+		ft_putstr_fd("Invalid map file\n", 2);
+		ft_printf(RESET);
+		clean_map_reading(line, map_fd);
+		if (game)
+			clean(game);
 	}
 	return (line);
 }

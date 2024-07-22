@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:44:35 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:50:46 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ int	is_valid_top_down_wall(char *line, int *col_count)
 	while (i < *col_count)
 	{
 		if (line[i] != WALL)
+		{
+			ft_printf(RED);
+			ft_putstr_fd("Unvalid map format :", 2);
+			ft_putstr_fd(" the map should be surrounded by walls.\n", 2);
+			ft_printf(RESET);	
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -31,7 +37,7 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 	int	i;
 
 	i = 0;
-	if (!line)
+	if (!line || !line[0])
 		return (0);
 	if (line[0] != WALL || line[col_count - 1] != WALL)
 		return (0);
@@ -85,15 +91,13 @@ int	validate_middle_line(char *line, t_map **map, int map_fd, int i)
 	return (1);
 }
 
-int	is_valid_format(int map_fd, t_map **map)
+int	is_valid_format(int map_fd, t_map **map, t_data	*game)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	line = read_first_line_map(map_fd);
-	if (!line)
-		return (-1);
+	line = read_first_line_map(map_fd, game);
 	if (!validate_top_wall(line, map, map_fd))
 		return (0);
 	while (i <= (*map)->line_count - 1 && line[0] != '\n')

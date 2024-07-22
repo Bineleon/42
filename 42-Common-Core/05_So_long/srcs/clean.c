@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:14:28 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 20:26:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/22 23:25:04 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ void	clean_assets(t_data *game)
 
 void	clean(t_data *game)
 {
-	int	i;
-
-	i = -1;
 	if (!game)
 		exit(EXIT_FAILURE);
 	if (game->map_copy)
