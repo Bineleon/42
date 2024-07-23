@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:00:34 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/22 22:30:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 22:47:56 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int ac, char **av)
 	void	*mlx_ptr;
 
 	mlx_ptr = NULL;
-	mlx_ptr = init_graphics();
 	check_arguments(ac, av[1], mlx_ptr);
+	mlx_ptr = init_graphics();
 	map = allocate_map();
 	game = allocate_game(map);
 	game->mlx_ptr = mlx_ptr;
