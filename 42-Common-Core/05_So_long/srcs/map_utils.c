@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:09:05 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/22 22:11:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:31:21 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*read_first_line(int map_fd, t_data *game)
 	if (line[0] != WALL)
 	{
 		ft_printf(RED);
-		ft_putstr_fd("Unvalid map format :", 2);
+		ft_putstr_fd("Invalid map format :", 2);
 		ft_putstr_fd(" the map should be surrounded by walls.\n", 2);
 		ft_printf(RESET);
 		free_line(line);

@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:04:10 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/22 23:04:50 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 15:09:00 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	is_valid_top_down_wall(char *line, int *col_count)
 		if (line[i] != WALL)
 		{
 			ft_printf(RED);
-			ft_putstr_fd("Unvalid map format :", 2);
+			ft_putstr_fd("Invalid map format :", 2);
 			ft_putstr_fd(" the map should be surrounded by walls.\n", 2);
-			ft_printf(RESET);	
+			ft_printf(RESET);
 			return (0);
 		}
 		i++;
@@ -45,7 +45,10 @@ int	is_valid_middle_wall(char *line, int col_count, t_map **map)
 	{
 		if (line[i] != PLAYER && line[i] != WALL && line[i] != FLOOR
 			&& line[i] != COLLEC && line[i] != EXIT)
+		{
+			ft_putstr_fd("\033[1;31mInvalid map : wrong entity\033[0m\n", 2);
 			return (0);
+		}
 		if (line[i] == PLAYER)
 			(*map)->player++;
 		else if (line[i] == COLLEC)

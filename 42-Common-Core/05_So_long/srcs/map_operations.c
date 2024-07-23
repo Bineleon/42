@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:44 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/22 22:24:51 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 15:02:35 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_map	*allocate_map(void)
 	}
 	init_map(map);
 	return (map);
-}   
+}
 
 char	*read_first_line_map(int map_fd, t_data *game)
 {

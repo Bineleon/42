@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:29 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/19 19:52:14 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:51:10 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	update_player_position(t_data *game, int x_old, int y_old)
 	if (game->map->player_pos_y == game->map->exit_pos_y
 		&& game->map->player_pos_x == game->map->exit_pos_x
 		&& game->collected == game->map->collec)
-	{
 		clean(game);
-	}
 	game->map->map[game->map->player_pos_y][game->map->player_pos_x] = PLAYER;
 }
 

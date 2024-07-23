@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:49:12 by neleon            #+#    #+#             */
-/*   Updated: 2024/07/22 23:30:15 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 15:01:24 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,26 @@ void	calculate_map_size(t_data *game, t_map *map, int map_fd, char *line)
 	{
 		if (map_len(line) != map->col_count)
 		{
+			ft_putstr_fd("\033[1;31mInvalid map : should be a rectangle\033[0m",
+				2);
 			free_line(line);
-			get_next_line(map_fd, 1);
-			ft_putstr_fd("Unvalid map format :", 2);
-			ft_putstr_fd(" the map should be a rectangle\n", 2);
+			clean_map_reading(line, map_fd);
 			clean(game);
 		}
 		map->line_count += 1;
 		free(line);
 		line = get_next_line(map_fd, 0);
-	}
-	if (line)
+		if (!line)
 			clean_map_reading(line, map_fd);
+	}
+	clean_map_reading(line, map_fd);
 	if (!check_map_limit_size(map))
 	{
-		close(map_fd);
+		free(line);
+		clean_map_reading(line, map_fd);
 		clean(game);
 	}
+	free(line);
 }
 
 void	map_size(char *av, t_map *map, t_data *game)

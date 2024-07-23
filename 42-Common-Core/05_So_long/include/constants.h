@@ -6,7 +6,7 @@
 /*   By: neleon <neleon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:26:59 by bineleon          #+#    #+#             */
-/*   Updated: 2024/07/22 17:39:37 by neleon           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:58:56 by neleon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@
 
 // Assets
 
-	// Textures
+// Textures
 # define FLOOR_PATH "./assets/game/floor.xpm"
 # define WALL_PATH "./assets/game/wall2.xpm"
 # define COLLEC_PATH "./assets/game/collec2.xpm"
@@ -93,7 +93,7 @@
 # define CHAR_R_PATH "./assets/game/character_right.xpm"
 # define EXIT_PATH "./assets/game/exit2.xpm"
 
-	// Digits from 0 to 9
+// Digits from 0 to 9
 # define D_0 "./assets/alpha_num/0.xpm"
 # define D_1 "./assets/alpha_num/1.xpm"
 # define D_2 "./assets/alpha_num/2.xpm"
@@ -105,7 +105,7 @@
 # define D_8 "./assets/alpha_num/8.xpm"
 # define D_9 "./assets/alpha_num/9.xpm"
 
-	// Letters
+// Letters
 # define LR_C "./assets/alpha_num/C.xpm"
 # define LR_E "./assets/alpha_num/e.xpm"
 # define LR_N "./assets/alpha_num/n.xpm"
